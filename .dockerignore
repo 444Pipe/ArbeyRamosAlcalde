@@ -1,0 +1,15 @@
+.git
+.gitignore
+README.md
+Dockerfile
+.dockerignore
+railway.json
+
+# Fuentes y utilidades que no se sirven
+assets/img/README.txt
+assets/img/*.py
+assets/img/logo-original.png
+assets/img/logo-anterior.png
+assets/img/arbeyramos.PNG
+assets/img/simbolo.png
+configurar-dominio.py

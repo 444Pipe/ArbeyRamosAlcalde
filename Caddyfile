@@ -1,0 +1,48 @@
+# Servidor del sitio de campaña.
+# Railway asigna el puerto por la variable PORT; en local cae a 8080.
+
+{
+	admin off
+	persist_config off
+}
+
+:{$PORT:8080} {
+	root * /srv
+	encode zstd gzip
+
+	# --- Cabeceras de seguridad ---
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Frame-Options "SAMEORIGIN"
+		# El mapa ciudadano pide ubicación y la cámara para la foto del reporte.
+		Permissions-Policy "geolocation=(self), camera=(self), microphone=()"
+		-Server
+	}
+
+	# --- Caché ---
+	# Ningún archivo lleva hash en el nombre, así que una caché larga dejaría
+	# a la gente con una versión vieja del sitio sin forma de saberlo.
+	# "no-cache" no significa no guardar: guarda y revalida, y una respuesta
+	# 304 pesa unos pocos bytes.
+
+	# El service worker y el manifest, siempre frescos: si se sirven de caché,
+	# la app instalada se queda clavada en la versión anterior.
+	@critico path /sw.js /manifest.json
+	header @critico Cache-Control "no-cache"
+
+	@codigo path *.html *.css *.js
+	header @codigo Cache-Control "no-cache"
+
+	# Las imágenes sí se pueden guardar: cambian poco y pesan.
+	@medios path *.png *.jpg *.jpeg *.webp *.svg *.ico *.woff2
+	header @medios Cache-Control "public, max-age=86400"
+
+	file_server
+
+	# Página propia para direcciones que no existen, en vez de la de Caddy.
+	handle_errors {
+		rewrite * /{err.status_code}.html
+		file_server
+	}
+}

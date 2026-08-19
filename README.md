@@ -200,6 +200,53 @@ Todo sale de las variables al inicio de [assets/css/styles.css](assets/css/style
 Los únicos colores fuera de la escala azul son los **rojos de error** de los formularios
 (`#C0392B`), que se mantienen por legibilidad: un mensaje de error en azul no se lee como error.
 
+## Desplegar en Railway
+
+El sitio se sirve con Caddy dentro de un contenedor. Railway detecta el
+`Dockerfile` y no hay que configurar nada más.
+
+1. En [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub repo**
+   y elegir `444Pipe/ArbeyRamosAlcalde`.
+2. Railway construye la imagen y publica. No hace falta definir variables de
+   entorno: `PORT` la inyecta Railway sola y el `Caddyfile` la lee.
+3. En **Settings → Networking → Generate Domain** sale la dirección pública.
+
+### Después del primer despliegue
+
+Con el dominio ya en la mano, hay que escribirlo en las etiquetas que las
+redes exigen absolutas. Sin esto, al compartir el enlace en WhatsApp o
+Facebook sale sin imagen:
+
+```bash
+python configurar-dominio.py https://tu-dominio.up.railway.app
+git add -A && git commit -m "Configura el dominio de producción" && git push
+```
+
+El script se puede correr de nuevo cuando haya dominio propio: actualiza las
+etiquetas en vez de duplicarlas.
+
+### Qué hace el `Caddyfile`
+
+| Archivos | Caché | Por qué |
+|---|---|---|
+| `sw.js`, `manifest.json` | `no-cache` | Si se sirven de caché, la app instalada se queda en la versión vieja |
+| `.html`, `.css`, `.js` | `no-cache` | No llevan hash en el nombre; una caché larga dejaría el sitio desactualizado |
+| Imágenes | 1 día | Cambian poco y pesan |
+
+`no-cache` no significa "no guardar": guarda y revalida, y una respuesta 304
+pesa unos pocos bytes.
+
+También añade cabeceras de seguridad (`X-Content-Type-Options`,
+`Referrer-Policy`, `X-Frame-Options`) y permite geolocalización y cámara, que
+el mapa ciudadano necesita para ubicar el reporte y adjuntar la foto.
+
+### Lo que NO va al servidor
+
+El `.dockerignore` deja fuera las fuentes del logo y la foto —4 MB que solo
+sirven para regenerar los archivos con los scripts— y los propios scripts.
+La imagen final lleva únicamente las 10 páginas, el CSS, el JS y las 9
+imágenes que el navegador pide.
+
 ## Imágenes
 
 El logo y la foto se procesan con dos scripts, para no depender de editar

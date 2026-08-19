@@ -1072,8 +1072,10 @@ body.modal-abierto { overflow: hidden; }
   }
   .evento__fecha { padding: .6rem .35rem; }
   .evento__fecha b { font-size: 1.55rem; }
-  .evento__fecha span { font-size: .72rem; letter-spacing: .1em; }
-  .evento__fecha em { font-size: .7rem; }
+  /* No bajar de .75rem (12px): esta regla va después del bloque móvil y lo
+     pisa, así que aquí es donde queda decidido el tamaño real en celular. */
+  .evento__fecha span { font-size: .78rem; letter-spacing: .1em; }
+  .evento__fecha em { font-size: .76rem; }
 
   /* La descripción y los datos bajan a ocupar todo el ancho: encerrados
      en la columna de la derecha se partían cada tres palabras. */
