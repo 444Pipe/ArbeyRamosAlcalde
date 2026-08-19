@@ -64,6 +64,7 @@ cambia en las dos.
 ```
 assets/css/styles.css        Base: paleta, tipografía, portada, pie
 assets/css/plataforma.css    Menú desplegable, mapa, tarjetas, modales, agenda, semáforo
+assets/js/carga.js           Pantalla de carga con la marca animada
 assets/js/config.js          Configuración
 assets/js/contenido.js       Contenido editable
 assets/js/store.js           Capa de datos (local o servidor)
@@ -83,6 +84,9 @@ contacto.js    contacto.html
 
 Todas las páginas cargan la misma cadena, en este orden:
 `config.js → contenido.js → store.js → ui.js → <página>.js`
+
+Antes de esa cadena, y sin `defer`, va `carga.js`: pinta la pantalla de carga en el
+primer fotograma y se retira sola cuando la página termina de cargar.
 
 ## Los dos modos de funcionamiento
 

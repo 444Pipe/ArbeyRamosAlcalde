@@ -4,7 +4,7 @@
    y que las páginas ya visitadas se puedan abrir sin señal.
    Sube la versión al publicar cambios para forzar la actualización.
    ========================================================= */
-var VERSION = "arbey-v17";
+var VERSION = "arbey-v18";
 
 var ESENCIALES = [
   "./",
@@ -21,6 +21,7 @@ var ESENCIALES = [
   "manifest.json",
   "assets/css/styles.css",
   "assets/css/plataforma.css",
+  "assets/js/carga.js",
   "assets/js/config.js",
   "assets/js/contenido.js",
   "assets/js/store.js",
