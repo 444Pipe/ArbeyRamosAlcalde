@@ -927,6 +927,14 @@ body.modal-abierto { overflow: hidden; }
   .retrato { width: min(100%, 400px); margin-inline: auto; }
 }
 
+/* En celular la foto se queda en un tercio de la pantalla: lo demás es
+   para el nombre y el botón. Ver el bloque del hero en styles.css. */
+@media (max-width: 620px) {
+  .retrato--hero { width: min(70%, 280px); }
+  .retrato--hero .frame__tag { padding: .45rem .9rem; }
+  .retrato--hero .frame__tag strong { font-size: .95rem; }
+}
+
 /* =========================================================
    ICONOS DE APOYO (cifras, semáforo, trayectoria, ranking)
    ========================================================= */
@@ -1023,6 +1031,93 @@ body.modal-abierto { overflow: hidden; }
 }
 
 /* =========================================================
+   MÓVIL: DOS TARJETAS POR FILA
+   En una sola columna la portada medía 12.500 px de alto y el pulgar
+   pasaba de largo antes de llegar a lo importante. En dos columnas la
+   página se acorta casi a la mitad y cada bloque se abarca de un
+   vistazo. Las tarjetas se compactan a la vez: con ~170 px de ancho,
+   el relleno y los tamaños pensados para escritorio no caben.
+   Nada baja de 12 px (.75rem): ver el bloque de legibilidad de arriba.
+   ========================================================= */
+@media (max-width: 620px) {
+  .accesos, .cards, .help, .tablero, .noticias, .semaforo, .pasos, .contact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .8rem;
+  }
+
+  /* En dos columnas el texto de apoyo se dispara a seis o siete líneas y
+     descuadra la fila entera. Se corta a tres: es un adelanto, el texto
+     completo está a un toque de distancia. */
+  .acceso p, .card p, .help__item p, .paso p, .noticia p, .noticia h3 {
+    display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;
+    -webkit-line-clamp: 3;
+  }
+
+  /* --- Accesos de la portada --- */
+  .acceso { padding: 1.1rem .95rem 1.15rem; gap: .3rem; border-radius: var(--radio); }
+  .acceso__ico { width: 40px; height: 40px; margin-bottom: .2rem; border-radius: 12px; font-size: 1.1rem; }
+  .acceso h3 { font-size: 1rem; line-height: 1.22; }
+  .acceso p { font-size: .8rem; line-height: 1.42; }
+  .acceso__mas { margin-top: .3rem; font-size: .8rem; }
+
+  /* --- Ejes del programa --- */
+  .card { padding: 1.15rem .95rem 1.2rem; border-radius: var(--radio); }
+  .card__ico { width: 42px; height: 42px; margin-bottom: .7rem; border-radius: 13px; font-size: 1.15rem; }
+  .card h3 { font-size: 1rem; margin-bottom: .3rem; }
+  .card p { font-size: .8rem; line-height: 1.45; }
+  .card__n { top: .5rem; right: .7rem; font-size: 1.7rem; }
+
+  /* --- Cómo ayudar --- */
+  .help__item { padding: 1.3rem .9rem; border-radius: var(--radio); }
+  .help__ico { width: 46px; height: 46px; margin-bottom: .7rem; font-size: 1.2rem; }
+  .help__item h3 { font-size: 1rem; }
+  .help__item p { font-size: .8rem; line-height: 1.45; }
+
+  /* --- Cifras --- */
+  .tablero { gap: .7rem; }
+  .tablero__item { padding: .95rem .55rem; }
+  .tablero__ico { width: 30px; height: 30px; margin-bottom: .45rem; }
+  .tablero__item b { font-size: 1.75rem; }
+  .tablero__item span { display: block; font-size: .76rem; line-height: 1.3; }
+
+  /* --- Noticias --- */
+  .noticia { border-radius: var(--radio); }
+  .noticia__cuerpo { padding: .85rem .9rem 1.05rem; gap: .4rem; }
+  .noticia h3 { font-size: .98rem; line-height: 1.25; }
+  .noticia p { font-size: .8rem; line-height: 1.42; }
+  .noticia__meta { gap: .22rem .45rem; font-size: .76rem; line-height: 1.2; }
+  .noticia__meta .etiqueta { padding: .12rem .5rem; font-size: .7rem; }
+  .noticia__mas { font-size: .8rem; }
+  /* La destacada sigue ocupando la fila entera: es la que abre la página. */
+  .noticia--destacada { grid-column: 1 / -1; }
+
+  /* --- Semáforo de compromisos --- */
+  .semaforo__col { padding: .9rem .8rem; border-radius: var(--radio); }
+  .semaforo__cab { font-size: .82rem; gap: .4rem; margin-bottom: .6rem; }
+  .semaforo__cab b { font-size: .76rem; padding: .1rem .4rem; }
+
+  /* --- Pasos de "cómo funciona" --- */
+  .pasos { gap: 1rem .8rem; }
+  .paso { padding-top: 2.6rem; }
+  .paso::before { width: 36px; height: 36px; font-size: .95rem; border-radius: 11px; }
+  .paso h3 { font-size: 1rem; }
+  .paso p { font-size: .8rem; line-height: 1.45; }
+
+  /* --- Contacto --- */
+  .contact__item { padding: 1.2rem .8rem; border-radius: var(--radio); }
+  .contact__item strong { font-size: .95rem; }
+  .contact__item span { font-size: .8rem; }
+}
+
+/* Pantallas muy angostas: dos columnas siguen siendo mejor que una, pero
+   el texto de apoyo ya no cabe y estorba más de lo que ayuda. */
+@media (max-width: 360px) {
+  .accesos, .cards, .help, .noticias, .semaforo, .pasos, .contact { gap: .6rem; }
+  .acceso p, .card p, .help__item p { display: none; }
+  .acceso, .card { padding-inline: .8rem; }
+}
+
+/* =========================================================
    TÁCTIL: REACCIÓN AL TOQUE EN LUGAR DE HOVER
    En una pantalla táctil el :hover se queda pegado después de tocar:
    la tarjeta se levanta y no vuelve a bajar. Se anula el hover y se
@@ -1036,6 +1131,10 @@ body.modal-abierto { overflow: hidden; }
     transform: none;
   }
   .btn:hover { box-shadow: none; }
+
+  /* Sin puntero, la línea de color de la tarjeta no se vería nunca: se
+     pinta sola cuando la tarjeta entra en pantalla. */
+  .card.is-in::before { transform: scaleX(1); transition-delay: var(--rd, 0s); }
 
   .btn:active { transform: scale(.96); }
   .card:active, .acceso:active, .noticia:active, .evento:active,
@@ -1055,9 +1154,12 @@ body.modal-abierto { overflow: hidden; }
    ========================================================= */
 @media (max-width: 700px) {
   .reveal { transform: translateY(16px); transition-duration: .5s; }
-  .reveal--d1 { transition-delay: .07s; }
-  .reveal--d2 { transition-delay: .14s; }
-  .reveal--d3 { transition-delay: .21s; }
+  .reveal--zoom { transform: translateY(12px) scale(.97); }
+  .reveal--izq { transform: translateX(-18px); }
+  .reveal--der { transform: translateX(18px); }
+  .reveal--d1 { --rd: .07s; }
+  .reveal--d2 { --rd: .14s; }
+  .reveal--d3 { --rd: .21s; }
 }
 
 /* =========================================================

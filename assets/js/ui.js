@@ -282,6 +282,82 @@ window.UI = (function () {
     f();
   }
 
+  /* =========================================================
+     3b. MOVIMIENTO AL HACER SCROLL
+     Todo lo de aquí cuelga de UN solo listener de scroll, sincronizado
+     con requestAnimationFrame: varios listeners sueltos es la forma más
+     fácil de que un celular de gama baja se sienta trabado.
+     ========================================================= */
+  var quietud = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function alHacerScroll() {
+    var tareas = [];
+    var pedido = false;
+
+    function correr() {
+      pedido = false;
+      var y = window.scrollY || window.pageYOffset;
+      for (var i = 0; i < tareas.length; i++) tareas[i](y);
+    }
+
+    window.addEventListener("scroll", function () {
+      if (pedido) return;
+      pedido = true;
+      requestAnimationFrame(correr);
+    }, { passive: true });
+
+    window.addEventListener("resize", correr, { passive: true });
+
+    return function (tarea) { tareas.push(tarea); tarea(window.scrollY || 0); };
+  }
+
+  /* Barra de lectura: cuánto queda de página. */
+  function barraDeLectura(alScroll) {
+    var barra = document.createElement("div");
+    barra.className = "progreso";
+    barra.setAttribute("aria-hidden", "true");
+    barra.innerHTML = "<span></span>";
+    document.body.appendChild(barra);
+    var relleno = barra.firstChild;
+
+    alScroll(function (y) {
+      var total = document.documentElement.scrollHeight - window.innerHeight;
+      var p = total > 40 ? y / total : 0;
+      relleno.style.transform = "scaleX(" + Math.max(0, Math.min(1, p)) + ")";
+    });
+  }
+
+  /* Volver arriba: aparece cuando ya no se ve el encabezado. */
+  function volverArriba(alScroll) {
+    var boton = document.createElement("button");
+    boton.className = "arriba";
+    boton.type = "button";
+    boton.setAttribute("aria-label", "Volver arriba");
+    boton.innerHTML = icono("i-arrow");
+    boton.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: quietud ? "auto" : "smooth" });
+    });
+    document.body.appendChild(boton);
+
+    alScroll(function (y) {
+      boton.classList.toggle("is-on", y > window.innerHeight * 1.5);
+    });
+  }
+
+  /* El fondo del hero se mueve más despacio que el texto. Solo mientras
+     el hero está a la vista: fuera de ahí no hay nada que calcular. */
+  function fondoConProfundidad(alScroll) {
+    var hero = document.querySelector(".hero");
+    var fondo = hero && hero.querySelector(".hero__bg");
+    if (!fondo || quietud) return;
+
+    alScroll(function (y) {
+      var alto = hero.offsetHeight;
+      if (y > alto) return;
+      fondo.style.setProperty("--py", Math.round(y * 0.18) + "px");
+    });
+  }
+
   var observador = null;
   function activarReveal(raiz) {
     var elems = (raiz || document).querySelectorAll(".reveal:not(.is-in)");
@@ -291,8 +367,22 @@ window.UI = (function () {
     }
     if (!observador) {
       observador = new IntersectionObserver(function (entradas) {
+        /* Lo que entra en la misma tanda (una rejilla de tarjetas, por
+           ejemplo) aparece en cascada y no todo de golpe. El retraso se
+           borra al terminar: si se quedara puesto, la tarjeta reaccionaría
+           tarde al toque durante el resto de la visita. */
+        var n = 0;
         entradas.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add("is-in"); observador.unobserve(e.target); }
+          if (!e.isIntersecting) return;
+          var el = e.target;
+          if (n && !/reveal--d\d/.test(el.className)) {
+            var espera = Math.min(n, 5) * 70;
+            el.style.setProperty("--rd", espera + "ms");
+            setTimeout(function () { el.style.removeProperty("--rd"); }, espera + 900);
+          }
+          n++;
+          el.classList.add("is-in");
+          observador.unobserve(el);
         });
       }, {
         threshold: 0.1,
@@ -456,17 +546,34 @@ window.UI = (function () {
     window.open("https://wa.me/?text=" + encodeURIComponent(texto + "\n" + url), "_blank", "noopener");
   }
 
+  /* La cuenta empieza cuando la cifra entra en pantalla, no al cargar la
+     página: si no, en el celular todo termina de contar mucho antes de que
+     el pulgar llegue al tablero y la gente solo ve números quietos. */
   function animarNumero(el, destino, sufijo) {
     destino = Number(destino) || 0;
-    var inicio = performance.now();
     var dur = 1100;
+    var inicio;
+
     function paso(t) {
       var p = Math.min(1, (t - inicio) / dur);
       var v = Math.round(destino * (1 - Math.pow(1 - p, 3)));
       el.textContent = v.toLocaleString("es-CO") + (sufijo || "");
       if (p < 1) requestAnimationFrame(paso);
     }
-    requestAnimationFrame(paso);
+
+    function contar() {
+      inicio = performance.now();
+      requestAnimationFrame(paso);
+    }
+
+    if (!("IntersectionObserver" in window)) return contar();
+    el.textContent = "0" + (sufijo || "");
+    var mirilla = new IntersectionObserver(function (entradas) {
+      if (!entradas[0].isIntersecting) return;
+      mirilla.disconnect();
+      contar();
+    }, { threshold: .35 });
+    mirilla.observe(el);
   }
 
   function escapar(s) {
@@ -553,6 +660,11 @@ window.UI = (function () {
     sombraHeader();
     iconosDelTablero();
     activarReveal();
+
+    var alScroll = alHacerScroll();
+    barraDeLectura(alScroll);
+    volverArriba(alScroll);
+    fondoConProfundidad(alScroll);
 
     if (Store.modo === "demo") {
       var aviso = document.getElementById("aviso-demo");

@@ -808,16 +808,88 @@ html.cargando, html.cargando body { overflow: hidden; }
   50%      { transform: scale(1.08); opacity: 1; }
 }
 
-/* ---------- 17. Animación de aparición ---------- */
+/* ---------- 17. Movimiento al hacer scroll ---------- */
+
+/* --- 17.1 Aparición de bloques --- */
+/* El retraso va en --rd y no en transition-delay: estas mismas tarjetas
+   tienen su propia transición para el toque, y un transition-delay las
+   dejaría respondiendo tarde durante todo el resto de la visita. */
 .reveal {
   opacity: 0;
   transform: translateY(26px);
-  transition: opacity .7s var(--ease), transform .7s var(--ease);
+  transition: opacity .7s var(--ease) var(--rd, 0s),
+              transform .7s var(--ease) var(--rd, 0s);
 }
 .reveal.is-in { opacity: 1; transform: none; }
-.reveal--d1 { transition-delay: .12s; }
-.reveal--d2 { transition-delay: .24s; }
-.reveal--d3 { transition-delay: .36s; }
+.reveal--d1 { --rd: .12s; }
+.reveal--d2 { --rd: .24s; }
+.reveal--d3 { --rd: .36s; }
+
+/* Los encabezados de sección entran con un acercamiento leve: marcan el
+   comienzo de cada bloque mientras se baja. */
+.section__head.reveal { transform: translateY(20px) scale(.985); }
+
+/* Variantes: el bloque entra desde donde tiene sentido que venga. */
+.reveal--zoom { transform: translateY(16px) scale(.96); }
+.reveal--izq  { transform: translateX(-30px); }
+.reveal--der  { transform: translateX(30px); }
+
+/* --- 17.2 Barra de lectura --- */
+/* Cuánto falta para el final de la página. En un sitio de campaña, donde
+   la gente llega de un enlace y no sabe qué tan largo es, ubica. */
+.progreso {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 80;
+  height: 3px; pointer-events: none;
+}
+.progreso span {
+  display: block; height: 100%;
+  background: linear-gradient(90deg, var(--azul-600), var(--azul-300));
+  transform: scaleX(0); transform-origin: left;
+}
+
+/* --- 17.3 Volver arriba --- */
+/* A la izquierda: la derecha ya es de WhatsApp. */
+.arriba {
+  position: fixed; left: 18px; bottom: 18px; z-index: 70;
+  display: grid; place-items: center;
+  width: 46px; height: 46px; padding: 0;
+  border-radius: 50%;
+  background: #fff; color: var(--azul-700);
+  border: 1px solid var(--linea);
+  box-shadow: var(--sombra-md);
+  font-size: 1.15rem; cursor: pointer;
+  opacity: 0; transform: translateY(14px) scale(.9); pointer-events: none;
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+.arriba.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.arriba:hover { background: var(--azul-50); }
+.arriba .ico { transform: rotate(-90deg); }
+body.nav-open .arriba { opacity: 0; pointer-events: none; }
+
+/* --- 17.4 Profundidad del hero --- */
+/* El fondo se mueve más despacio que el contenido: da sensación de capa.
+   Lo escribe ui.js en --py. */
+.hero__bg { transform: translate3d(0, var(--py, 0px), 0); will-change: transform; }
+
+/* --- 17.5 Aviso de que hay más abajo --- */
+.hero__scroll {
+  display: inline-flex; align-items: center; gap: .5rem;
+  margin-top: 1.8rem;
+  font-family: var(--f-display); font-weight: 700;
+  font-size: .78rem; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(255, 255, 255, .7);
+}
+.hero__scroll .ico {
+  width: 1.5em; height: 1.5em;
+  padding: .12em;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 50%;
+  animation: baja 1.9s var(--ease) infinite;
+}
+@keyframes baja {
+  0%, 60%, 100% { transform: translateY(0); }
+  30%           { transform: translateY(5px); }
+}
 
 /* ---------- 18. Responsive ---------- */
 @media (max-width: 980px) {
@@ -862,6 +934,30 @@ html.cargando, html.cargando body { overflow: hidden; }
     border-bottom: 1px solid rgba(255, 255, 255, .1);
   }
   .nav > a:not(.btn)::after { display: none; }
+
+  /* Dónde estoy: en el panel no había ninguna marca de la página actual. */
+  .nav > a:not(.btn).is-active {
+    color: var(--azul-300);
+    box-shadow: inset 3px 0 0 var(--azul-300);
+    padding-left: .9rem;
+  }
+  .nav__grupo.is-active > .nav__btn { color: var(--azul-300); }
+
+  /* Los enlaces entran uno detrás de otro: el panel se siente vivo y
+     el ojo sigue la lista en vez de encontrarse un bloque de golpe. */
+  .nav.is-open > * { animation: nav-entra .38s var(--ease) both; }
+  .nav.is-open > *:nth-child(1) { animation-delay: .05s; }
+  .nav.is-open > *:nth-child(2) { animation-delay: .09s; }
+  .nav.is-open > *:nth-child(3) { animation-delay: .13s; }
+  .nav.is-open > *:nth-child(4) { animation-delay: .17s; }
+  .nav.is-open > *:nth-child(5) { animation-delay: .21s; }
+  .nav.is-open > *:nth-child(6) { animation-delay: .25s; }
+  .nav.is-open > *:nth-child(7) { animation-delay: .29s; }
+  @keyframes nav-entra {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: none; }
+  }
+
   .nav__cta { margin-top: 1.2rem; }
   body.nav-open { overflow: hidden; }
   .nav-scrim {
@@ -880,9 +976,39 @@ html.cargando, html.cargando body { overflow: hidden; }
   .brand__txt small { display: none; }
   .hero__strip-in { justify-content: center; gap: .7rem 1.2rem; }
   .hero__strip-in span { font-size: .78rem; }
-  .frame__tag { left: 50%; transform: translateX(-50%); bottom: -14px; }
+  /* Con la foto más chica, el cartel en dos líneas le tapaba las manos:
+     pasa a ser una franja de una sola línea, apoyada en el borde. */
+  .frame__tag {
+    left: 50%; transform: translateX(-50%); bottom: -14px;
+    flex-direction: row; align-items: baseline; gap: .5rem;
+    white-space: nowrap;
+  }
+  .frame__tag em::before { content: "·"; margin-right: .5rem; opacity: .5; }
   .footer__in { flex-direction: column; align-items: flex-start; text-align: left; }
   .footer__legal { flex-direction: column; }
+
+  /* --- El hero, en la primera pantalla ---
+     La foto se llevaba el celular entero: quien entraba veía una
+     fotografía y tenía que deslizar para enterarse de quién es y a qué
+     aspira. Con la foto más chica caben el nombre, el lema y el botón
+     principal sin mover el dedo. */
+  .hero { padding-top: 1.5rem; }
+  .hero__in { gap: 1.3rem; padding-bottom: 2.4rem; }
+  .hero__title { font-size: clamp(2.1rem, 1rem + 6.6vw, 3rem); }
+  .hero__slogan { font-size: 1.05rem; margin-bottom: .9rem; }
+  .hero__lead { font-size: .95rem; margin-bottom: 1.5rem; }
+  .hero__copy .eyebrow { font-size: .75rem; letter-spacing: .1em; margin-bottom: .7rem; }
+
+  /* Un botón por línea y a todo el ancho: el pulgar no falla. */
+  .hero__cta { gap: .6rem; margin-bottom: 1.5rem; }
+  .hero__cta .btn { width: 100%; }
+  .hero__badges { justify-content: center; gap: .5rem 1.1rem; font-size: .85rem; }
+
+  .hero__scroll { margin-top: 1.4rem; font-size: .75rem; letter-spacing: .12em; }
+
+  /* Los botones sueltos de las secciones también van a todo el ancho. */
+  .destacado__acciones .btn, .section > .wrap > p > .btn { width: 100%; }
+  .destacado__acciones { gap: .6rem; }
 }
 
 /* ---------- 19. Preferencias del usuario / impresión ---------- */

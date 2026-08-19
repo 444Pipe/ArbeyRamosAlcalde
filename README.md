@@ -88,6 +88,16 @@ Todas las páginas cargan la misma cadena, en este orden:
 Antes de esa cadena, y sin `defer`, va `carga.js`: pinta la pantalla de carga en el
 primer fotograma y se retira sola cuando la página termina de cargar.
 
+`ui.js` también monta lo que se mueve con el scroll: la barra de lectura de arriba, el
+botón de volver arriba, la profundidad del fondo del hero y la aparición escalonada de
+los bloques (`.reveal`, con las variantes `--zoom`, `--izq`, `--der`). Las cifras de los
+tableros empiezan a contar cuando entran en pantalla, no al cargar la página.
+
+En celular las tarjetas van de a dos por fila (accesos, ejes, noticias, semáforo, pasos,
+cifras y contacto), con el texto de apoyo recortado a tres líneas. Está en el bloque
+`MÓVIL: DOS TARJETAS POR FILA` de `plataforma.css`; el hero compacto, en el bloque de
+620 px de `styles.css`.
+
 ## Los dos modos de funcionamiento
 
 **Modo demo (el actual).** Todo funciona —reportar, apoyar, confirmar asistencia, votar—

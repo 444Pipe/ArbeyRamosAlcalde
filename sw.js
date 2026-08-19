@@ -4,7 +4,7 @@
    y que las páginas ya visitadas se puedan abrir sin señal.
    Sube la versión al publicar cambios para forzar la actualización.
    ========================================================= */
-var VERSION = "arbey-v19";
+var VERSION = "arbey-v20";
 
 var ESENCIALES = [
   "./",
