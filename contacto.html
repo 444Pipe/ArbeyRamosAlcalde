@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto · Arbey Ramos Gómez</title>
+  <meta name="description" content="Contacta a la campaña de Arbey Ramos Gómez: teléfono, WhatsApp, correo y sede de campaña en Restrepo." />
+  <meta name="theme-color" content="#0A2559" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Contacto · Arbey Ramos Gómez" />
+  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/img/favicon.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/img/icono-apple.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/plataforma.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div id="app-header"></div>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="wrap">
+        <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a> · <span>Contacto</span></nav>
+        <h1>Hablemos</h1>
+        <p class="lead">
+          Escríbenos, llámanos o pásate por la sede. Respondemos todos los mensajes,
+          aunque a veces nos tardemos un día.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ DATOS ============ -->
+    <section class="section">
+      <div class="wrap">
+        <div class="contact" id="contacto-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ MENSAJE DIRECTO ============ -->
+    <section class="section section--alt">
+      <div class="wrap grid-2" style="align-items:start">
+        <div class="reveal">
+          <p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Escríbenos</p>
+          <h2 class="h2">¿Prefieres dejarnos un mensaje?</h2>
+          <p style="color:var(--gris)">
+            Cuéntanos qué necesitas. Si es una problemática de tu barrio o tu vereda,
+            te recomendamos reportarla en el mapa ciudadano: ahí queda pública y la
+            comunidad puede apoyarla.
+          </p>
+          <p style="margin-top:1.2rem">
+            <a class="btn btn--linea" href="voz.html#reportar">
+              <svg class="ico"><use href="#i-map"/></svg> Mejor reportarlo en el mapa
+            </a>
+          </p>
+
+          <dl class="ficha" style="margin-top:1.8rem">
+            <dt>Horario de atención</dt>
+            <dd>Lunes a sábado · 8:00 a.m. – 6:00 p.m.</dd>
+            <dt>Tiempo de respuesta</dt>
+            <dd>Máximo 48 horas hábiles</dd>
+            <dt>Prensa</dt>
+            <dd>Solicitudes de entrevista por correo</dd>
+          </dl>
+        </div>
+
+        <div class="reveal reveal--d1">
+          <form class="form" id="form-contacto" novalidate>
+            <div class="form__row">
+              <label for="c-nombre">Nombre <span class="req" aria-hidden="true">*</span></label>
+              <input id="c-nombre" name="nombre" type="text" autocomplete="name" required placeholder="Tu nombre" />
+              <p class="form__err" data-err-for="c-nombre"></p>
+            </div>
+
+            <div class="form__grid">
+              <div class="form__row">
+                <label for="c-tel">Celular <span class="req" aria-hidden="true">*</span></label>
+                <input id="c-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required placeholder="300 000 0000" />
+                <p class="form__err" data-err-for="c-tel"></p>
+              </div>
+              <div class="form__row">
+                <label for="c-mail">Correo</label>
+                <input id="c-mail" name="correo" type="email" autocomplete="email" placeholder="tucorreo@correo.com" />
+                <p class="form__err" data-err-for="c-mail"></p>
+              </div>
+            </div>
+
+            <div class="form__row">
+              <label for="c-asunto">Asunto</label>
+              <select id="c-asunto" name="asunto">
+                <option>Consulta general</option>
+                <option>Quiero ser voluntario</option>
+                <option>Invitación a un evento</option>
+                <option>Solicitud de prensa</option>
+                <option>Pedir un encuentro en mi sector</option>
+                <option>Otro</option>
+              </select>
+            </div>
+
+            <div class="form__row">
+              <label for="c-msg">Mensaje <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="c-msg" name="mensaje" rows="5" required placeholder="Escríbenos aquí"></textarea>
+              <p class="form__err" data-err-for="c-msg"></p>
+            </div>
+
+            <div class="form__row">
+              <label class="form__check">
+                <input type="checkbox" id="c-hab" required />
+                <span>Autorizo el tratamiento de mis datos personales conforme a la Ley 1581 de 2012.</span>
+              </label>
+              <p class="form__err" data-err-for="c-hab"></p>
+            </div>
+
+            <button class="btn btn--primary btn--lg btn--block" type="submit">Enviar mensaje <svg class="ico"><use href="#i-arrow"/></svg></button>
+            <p class="form__ok" id="form-ok" role="status" hidden>
+              ¡Mensaje recibido! Te respondemos lo antes posible.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REDES ============ -->
+    <section class="section">
+      <div class="wrap">
+        <div class="destacado reveal">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__bar" aria-hidden="true"></span> Síguenos</p>
+            <h2>Todo lo que hacemos queda publicado</h2>
+            <p>
+              Cada recorrido, cada encuentro y cada compromiso se publica. Síguenos en redes
+              o revisa la sala de prensa para no perderte nada.
+            </p>
+            <div class="destacado__acciones">
+              <a class="btn btn--claro" href="noticias.html">Ir a la sala de prensa</a>
+              <a class="btn btn--ghost" href="eventos.html">Ver la agenda</a>
+            </div>
+          </div>
+          <div class="tablero">
+            <div class="tablero__item"><b data-stat="reportes">0</b><span>Reportes recibidos</span></div>
+            <div class="tablero__item"><b data-stat="eventos">0</b><span>Eventos publicados</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/contenido.js" defer></script>
+  <script src="assets/js/store.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/contacto.js" defer></script>
+</body>
+</html>

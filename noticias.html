@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Noticias · Arbey Ramos Gómez — Alcaldía de Restrepo</title>
+  <meta name="description" content="Sala de prensa de la campaña de Arbey Ramos Gómez: comunicados, recorridos por el territorio, propuestas y respuestas a la ciudadanía." />
+  <meta name="theme-color" content="#0A2559" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Noticias · Arbey Ramos Gómez — Alcaldía de Restrepo" />
+  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/img/favicon.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/img/icono-apple.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/plataforma.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div id="app-header"></div>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="wrap">
+        <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a> · <span>Noticias</span></nav>
+        <h1>Sala de prensa</h1>
+        <p class="lead">
+          Todo lo que pasa en la campaña, contado de primera mano: recorridos por el territorio,
+          comunicados, propuestas y las respuestas a los reportes que nos hace la ciudadanía.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="filtros" id="filtros-noticias" role="group" aria-label="Filtrar noticias"></div>
+        <div class="noticias" id="lista-noticias"></div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="wrap">
+        <div class="destacado reveal">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__bar" aria-hidden="true"></span> No te pierdas nada</p>
+            <h2>Recibe las novedades por WhatsApp</h2>
+            <p>
+              Regístrate una vez y te avisamos de cada encuentro, cada respuesta y cada compromiso
+              cumplido. Sin spam y te puedes salir cuando quieras.
+            </p>
+            <div class="destacado__acciones">
+              <button class="btn btn--claro" id="btn-suscribir">Quiero recibir novedades</button>
+              <a class="btn btn--ghost" href="voz.html#reportar">Reportar una problemática</a>
+            </div>
+          </div>
+          <div class="tablero">
+            <div class="tablero__item"><b id="n-noticias">0</b><span>Publicaciones</span></div>
+            <div class="tablero__item"><b id="n-eventos">0</b><span>Eventos en agenda</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/contenido.js" defer></script>
+  <script src="assets/js/store.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/noticias.js" defer></script>
+</body>
+</html>

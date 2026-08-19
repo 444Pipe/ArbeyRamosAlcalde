@@ -1,0 +1,54 @@
+{
+  "name": "Arbey Ramos Gómez · Alcaldía de Restrepo",
+  "short_name": "Arbey Ramos",
+  "description": "Plataforma ciudadana de la campaña: reporta lo que necesita tu barrio o tu vereda.",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#061A3E",
+  "theme_color": "#0A2559",
+  "lang": "es-CO",
+  "categories": [
+    "government",
+    "news",
+    "social"
+  ],
+  "icons": [
+    {
+      "src": "assets/img/icono-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Reportar una problemática",
+      "short_name": "Reportar",
+      "url": "voz.html#reportar"
+    },
+    {
+      "name": "Ver el mapa ciudadano",
+      "short_name": "Mapa",
+      "url": "voz.html"
+    },
+    {
+      "name": "Agenda de eventos",
+      "short_name": "Eventos",
+      "url": "eventos.html"
+    }
+  ]
+}

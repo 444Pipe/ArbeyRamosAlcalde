@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tu voz · Mapa ciudadano de Restrepo — Arbey Ramos Gómez</title>
+  <meta name="description" content="Reporta lo que necesita tu barrio o tu vereda. El mapa ciudadano de Restrepo recoge las problemáticas reales y las convierte en el programa de gobierno de Arbey Ramos Gómez." />
+  <meta name="theme-color" content="#0A2559" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Tu voz · Mapa ciudadano de Restrepo — Arbey Ramos Gómez" />
+  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/img/favicon.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/img/icono-apple.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/plataforma.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div id="app-header"></div>
+
+  <main id="contenido">
+
+    <!-- ============ CABECERA ============ -->
+    <section class="page-hero">
+      <div class="wrap">
+        <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a> · <span>Tu voz</span></nav>
+        <h1>Tu voz construye el programa de gobierno</h1>
+        <p class="lead">
+          Marca en el mapa lo que está pasando en tu barrio o en tu vereda. Cada reporte se
+          hace público, la comunidad lo apoya y los más apoyados entran a la agenda de trabajo.
+          Esto no es un buzón de quejas: es la forma de decidir juntos por dónde empezar.
+        </p>
+        <div class="page-hero__cta">
+          <a class="btn btn--claro btn--lg" href="#reportar">Reportar una problemática</a>
+          <a class="btn btn--ghost btn--lg" href="#mapa-seccion">Ver el mapa</a>
+        </div>
+
+        <div class="tablero" id="tablero" style="margin-top:2.4rem">
+          <div class="tablero__item"><b data-stat="reportes">0</b><span>Reportes ciudadanos</span></div>
+          <div class="tablero__item"><b data-stat="apoyos">0</b><span>Apoyos de la comunidad</span></div>
+          <div class="tablero__item"><b data-stat="zonas">0</b><span>Barrios y veredas</span></div>
+          <div class="tablero__item"><b data-stat="atendidos">0</b><span>Con compromiso adquirido</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="aviso-demo" id="aviso-demo" hidden>
+        <svg class="ico"><use href="#i-bulb"/></svg>
+        <span><strong>Modo demostración.</strong> La plataforma está funcionando de verdad, pero los datos
+        se guardan solo en este dispositivo. Al conectar el servidor (ver README) quedan compartidos entre todos.</span>
+      </div>
+    </div>
+
+    <!-- ============ CÓMO FUNCIONA ============ -->
+    <section class="section">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Cómo funciona</p>
+          <h2 class="h2">De tu reporte a una obra concreta</h2>
+        </header>
+        <div class="pasos">
+          <article class="paso reveal">
+            <h3>Reportas</h3>
+            <p>Cuentas qué pasa, en qué punto y le tomas una foto si puedes. Toma menos de un minuto desde el celular.</p>
+          </article>
+          <article class="paso reveal reveal--d1">
+            <h3>La comunidad apoya</h3>
+            <p>Tus vecinos le dan apoyo a los reportes que también los afectan. Así sabemos qué es lo más urgente de verdad.</p>
+          </article>
+          <article class="paso reveal reveal--d2">
+            <h3>Entra a la agenda</h3>
+            <p>Los reportes más apoyados pasan al programa de gobierno con un compromiso público y una fecha.</p>
+          </article>
+          <article class="paso reveal reveal--d3">
+            <h3>Seguimos el cumplimiento</h3>
+            <p>Cada compromiso queda con semáforo visible: recibido, en estudio, comprometido o cumplido.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MAPA + LISTA ============ -->
+    <section class="section section--alt" id="mapa-seccion">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Mapa ciudadano</p>
+          <h2 class="h2">Lo que está pasando en el municipio</h2>
+          <p class="section__lead">Toca un punto del mapa o una tarjeta para ver el detalle. Filtra por tema para encontrar lo tuyo.</p>
+        </header>
+
+        <div class="voz-layout">
+          <div>
+            <div class="mapa-caja" id="mapa-caja">
+              <div id="mapa"></div>
+              <div class="mapa-caja__aviso">
+                <svg class="ico"><use href="#i-map"/></svg>
+                <strong>El mapa no se pudo cargar</strong>
+                <span>Revisa tu conexión a internet. La lista de reportes sigue funcionando abajo.</span>
+              </div>
+              <div class="mapa-leyenda" id="leyenda"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="buscador">
+              <svg class="ico"><use href="#i-search"/></svg>
+              <input type="search" id="buscar" placeholder="Buscar por palabra, barrio o vereda…" aria-label="Buscar reportes" />
+            </div>
+
+            <div class="filtros" id="filtros" role="group" aria-label="Filtrar por tema"></div>
+
+            <div class="barra-lista">
+              <span class="barra-lista__n" id="conteo">Cargando…</span>
+              <label class="visually-hidden" for="orden">Ordenar</label>
+              <select id="orden">
+                <option value="recientes">Más recientes</option>
+                <option value="apoyos">Más apoyados</option>
+              </select>
+            </div>
+
+            <div class="reportes" id="lista">
+              <div class="esqueleto"></div><div class="esqueleto"></div><div class="esqueleto"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRIORIDADES + ENCUESTA ============ -->
+    <section class="section">
+      <div class="wrap grid-2" style="align-items:start">
+        <div class="reveal">
+          <p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Prioridades</p>
+          <h2 class="h2">Lo que más pide la gente</h2>
+          <p style="color:var(--gris)">Ranking en vivo según los apoyos de la comunidad. Esta lista es la que ordena nuestro trabajo.</p>
+          <div class="ranking" id="ranking"></div>
+        </div>
+
+        <div class="reveal reveal--d1">
+          <p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> La pregunta de la semana</p>
+          <h2 class="h2">Tu opinión en 5 segundos</h2>
+          <p style="color:var(--gris)">Un clic, sin registro. Los resultados se ven de inmediato.</p>
+          <div class="encuesta" id="encuesta"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FORMULARIO DE REPORTE ============ -->
+    <section class="section unete" id="reportar">
+      <div class="wrap grid-2 grid-2--form">
+        <div class="reveal">
+          <p class="eyebrow"><span class="eyebrow__bar" aria-hidden="true"></span> Reportar</p>
+          <h2 class="h2 h2--light">Cuéntanos qué está pasando</h2>
+          <p>
+            No importa si es un hueco en la vía, una luminaria apagada o una necesidad del colegio.
+            Todo lo que reportes queda registrado y visible para todo el municipio.
+          </p>
+          <ul class="unete__list">
+            <li><svg class="ico"><use href="#i-lock"/></svg> Tus datos personales no se publican</li>
+            <li><svg class="ico"><use href="#i-camera"/></svg> La foto ayuda, pero es opcional</li>
+            <li><svg class="ico"><use href="#i-clock"/></svg> Toma menos de un minuto</li>
+          </ul>
+        </div>
+
+        <div class="reveal reveal--d1">
+          <form class="form form-reporte" id="form-reporte" novalidate>
+            <div class="form__row">
+              <label>¿De qué se trata? <span class="req">*</span></label>
+              <div class="cat-grid" id="cat-grid"></div>
+              <p class="form__err" data-err-for="categoria"></p>
+            </div>
+
+            <div class="form__row">
+              <label for="rp-titulo">Resúmelo en una frase <span class="req">*</span></label>
+              <input id="rp-titulo" name="titulo" type="text" maxlength="90" required
+                     placeholder="Ej. La vía a la escuela está intransitable" />
+              <p class="form__err" data-err-for="rp-titulo"></p>
+            </div>
+
+            <div class="form__row">
+              <label for="rp-desc">Cuéntanos más <span class="req">*</span></label>
+              <textarea id="rp-desc" name="descripcion" rows="4" maxlength="700" required
+                        placeholder="¿Desde cuándo pasa? ¿A cuántas familias afecta? ¿Ya lo reportaron antes?"></textarea>
+              <p class="form__err" data-err-for="rp-desc"></p>
+            </div>
+
+            <div class="form__row">
+              <label for="rp-zona">Barrio o vereda</label>
+              <input id="rp-zona" name="zona" type="text" placeholder="¿Dónde queda?" />
+            </div>
+
+            <div class="form__row">
+              <label>Ubicación en el mapa</label>
+              <div class="ubicacion">
+                <svg class="ico"><use href="#i-pin"/></svg>
+                <span id="ubi-texto">Se marcará en el centro del municipio</span>
+                <button type="button" id="btn-ubicacion">Usar mi ubicación</button>
+              </div>
+              <p class="form__hint" style="text-align:left;margin-top:.4rem">
+                También puedes tocar directamente el mapa de arriba para mover el punto.
+              </p>
+            </div>
+
+            <div class="form__row">
+              <label for="rp-foto">Foto (opcional)</label>
+              <label class="soltar" for="rp-foto">
+                <svg class="ico"><use href="#i-camera"/></svg>
+                <strong>Toca para tomar o subir una foto</strong>
+                <span>Se reduce automáticamente para que suba rápido</span>
+                <input id="rp-foto" name="foto" type="file" accept="image/*" capture="environment" />
+              </label>
+              <div class="previa" id="previa" hidden>
+                <img id="previa-img" alt="Vista previa de la foto seleccionada" />
+                <button type="button" id="quitar-foto" aria-label="Quitar foto"><svg class="ico"><use href="#i-close"/></svg></button>
+              </div>
+            </div>
+
+            <button class="btn btn--primary btn--lg btn--block" type="submit">
+              Publicar mi reporte <svg class="ico"><use href="#i-arrow"/></svg>
+            </button>
+            <p class="form__hint">Al publicar aceptas que el contenido del reporte sea visible para todos.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ARBEY TE RESPONDE ============ -->
+    <section class="section section--alt">
+      <div class="wrap">
+        <div class="destacado reveal">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__bar" aria-hidden="true"></span> Arbey te responde</p>
+            <h2>Cada mes respondemos los reportes más apoyados</h2>
+            <p>
+              No basta con escuchar. Los reportes con más apoyo reciben respuesta pública del candidato,
+              con lo que se puede hacer, lo que no, y por qué. Sin rodeos.
+            </p>
+            <div class="destacado__acciones">
+              <a class="btn btn--claro" href="noticias.html">Ver las respuestas</a>
+              <a class="btn btn--ghost" href="eventos.html">Próximos encuentros</a>
+            </div>
+          </div>
+          <div class="tablero">
+            <div class="tablero__item"><b data-stat="reportes">0</b><span>Reportes recibidos</span></div>
+            <div class="tablero__item"><b data-stat="eventos">0</b><span>Encuentros en agenda</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/contenido.js" defer></script>
+  <script src="assets/js/store.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/voz.js" defer></script>
+</body>
+</html>

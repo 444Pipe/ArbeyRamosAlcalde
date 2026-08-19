@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trayectoria y compromisos · Arbey Ramos Gómez</title>
+  <meta name="description" content="Trayectoria de Arbey Ramos Gómez y el semáforo público de compromisos: qué se recibió, qué está en estudio, qué se comprometió y qué se cumplió." />
+  <meta name="theme-color" content="#0A2559" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Trayectoria y compromisos · Arbey Ramos Gómez" />
+  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/img/favicon.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/img/icono-apple.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/plataforma.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div id="app-header"></div>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="wrap">
+        <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a> · <span>Trayectoria</span></nav>
+        <h1>Trayectoria y compromisos</h1>
+        <p class="lead">
+          Lo que hemos hecho y, sobre todo, en qué va lo que prometimos. Aquí no se borra nada:
+          cada compromiso queda con su estado a la vista de todo el municipio.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ SEMÁFORO ============ -->
+    <section class="section">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Transparencia</p>
+          <h2 class="h2">Semáforo de compromisos</h2>
+          <p class="section__lead">
+            Cada problemática que la comunidad reporta pasa por estas cuatro etapas.
+            El tablero se actualiza solo con lo que entra por el mapa ciudadano.
+          </p>
+        </header>
+
+        <div class="semaforo" id="semaforo"></div>
+
+        <p class="note reveal" style="margin-top:2rem">
+          <svg class="ico"><use href="#i-target"/></svg>
+          ¿Falta algo que te prometieron? Repórtalo en <a href="voz.html" style="color:var(--azul-600);font-weight:600">Tu voz</a> y queda registrado aquí.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ TRAYECTORIA ============ -->
+    <section class="section section--alt">
+      <div class="wrap grid-2" style="align-items:start">
+        <div class="reveal">
+          <p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Recorrido</p>
+          <h2 class="h2">El camino hasta aquí</h2>
+          <p style="color:var(--gris)">
+            Una trayectoria de trabajo con la comunidad, construida paso a paso y con hechos verificables.
+          </p>
+          <div class="tablero tablero--claro" style="margin-top:1.6rem">
+            <div class="tablero__item"><b data-stat="reportes">0</b><span>Reportes recibidos</span></div>
+            <div class="tablero__item"><b data-stat="atendidos">0</b><span>Con compromiso</span></div>
+          </div>
+        </div>
+
+        <div class="timeline reveal reveal--d1" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="section">
+      <div class="wrap">
+        <div class="destacado reveal">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__bar" aria-hidden="true"></span> Rendición de cuentas</p>
+            <h2>Si llegamos, seguimos rindiendo cuentas aquí mismo</h2>
+            <p>
+              Este semáforo no se apaga el día de las elecciones. Es el mismo tablero con el que
+              vamos a informar el avance de cada obra durante los cuatro años de gobierno.
+            </p>
+            <div class="destacado__acciones">
+              <a class="btn btn--claro" href="voz.html#reportar">Registrar una problemática</a>
+              <a class="btn btn--ghost" href="unete.html">Unirme a la campaña</a>
+            </div>
+          </div>
+          <div class="tablero">
+            <div class="tablero__item"><b data-stat="apoyos">0</b><span>Apoyos ciudadanos</span></div>
+            <div class="tablero__item"><b data-stat="zonas">0</b><span>Sectores activos</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/contenido.js" defer></script>
+  <script src="assets/js/store.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/logros.js" defer></script>
+</body>
+</html>

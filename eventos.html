@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agenda y eventos · Arbey Ramos Gómez — Alcaldía de Restrepo</title>
+  <meta name="description" content="Agenda pública de la campaña: encuentros veredales, conversatorios y jornadas de trabajo. Confirma tu asistencia y agrégalos a tu calendario." />
+  <meta name="theme-color" content="#0A2559" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Agenda y eventos · Arbey Ramos Gómez — Alcaldía de Restrepo" />
+  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/img/favicon.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/img/icono-apple.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/plataforma.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div id="app-header"></div>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="wrap">
+        <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a> · <span>Eventos</span></nav>
+        <h1>La agenda es pública</h1>
+        <p class="lead">
+          Dónde estamos y cuándo. Confirma tu asistencia para que sepamos cuántos somos,
+          agrega el evento a tu calendario y llega con tus vecinos.
+        </p>
+        <div class="page-hero__cta">
+          <a class="btn btn--claro btn--lg" href="#proximos">Ver próximos encuentros</a>
+          <a class="btn btn--ghost btn--lg" href="voz.html">Reportar mi problemática</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proximos">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Próximos</p>
+          <h2 class="h2">Encuentros que vienen</h2>
+          <p class="section__lead">Todos los eventos son abiertos y gratuitos. Nadie necesita invitación.</p>
+        </header>
+        <div class="eventos" id="lista-proximos"></div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Ya pasaron</p>
+          <h2 class="h2">Dónde hemos estado</h2>
+          <p class="section__lead">El registro de cada encuentro que hemos hecho con la comunidad.</p>
+        </header>
+        <div class="eventos" id="lista-pasados"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="destacado reveal">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__bar" aria-hidden="true"></span> ¿Quieres uno en tu sector?</p>
+            <h2>Pide un encuentro en tu barrio o vereda</h2>
+            <p>
+              Si reúnes a tus vecinos, nosotros vamos. Cuéntanos dónde y cuántos son,
+              y coordinamos la visita con la junta de acción comunal.
+            </p>
+            <div class="destacado__acciones">
+              <button class="btn btn--claro" id="btn-pedir">Solicitar un encuentro</button>
+              <a class="btn btn--ghost" href="https://wa.me/" id="wa-directo" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+            </div>
+          </div>
+          <div class="tablero">
+            <div class="tablero__item"><b id="n-proximos">0</b><span>Eventos próximos</span></div>
+            <div class="tablero__item"><b id="n-confirmados">0</b><span>Confirmaciones tuyas</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/contenido.js" defer></script>
+  <script src="assets/js/store.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/eventos.js" defer></script>
+</body>
+</html>
