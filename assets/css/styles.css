@@ -722,6 +722,13 @@ html.cargando, html.cargando body { overflow: hidden; }
   transition: transform .5s var(--ease);
 }
 
+/* Hasta que el logo no ha bajado no se ve nada más que el halo, y ninguna
+   animación avanza: así la secuencia siempre se ve completa y en orden, en vez
+   de empezar sin la marca. Lo desbloquea carga.js con la clase `is-lista`. */
+.carga:not(.is-lista) .carga__in { visibility: hidden; }
+.carga:not(.is-lista) .carga__in *,
+.carga:not(.is-lista) .carga__brillo::before { animation-play-state: paused; }
+
 /* El logo se pinta de izquierda a derecha: la máscara es un degradado
    dos veces y media más ancho que el logo, que se desplaza sobre él. Esa
    proporción es la que hace que el trazo entre por el borde izquierdo justo

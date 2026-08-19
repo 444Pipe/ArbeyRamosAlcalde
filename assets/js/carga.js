@@ -19,7 +19,8 @@
   var LEMA = "Restrepo lo hacemos entre todos";
 
   var SALIDA = 550;                    /* lo que dura el fundido de salida (ver styles.css) */
-  var LIMITE = 4500;                   /* tope: si algo se cuelga, la pantalla se va igual */
+  var LIMITE = 5000;                   /* tope: si algo se cuelga, la pantalla se va igual */
+  var ESPERA_LOGO = 2000;              /* lo máximo que esperamos a que baje el logo */
 
   /* La primera visita de la sesión ve la animación completa. Al navegar
      entre páginas ya está todo en caché y se muestra la versión corta:
@@ -58,6 +59,24 @@
 
   var inicio = Date.now();
   var retirada = false;
+
+  /* En la primera visita el logo todavía se está descargando cuando la
+     pantalla aparece. Si la animación arrancara ya, se vería el arco sobre un
+     hueco y el logo entraría de golpe al final; por eso la secuencia no
+     empieza hasta tener la imagen. La página la pide con <link rel="preload">,
+     así que casi siempre ya está aquí. */
+  var logo = pantalla.querySelector(".carga__marca img");
+  function marcaLista() {
+    if (pantalla.classList.contains("is-lista")) return;
+    pantalla.classList.add("is-lista");
+    inicio = Date.now();             /* el mínimo se cuenta desde que se ve la marca */
+  }
+  if (logo.complete && logo.naturalWidth) marcaLista();
+  else {
+    logo.addEventListener("load", marcaLista);
+    logo.addEventListener("error", marcaLista);
+    setTimeout(marcaLista, ESPERA_LOGO);
+  }
 
   function retirar() {
     if (retirada) return;
