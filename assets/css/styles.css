@@ -834,7 +834,7 @@ html.cargando, html.cargando body { overflow: hidden; }
    la silueta del propio logo: si no, sobre el halo se vería la banda blanca. */
 .carga__brillo {
   position: absolute; inset: 0; overflow: hidden; pointer-events: none;
-  -webkit-mask-image: url(../img/logo.png); mask-image: url(../img/logo.png);
+  -webkit-mask-image: url(../img/logo.png?v=2); mask-image: url(../img/logo.png?v=2);
   -webkit-mask-size: 100% 100%;   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
 }

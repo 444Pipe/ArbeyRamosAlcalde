@@ -105,7 +105,7 @@
     if (pantalla.classList.contains("carga--plano")) return;
     var img = doc.createElement("img");
     img.className = "carga__plano";
-    img.src = "assets/img/logo.png";
+    img.src = "assets/img/logo.png?v=2";
     img.alt = "";
     pantalla.querySelector(".carga__marca").appendChild(img);
     pantalla.classList.add("carga--plano");

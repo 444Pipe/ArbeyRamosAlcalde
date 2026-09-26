@@ -162,7 +162,7 @@ window.UI = (function () {
 
       '<header class="header" id="header"><div class="wrap header__in">' +
         '<a class="brand" href="/">' +
-          '<img class="brand__logo" src="assets/img/logo.png" width="480" height="274" alt="' + ALT + '">' +
+          '<img class="brand__logo" src="assets/img/logo.png?v=2" width="480" height="274" alt="' + ALT + '">' +
           '<span class="brand__txt"><strong>' + CFG.candidato + "</strong><small>" + CFG.cargo + "</small></span>" +
         "</a>" +
         '<nav class="nav" id="nav" aria-label="Navegación principal">' +
@@ -182,7 +182,7 @@ window.UI = (function () {
       '<footer class="footer"><div class="wrap footer__mapa">' +
 
         '<div class="footer__brand">' +
-          '<img class="footer__logo" src="assets/img/logo-claro.png" width="480" height="274" alt="' + ALT + '">' +
+          '<img class="footer__logo" src="assets/img/logo-claro.png?v=2" width="480" height="274" alt="' + ALT + '">' +
           "<div><p>" + CFG.candidato + "<br>" + CFG.cargo + " · " + CFG.cargoAnio + "<br>Concejal " + CFG.periodo + " · " + CFG.partido + "</p></div>" +
           '<div class="footer__social">' +
             '<a href="' + CFG.redes.facebook + '" aria-label="Facebook">' + icono("i-facebook") + "</a>" +

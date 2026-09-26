@@ -293,6 +293,12 @@ imágenes que el navegador pide.
 
 ## Imágenes
 
+> **Si reemplazas una imagen sin cambiarle el nombre**, súbele el número a la
+> versión de su URL (`?v=2` → `?v=3`) donde se use —`ui.js`, `carga.js`,
+> `styles.css` y `sw.js`— y sube la `VERSION` del service worker. Las imágenes
+> se cachean un día en el navegador y sin ese cambio los celulares siguen
+> mostrando la vieja.
+
 El logo y la foto se procesan con dos scripts, para no depender de editar
 imágenes a mano:
 
