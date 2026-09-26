@@ -124,25 +124,32 @@ cifras y contacto), con el texto de apoyo recortado a tres líneas. Está en el 
 `MÓVIL: DOS TARJETAS POR FILA` de `plataforma.css`; el hero compacto, en el bloque de
 620 px de `styles.css`.
 
-## Los dos modos de funcionamiento
+## El backend: Postgres + PostgREST en Railway
 
-**Modo demo (el actual).** Todo funciona —reportar, apoyar, confirmar asistencia, votar—
-pero los datos se guardan solo en el navegador de cada visitante. Sirve para mostrar la
-plataforma y para probarla, no para recoger datos reales.
-
-**Modo servidor.** Crea un proyecto gratuito en [supabase.com](https://supabase.com), ejecuta el
-SQL de abajo, y pega las dos claves en `config.js`:
+**Modo remoto (el actual).** Los reportes, apoyos, registros, asistencias y votos se
+guardan en una base de datos **PostgreSQL** del mismo proyecto de Railway, expuesta
+con **[PostgREST](https://postgrest.org)** (el servicio `postgrest`, imagen oficial
+`postgrest/postgrest`). El sitio la consume por REST desde `config.js`:
 
 ```js
-supabase: {
-  url: "https://xxxxxxxx.supabase.co",
-  anonKey: "eyJhbGci..."          // la clave "anon" pública, NUNCA la "service_role"
+api: {
+  url: "https://postgrest-production-fdb5.up.railway.app",
+  anonKey: ""     // solo hace falta si el servidor es Supabase
 }
 ```
 
-No hay que cambiar nada más: el sitio detecta las claves y empieza a compartir los datos
-entre todos los visitantes. Si el servidor se cae, la plataforma sigue funcionando en local
-en vez de mostrar un error.
+Si el servidor se cae, la plataforma sigue funcionando en local en vez de mostrar un
+error; y si `url` se deja vacío, cae a modo local (los datos quedan solo en el
+navegador de cada visitante — útil para desarrollo).
+
+**Permisos.** PostgREST atiende cada petición del sitio con el rol `web_anon`:
+puede **leer** `reportes`, `apoyos` y `votos`, puede **crear** en las cinco tablas,
+y **no puede editar, borrar, ni leer los datos personales** (`registros`,
+`asistencias`). Para cambiar el estado del semáforo de un reporte se entra por
+`railway ssh -s Postgres` y se actualiza con SQL (`update reportes set estado=...`).
+
+El esquema se creó ejecutando el SQL de abajo dentro del contenedor:
+`railway ssh -s Postgres`, y ahí `psql "$DATABASE_URL"`.
 
 ### SQL de las tablas
 
@@ -165,7 +172,8 @@ create table apoyos (
   id uuid primary key default gen_random_uuid(),
   reporte_id uuid references reportes(id) on delete cascade,
   huella text,
-  creado timestamptz default now()
+  creado timestamptz default now(),
+  unique (reporte_id, huella)      -- un apoyo por dispositivo
 );
 
 create table registros (
@@ -178,31 +186,29 @@ create table registros (
 create table asistencias (
   id uuid primary key default gen_random_uuid(),
   evento_id text not null, nombre text, telefono text, huella text,
-  creado timestamptz default now()
+  creado timestamptz default now(),
+  unique (evento_id, huella)       -- una confirmación por dispositivo
 );
 
 create table votos (
   id uuid primary key default gen_random_uuid(),
   encuesta_id text not null, opcion_id text not null, huella text,
-  creado timestamptz default now()
+  creado timestamptz default now(),
+  unique (encuesta_id, huella)     -- un voto por dispositivo
 );
 
--- Permisos: cualquiera puede leer y crear; nadie puede borrar ni editar.
--- Los datos personales de "registros" no se pueden leer desde el sitio.
-alter table reportes    enable row level security;
-alter table apoyos      enable row level security;
-alter table registros   enable row level security;
-alter table asistencias enable row level security;
-alter table votos       enable row level security;
+-- Roles de PostgREST: "authenticator" es el que se conecta (la clave
+-- vive en la variable PGRST_DB_URI del servicio postgrest) y cambia a
+-- "web_anon" para atender cada petición anónima del sitio.
+create role web_anon nologin;
+create role authenticator noinherit login password '...';
+grant web_anon to authenticator;
+grant usage on schema public to web_anon;
 
-create policy "leer reportes" on reportes for select using (true);
-create policy "crear reportes" on reportes for insert with check (true);
-create policy "leer apoyos" on apoyos for select using (true);
-create policy "crear apoyos" on apoyos for insert with check (true);
-create policy "crear registros" on registros for insert with check (true);
-create policy "crear asistencias" on asistencias for insert with check (true);
-create policy "leer votos" on votos for select using (true);
-create policy "crear votos" on votos for insert with check (true);
+-- Cualquiera puede leer lo público y crear; nadie puede editar ni
+-- borrar, y los datos personales no se pueden leer desde el sitio.
+grant select on reportes, apoyos, votos to web_anon;
+grant insert on reportes, apoyos, registros, asistencias, votos to web_anon;
 ```
 
 El estado de cada reporte (`recibido` → `revision` → `compromiso` → `cumplido`; en

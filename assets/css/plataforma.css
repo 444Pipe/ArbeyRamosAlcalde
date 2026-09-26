@@ -79,19 +79,6 @@ body.modal-abierto { overflow: hidden; }
   margin: .9rem 0 0; font-size: .78rem; color: var(--gris-2); text-align: left;
 }
 
-/* ---------- Aviso de modo demostración ---------- */
-.aviso-demo {
-  display: flex; align-items: center; gap: .7rem;
-  max-width: var(--ancho); margin: 1.2rem auto -.6rem;
-  padding: .8rem 1.1rem;
-  background: var(--azul-50); border: 1px solid var(--azul-200);
-  border-left: 4px solid var(--azul-500);
-  border-radius: var(--radio-s);
-  font-size: .86rem; color: var(--azul-800);
-}
-.aviso-demo .ico { flex: none; color: var(--azul-600); }
-.aviso-demo strong { font-family: var(--f-display); }
-
 /* ---------- Cabecera de páginas internas ---------- */
 .page-hero {
   position: relative;

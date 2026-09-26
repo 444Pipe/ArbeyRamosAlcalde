@@ -669,11 +669,6 @@ window.UI = (function () {
     volverArriba(alScroll);
     fondoConProfundidad(alScroll);
 
-    if (Store.modo === "demo") {
-      var aviso = document.getElementById("aviso-demo");
-      if (aviso) aviso.hidden = false;
-    }
-
     /* App instalable. Solo funciona servido por http/https,
        no al abrir el archivo con doble clic. */
     if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {

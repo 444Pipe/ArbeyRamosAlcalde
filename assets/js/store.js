@@ -2,12 +2,13 @@
    CAPA DE DATOS
    Funciona en dos modos, sin cambiar una sola línea de las páginas:
 
-     MODO DEMO    (por defecto) — guarda todo en este navegador.
-                  Sirve para mostrar la plataforma funcionando.
-     MODO REMOTO  — si en config.js hay claves de Supabase, todos
-                  los datos quedan compartidos entre los visitantes.
+     MODO REMOTO  (producción) — si en config.js hay una URL de API
+                  (PostgREST sobre Postgres, o Supabase), los datos
+                  quedan compartidos entre todos los visitantes.
+     MODO LOCAL   — sin URL, guarda todo en este navegador. Útil para
+                  desarrollo sin servidor.
 
-   El SQL para crear las tablas está en README.md
+   El SQL para crear las tablas y los roles está en README.md
    ========================================================= */
 
 window.Store = (function () {
@@ -17,7 +18,18 @@ window.Store = (function () {
   var SEED = window.CONTENIDO || {};
   var NS = "arbey:";
 
-  var remoto = Boolean(CFG.supabase && CFG.supabase.url && CFG.supabase.anonKey);
+  /* La API puede ser PostgREST directo (api.url) o Supabase (supabase.*,
+     que es PostgREST con el prefijo /rest/v1 y una clave anónima). */
+  var API_BASE = "";
+  var API_KEY = "";
+  if (CFG.api && CFG.api.url) {
+    API_BASE = CFG.api.url.replace(/\/$/, "");
+    API_KEY = (CFG.api.anonKey || "");
+  } else if (CFG.supabase && CFG.supabase.url && CFG.supabase.anonKey) {
+    API_BASE = CFG.supabase.url.replace(/\/$/, "") + "/rest/v1";
+    API_KEY = CFG.supabase.anonKey;
+  }
+  var remoto = Boolean(API_BASE);
 
   /* ---------- utilidades de almacenamiento local ---------- */
   function leer(clave, porDefecto) {
@@ -49,17 +61,17 @@ window.Store = (function () {
     return h;
   }
 
-  /* ---------- cliente REST de Supabase (sin librerías) ---------- */
+  /* ---------- cliente REST de PostgREST (sin librerías) ---------- */
   var api = {
     url: function (tabla, query) {
-      return CFG.supabase.url.replace(/\/$/, "") + "/rest/v1/" + tabla + (query ? "?" + query : "");
+      return API_BASE + "/" + tabla + (query ? "?" + query : "");
     },
     cabeceras: function (extra) {
-      var h = {
-        apikey: CFG.supabase.anonKey,
-        Authorization: "Bearer " + CFG.supabase.anonKey,
-        "Content-Type": "application/json"
-      };
+      var h = { "Content-Type": "application/json" };
+      if (API_KEY) {
+        h.apikey = API_KEY;
+        h.Authorization = "Bearer " + API_KEY;
+      }
       for (var k in extra) h[k] = extra[k];
       return h;
     },
@@ -67,12 +79,18 @@ window.Store = (function () {
       return fetch(api.url(tabla, query), { headers: api.cabeceras() })
         .then(function (r) { if (!r.ok) throw new Error(r.status + " " + tabla); return r.json(); });
     },
-    post: function (tabla, fila) {
+    /* Con devolverFila pide la fila creada; sin él, "return=minimal",
+       necesario en las tablas con datos personales, donde el rol del
+       sitio puede escribir pero no leer. */
+    post: function (tabla, fila, devolverFila) {
       return fetch(api.url(tabla), {
         method: "POST",
-        headers: api.cabeceras({ Prefer: "return=representation" }),
+        headers: api.cabeceras({ Prefer: devolverFila ? "return=representation" : "return=minimal" }),
         body: JSON.stringify(fila)
-      }).then(function (r) { if (!r.ok) throw new Error(r.status + " " + tabla); return r.json(); });
+      }).then(function (r) {
+        if (!r.ok) throw new Error(r.status + " " + tabla);
+        return devolverFila ? r.json() : null;
+      });
     }
   };
 
@@ -166,7 +184,7 @@ window.Store = (function () {
 
       if (remoto) {
         return conRespaldo(
-          api.post("reportes", fila).then(function (r) { return r[0]; }),
+          api.post("reportes", fila, true).then(function (r) { return r[0]; }),
           function () { return guardarLocal(fila); }
         );
       }
@@ -455,7 +473,7 @@ window.Store = (function () {
   if (!remoto) sembrarReportes();
 
   return {
-    modo: remoto ? "remoto" : "demo",
+    modo: remoto ? "remoto" : "local",
     reportes: reportes,
     usuario: usuario,
     eventos: eventos,

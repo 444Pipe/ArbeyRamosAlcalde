@@ -4,7 +4,7 @@
    y que las páginas ya visitadas se puedan abrir sin señal.
    Sube la versión al publicar cambios para forzar la actualización.
    ========================================================= */
-var VERSION = "arbey-v29";
+var VERSION = "arbey-v30";
 
 /* Las páginas se guardan por su URL limpia (sin ".html"), que es como
    las sirve Caddy y como las pide el navegador. */

@@ -43,17 +43,15 @@ window.CAMPANA = {
   },
 
   /* ---- Backend ----
-     Vacío = MODO DEMO: todo funciona pero los datos se guardan solo en
-     este navegador (localStorage). Perfecto para mostrar y probar.
-
-     Para producción, crear un proyecto gratuito en supabase.com,
-     ejecutar el SQL que está en README.md y pegar aquí las dos claves.
-     El sitio pasa solo a modo remoto: los datos quedan compartidos
-     entre todos los visitantes.
+     Los reportes, apoyos, registros, asistencias y votos se guardan en
+     una base de datos PostgreSQL (Railway) expuesta con PostgREST.
+     Si "url" se deja vacío, la plataforma cae a modo local: funciona,
+     pero los datos quedan solo en el navegador de cada visitante.
+     Detalles y SQL en README.md.
   */
-  supabase: {
-    url: "",       // ej. "https://xxxxxxxx.supabase.co"
-    anonKey: ""    // la clave pública "anon", nunca la "service_role"
+  api: {
+    url: "https://postgrest-production-fdb5.up.railway.app",
+    anonKey: ""    // solo hace falta si el servidor es Supabase (clave "anon")
   },
 
   /* ---- Categorías de las problemáticas ciudadanas ----
