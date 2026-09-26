@@ -21,10 +21,6 @@
   var doc = document;
   if (!doc.body) return;               /* sin <body> todavía: no hay dónde ponerla */
 
-  /* Mismo texto que `eslogan` en config.js. Se repite aquí a propósito:
-     este script corre antes que config.js, que va con defer. */
-  var LEMA = "Orgullosamente restrepense";
-
   var SALIDA = 550;                    /* lo que dura el fundido de salida (ver styles.css) */
   var LIMITE = 5000;                   /* tope: si algo se cuelga, la pantalla se va igual */
   var ESPERA_LOGO = 2000;              /* lo máximo que esperamos a que bajen las capas */
@@ -78,7 +74,6 @@
         '<svg class="carga__trazo" viewBox="0 0 320 22" aria-hidden="true">' +
           '<path pathLength="1" d="M8 16C74 4 246 4 312 16"/>' +
         "</svg>" +
-        '<p class="carga__lema">' + LEMA + "</p>" +
       "</div>" +
     "</div>";
 

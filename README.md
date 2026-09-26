@@ -304,8 +304,8 @@ El logo es **Avanza Restrepo** (monograma AR con la flecha). Vive en
 `assets/img/nuevo logo/` y de ahí salen todas las versiones.
 
 **«Orgullosamente restrepense»** — el lema del perfil de Arbey. Vive en el hero
-de [index.html](index.html), en `eslogan` dentro de `config.js` y en la pantalla
-de carga (`carga.js`, donde se repite a propósito porque corre antes que config).
+de [index.html](index.html) y en `eslogan` dentro de `config.js`. La pantalla
+de carga muestra solo la marca, sin lema.
 
 ## Pendientes
 

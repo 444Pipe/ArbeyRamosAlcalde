@@ -852,16 +852,6 @@ html.cargando, html.cargando body { overflow: hidden; }
   animation: carga-traza calc(1.7s * var(--carga-t)) var(--ease) calc(.5s * var(--carga-t)) infinite;
 }
 
-.carga__lema {
-  margin: .95rem 0 0;
-  font-family: var(--f-display); font-weight: 700;
-  font-size: clamp(.72rem, .66rem + .3vw, .86rem);
-  letter-spacing: .22em; text-transform: uppercase; text-align: center;
-  color: var(--azul-600);
-  /* Entra después del bloque AVANZA/RESTREPO del logo (que termina ~1.15s). */
-  animation: carga-entra calc(.9s * var(--carga-t)) var(--ease) calc(1.25s * var(--carga-t)) both;
-}
-
 /* --- Ensamblaje de las piezas del logo --- */
 @keyframes carga-entra-izq {
   from { opacity: 0; transform: translate(-9%, 4%) rotate(-6deg); }
@@ -920,10 +910,6 @@ html.cargando, html.cargando body { overflow: hidden; }
   0%   { stroke-dashoffset: 1; }
   50%  { stroke-dashoffset: 0; }
   100% { stroke-dashoffset: -1; }
-}
-@keyframes carga-entra {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: none; }
 }
 @keyframes carga-halo {
   0%, 100% { transform: scale(1);    opacity: .65; }
