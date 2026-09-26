@@ -1,17 +1,18 @@
 /* =========================================================
-   CONFIGURACIÓN GENERAL DE LA CAMPAÑA
+   CONFIGURACIÓN GENERAL DEL SITIO
    Este es el único archivo que el equipo necesita tocar para
    cambiar datos básicos del sitio.
    ========================================================= */
 
 window.CAMPANA = {
   /* ---- Identidad ---- */
-  candidato: "Arbey Ramos Gómez",
+  candidato: "Arbey Ramos Gómez",      // nombre completo (se usa en todo el sitio)
   candidatoCorto: "Arbey Ramos",
-  cargo: "Alcaldía de Restrepo",
-  periodo: "2027–2030",
+  cargo: "Presidente del Concejo de Restrepo",
+  periodo: "2024–2027",
   partido: "Partido Conservador Colombiano",
-  eslogan: "Restrepo lo hacemos entre todos",   // se muestra en el hero de index.html
+  eslogan: "Orgullosamente restrepense",   // se muestra en el hero de index.html
+  marca: "Avanza Restrepo",                // el nombre del logo
 
   /* ---- Municipio ----
      CONFIRMADO: Restrepo, Meta. La "Capital Salinera del Meta".
@@ -57,23 +58,23 @@ window.CAMPANA = {
   /* ---- Categorías de las problemáticas ciudadanas ----
      Escala azul de oscuro a claro para que los pines se distingan en el mapa. */
   categorias: [
-    { id: "seguridad", nombre: "Seguridad",          icono: "i-shield",    color: "#061A3E" },
-    { id: "vias",      nombre: "Vías y movilidad",   icono: "i-road",      color: "#0E3374" },
-    { id: "educacion", nombre: "Educación",          icono: "i-graduation", color: "#12448F" },
-    { id: "agua",      nombre: "Agua y saneamiento", icono: "i-water",     color: "#1A5FBF" },
+    { id: "seguridad", nombre: "Seguridad",          icono: "i-shield",    color: "#05193F" },
+    { id: "vias",      nombre: "Vías y movilidad",   icono: "i-road",      color: "#0A3488" },
+    { id: "educacion", nombre: "Educación",          icono: "i-graduation", color: "#0D47B5" },
+    { id: "agua",      nombre: "Agua y saneamiento", icono: "i-water",     color: "#1E5CD6" },
     { id: "ambiente",  nombre: "Ambiente y basuras", icono: "i-tree",      color: "#1F7FA8" },
     { id: "salud",     nombre: "Salud",              icono: "i-salud",     color: "#4A6FA5" },
-    { id: "luz",       nombre: "Alumbrado público",  icono: "i-bulb",      color: "#3D7FD8" },
+    { id: "luz",       nombre: "Alumbrado público",  icono: "i-bulb",      color: "#3D7BEC" },
     { id: "espacio",   nombre: "Espacio público",    icono: "i-users",     color: "#5C6BC0" },
     { id: "otro",      nombre: "Otro",               icono: "i-flag",      color: "#7A8CA6" }
   ],
 
-  /* ---- Estados del semáforo de compromisos ---- */
+  /* ---- Estados del semáforo de gestiones ---- */
   /* De más claro a más oscuro: el avance se lee como el azul se intensifica. */
   estados: [
-    { id: "recibido",   nombre: "Recibido",              icono: "i-megaphone", color: "#8A94A8" },
-    { id: "revision",   nombre: "En estudio",            icono: "i-search",    color: "#6BA3E8" },
-    { id: "compromiso", nombre: "Compromiso adquirido",  icono: "i-flag",      color: "#1A5FBF" },
-    { id: "cumplido",   nombre: "Cumplido",              icono: "i-check",     color: "#0A2559" }
+    { id: "recibido",   nombre: "Recibido",       icono: "i-megaphone", color: "#8A94A8" },
+    { id: "revision",   nombre: "En estudio",     icono: "i-search",    color: "#6D9DF2" },
+    { id: "compromiso", nombre: "En gestión",     icono: "i-flag",      color: "#1E5CD6" },
+    { id: "cumplido",   nombre: "Gestionado",     icono: "i-check",     color: "#07245C" }
   ]
 };

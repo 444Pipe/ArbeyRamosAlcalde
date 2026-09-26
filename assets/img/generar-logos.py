@@ -3,94 +3,65 @@
 
     python assets/img/generar-logos.py
 
-Si llega un logo nuevo: se reemplaza logo-original.png y se vuelve a correr.
-Los valores de REGION_SIMBOLO están ajustados al logo actual (el símbolo de
-las tres figuras, a la derecha del texto); si el logo cambia de composición
-hay que revisarlos.
+El original es el logo "Avanza Restrepo" en azul sobre fondo transparente
+(carpeta "nuevo logo"). Si llega un logo nuevo: se reemplaza el archivo de
+ORIGEN y se vuelve a correr. La versión clara NO se toma de la carpeta
+(viene con los bordes sucios de un quitado de fondo): se fabrica aquí
+rellenando de blanco la silueta del logo azul, que sí tiene bordes limpios.
+
+Además del logo completo, se generan las CAPAS que usa la pantalla de carga
+para el ensamblaje animado (carga.js + styles.css): la A, la R con la banda
+de la flecha, y el bloque de texto AVANZA/RESTREPO. Las tres capas van en el
+mismo lienzo que el logo completo: apiladas lo reconstruyen pixel a pixel.
 """
 from PIL import Image
 from collections import deque
 import os
 
-ORIGEN = 'assets/img/logo-original.png'
+ORIGEN = 'assets/img/nuevo logo/Logo_Avanza_Restrepo_azul.png'
 DEST = 'assets/img'
-AZUL_800 = (10, 37, 89, 255)
-
-# Zona donde vive el símbolo, en fracciones del logo recortado (x0, y0, x1, y1)
-REGION_SIMBOLO = (0.70, 0.10, 1.00, 0.72)
+AZUL_800 = (7, 36, 92, 255)
 
 
-def guardar(img, nombre, ancho=None, fondo=None):
+def guardar(img, nombre, ancho=None):
     if ancho:
         alto = round(img.size[1] * ancho / img.size[0])
         img = img.resize((ancho, alto), Image.LANCZOS)
     ruta = os.path.join(DEST, nombre)
-    if fondo:
-        base = Image.new('RGBA', img.size, fondo)
-        base.alpha_composite(img)
-        base.convert('RGB').save(ruta, 'PNG', optimize=True)
-    else:
-        img.save(ruta, 'PNG', optimize=True)
+    img.save(ruta, 'PNG', optimize=True)
     print('  %-20s %-11s %6.1f KB' % (nombre, '%dx%d' % img.size, os.path.getsize(ruta) / 1024))
 
 
-def aclarar(img):
-    """El arte original es azul muy oscuro: sobre el pie azul desaparece.
-       Lleva a blanco solo las zonas oscuras y deja intactos los azules
-       brillantes, que ya contrastan y son los que dan carácter al logo."""
-    out = img.copy()
-    px = out.load()
-    for y in range(out.size[1]):
-        for x in range(out.size[0]):
-            r, g, b, a = px[x, y]
-            if a == 0:
-                continue
-            L = 0.2126 * r + 0.7152 * g + 0.0722 * b
-            if L < 80:
-                f = 1.0 if L < 45 else (80 - L) / 35.0
-                px[x, y] = (int(r + (238 - r) * f), int(g + (246 - g) * f), int(b + (255 - b) * f), a)
-    return out
+def blanquear(img):
+    """Versión para fondos oscuros: conserva la silueta (el alfa) y
+       rellena todo el trazo de blanco."""
+    blanco = Image.new('RGBA', img.size, (255, 255, 255, 255))
+    blanco.putalpha(img.split()[3])
+    return blanco
 
 
 def extraer_simbolo(rec):
-    """Aísla el símbolo de las figuras. No basta recortar un rectángulo: el arco
-       del símbolo pasa por detrás de la 'S' de RAMOS y siempre arrastra
-       pedazos de letras. Se separan las formas por componentes conexas y se
-       descartan las que tocan el borde izquierdo del recorte (esas son letras)."""
+    """Aísla el monograma AR de la parte superior. El monograma y el texto
+       AVANZA están separados por una franja horizontal sin tinta: se busca
+       la primera franja vacía dentro del tercio central y se corta ahí."""
     w, h = rec.size
-    fx0, fy0, fx1, fy1 = REGION_SIMBOLO
-    sub = rec.crop((int(w * fx0), int(h * fy0), int(w * fx1), int(h * fy1)))
-    sw, sh = sub.size
-    al = sub.split()[3].load()
+    al = rec.split()[3].load()
 
-    visto = [[False] * sw for _ in range(sh)]
-    piezas = []
-    for sy in range(sh):
-        for sx in range(sw):
-            if visto[sy][sx] or al[sx, sy] <= 40:
-                continue
-            q = deque([(sx, sy)])
-            visto[sy][sx] = True
-            pix = []
-            while q:
-                cx, cy = q.popleft()
-                pix.append((cx, cy))
-                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)):
-                    nx, ny = cx + dx, cy + dy
-                    if 0 <= nx < sw and 0 <= ny < sh and not visto[ny][nx] and al[nx, ny] > 40:
-                        visto[ny][nx] = True
-                        q.append((nx, ny))
-            piezas.append(pix)
+    def fila_vacia(y):
+        return not any(al[x, y] > 40 for x in range(0, w, 2))
 
-    buenas = [p for p in piezas if len(p) > 800 and min(c[0] for c in p) > 2]
-    limpio = Image.new('RGBA', (sw, sh), (0, 0, 0, 0))
-    dst, src = limpio.load(), sub.load()
-    for pieza in buenas:
-        for (cx, cy) in pieza:
-            dst[cx, cy] = src[cx, cy]
-    limpio = limpio.crop(limpio.split()[3].getbbox())
-    print('  simbolo aislado: %d formas, %dx%d' % (len(buenas), limpio.size[0], limpio.size[1]))
-    return limpio
+    corte = None
+    for y in range(int(h * 0.25), int(h * 0.80)):
+        if fila_vacia(y):
+            corte = y
+            break
+    if corte is None:
+        raise SystemExit('No se encontró la franja que separa el monograma del texto.')
+
+    simbolo = rec.crop((0, 0, w, corte))
+    simbolo = simbolo.crop(simbolo.split()[3].getbbox())
+    print('  monograma aislado: corte en y=%d -> %dx%d' % (corte, simbolo.size[0], simbolo.size[1]))
+    return simbolo, corte
 
 
 # =====================================================================
@@ -100,25 +71,104 @@ print('original %s  ->  recortado %s' % (im.size, recorte.size))
 
 # ---------- 1. Logo completo ----------
 # 480px basta: la cabecera lo muestra a ~81px y el pie a ~210px (2x cubierto).
-guardar(recorte, 'logo.png', 480)                 # fondo claro
-guardar(aclarar(recorte), 'logo-claro.png', 480)  # fondo azul oscuro
+guardar(recorte, 'logo.png', 480)                    # fondo claro
+guardar(blanquear(recorte), 'logo-claro.png', 480)   # fondo azul oscuro
 
-# ---------- 2. Símbolo suelto ----------
-simbolo = extraer_simbolo(recorte)
+# ---------- 2. Símbolo suelto (el monograma AR) ----------
+simbolo, CORTE = extraer_simbolo(recorte)
 lado = max(simbolo.size)
 cuadro = Image.new('RGBA', (lado, lado), (0, 0, 0, 0))
 cuadro.alpha_composite(simbolo, ((lado - simbolo.size[0]) // 2, (lado - simbolo.size[1]) // 2))
 guardar(cuadro, 'simbolo.png', 512)
 
+# ---------- 2b. Capas para la pantalla de carga ----------
+# Con umbral de alfa 25 la A y la R+banda son piezas separadas (con menos
+# umbral el suavizado del borde las une). Se etiquetan esos dos núcleos y
+# después las etiquetas crecen unas pasadas SOLO sobre píxeles con algo de
+# tinta: así cada capa se lleva su borde suavizado y en la capa del texto
+# no quedan fantasmas de la A ni de la R.
+def piezas_conexas(img, umbral):
+    w, h = img.size
+    al = img.split()[3].load()
+    visto = bytearray(w * h)
+    piezas = []
+    for y0 in range(h):
+        for x0 in range(w):
+            if visto[y0 * w + x0] or al[x0, y0] <= umbral:
+                continue
+            q = deque([(x0, y0)])
+            visto[y0 * w + x0] = 1
+            pix = []
+            while q:
+                cx, cy = q.popleft()
+                pix.append((cx, cy))
+                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1),
+                               (1, 1), (1, -1), (-1, 1), (-1, -1)):
+                    nx, ny = cx + dx, cy + dy
+                    if 0 <= nx < w and 0 <= ny < h and not visto[ny * w + nx] and al[nx, ny] > umbral:
+                        visto[ny * w + nx] = 1
+                        q.append((nx, ny))
+            piezas.append(pix)
+    piezas.sort(key=len, reverse=True)
+    return piezas
+
+
+W, H = recorte.size
+ALFA = recorte.split()[3].load()
+piezas = piezas_conexas(recorte, 25)
+etiqueta = bytearray(W * H)          # 0 libre · 1 R+banda · 2 A
+for (cx, cy) in piezas[0]:
+    etiqueta[cy * W + cx] = 1
+for (cx, cy) in piezas[1]:
+    etiqueta[cy * W + cx] = 2
+
+borde = [(cx, cy) for (cx, cy) in piezas[0] + piezas[1]]
+for _ in range(6):                   # 6 px de crecimiento sobre el suavizado
+    nuevos = []
+    for (cx, cy) in borde:
+        e = etiqueta[cy * W + cx]
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1),
+                       (1, 1), (1, -1), (-1, 1), (-1, -1)):
+            nx, ny = cx + dx, cy + dy
+            if 0 <= nx < W and 0 <= ny < H and not etiqueta[ny * W + nx] and ALFA[nx, ny] > 0:
+                etiqueta[ny * W + nx] = e
+                nuevos.append((nx, ny))
+    borde = nuevos
+
+capa_r = Image.new('RGBA', recorte.size, (0, 0, 0, 0))
+capa_a = Image.new('RGBA', recorte.size, (0, 0, 0, 0))
+capa_texto = recorte.copy()
+src = recorte.load()
+dr, da, dt = capa_r.load(), capa_a.load(), capa_texto.load()
+n_r = n_a = 0
+for y in range(H):
+    for x in range(W):
+        e = etiqueta[y * W + x]
+        if e == 1:
+            dr[x, y] = src[x, y]; dt[x, y] = (0, 0, 0, 0); n_r += 1
+        elif e == 2:
+            da[x, y] = src[x, y]; dt[x, y] = (0, 0, 0, 0); n_a += 1
+        elif y < CORTE:
+            # Residuos difusos del suavizado en la zona del monograma:
+            # fuera de la capa del texto, que empieza bajo la franja.
+            dt[x, y] = (0, 0, 0, 0)
+print('  piezas: R+banda %d px, A %d px' % (n_r, n_a))
+
+guardar(capa_a, 'carga-a.png', 480)
+guardar(capa_r, 'carga-r.png', 480)
+guardar(capa_texto, 'carga-texto.png', 480)
+
 # ---------- 3. Favicon e iconos de la app instalable ----------
-simbolo_claro = aclarar(cuadro)
-for lado_px, nombre, ocupa in [(32, 'favicon.png', 0.86), (180, 'icono-apple.png', 0.70),
-                               (192, 'icono-192.png', 0.62), (512, 'icono-512.png', 0.62)]:
+simbolo_claro = blanquear(cuadro)
+for lado_px, nombre, ocupa in [(32, 'favicon.png', 0.88), (180, 'icono-apple.png', 0.74),
+                               (192, 'icono-192.png', 0.66), (512, 'icono-512.png', 0.66)]:
     # Los iconos "maskable" se recortan en círculo: hay que dejar margen.
     fondo = Image.new('RGBA', (lado_px, lado_px), AZUL_800)
     util = int(lado_px * ocupa)
-    fondo.alpha_composite(simbolo_claro.resize((util, util), Image.LANCZOS),
-                          ((lado_px - util) // 2, (lado_px - util) // 2))
+    escala = util / max(simbolo_claro.size)
+    nuevo = (round(simbolo_claro.size[0] * escala), round(simbolo_claro.size[1] * escala))
+    fondo.alpha_composite(simbolo_claro.resize(nuevo, Image.LANCZOS),
+                          ((lado_px - nuevo[0]) // 2, (lado_px - nuevo[1]) // 2))
     ruta = os.path.join(DEST, nombre)
     fondo.convert('RGB').save(ruta, 'PNG', optimize=True)
     print('  %-20s %-11s %6.1f KB' % (nombre, '%dx%d' % (lado_px, lado_px), os.path.getsize(ruta) / 1024))

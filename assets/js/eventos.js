@@ -26,15 +26,15 @@
     var ics = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//Campana " + sinSaltos(CFG.candidato) + "//ES",
+      "PRODID:-//Agenda " + sinSaltos(CFG.candidato) + "//ES",
       "CALSCALE:GREGORIAN",
       "BEGIN:VEVENT",
-      "UID:" + ev.id + "@campana-arbey-ramos",
+      "UID:" + ev.id + "@agenda-arbey-ramos",
       "DTSTAMP:" + marcaTiempo(ev.fecha, ev.hora) + "Z",
       "DTSTART;TZID=America/Bogota:" + marcaTiempo(ev.fecha, ev.hora),
       "DTEND;TZID=America/Bogota:" + marcaTiempo(ev.fecha, ev.hora, 120),
       "SUMMARY:" + sinSaltos(ev.titulo),
-      "DESCRIPTION:" + sinSaltos(ev.descripcion + " — Campaña " + CFG.candidato),
+      "DESCRIPTION:" + sinSaltos(ev.descripcion + " — Agenda de " + CFG.candidato),
       "LOCATION:" + sinSaltos(ev.lugar + ", " + CFG.municipio),
       "END:VEVENT",
       "END:VCALENDAR"
@@ -131,7 +131,7 @@
 
     var wa = document.getElementById("wa-directo");
     if (wa) wa.href = "https://wa.me/" + CFG.whatsapp +
-      "?text=" + encodeURIComponent("Hola, quiero solicitar un encuentro de campaña en mi sector.");
+      "?text=" + encodeURIComponent("Hola, quiero solicitar un encuentro comunitario en mi sector.");
 
     document.addEventListener("click", function (e) {
       var b;

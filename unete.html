@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Únete a la campaña · Arbey Ramos Gómez</title>
-  <meta name="description" content="Súmate a la campaña de Arbey Ramos Gómez: sé voluntario, difunde el mensaje, sé testigo electoral o lidera tu barrio o vereda." />
-  <meta name="theme-color" content="#0A2559" />
+  <title>Participa · Arbey Ramos Gómez</title>
+  <meta name="description" content="Participa en el trabajo por Restrepo junto a Arbey Ramos Gómez: reporta lo que necesita tu sector, lidera tu barrio o vereda, asiste a los encuentros y mantente informado." />
+  <meta name="theme-color" content="#07245C" />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_CO" />
-  <meta property="og:title" content="Únete a la campaña · Arbey Ramos Gómez" />
+  <meta property="og:title" content="Participa · Arbey Ramos Gómez" />
   <meta property="og:image" content="assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- El logo de la pantalla de carga: que empiece a bajar ya, no cuando lo pida el script. -->
-  <link rel="preload" href="assets/img/logo.png" as="image" fetchpriority="high" />
+  <!-- Las capas del logo de la pantalla de carga: que empiecen a bajar ya, no cuando las pida el script. -->
+  <link rel="preload" href="assets/img/carga-a.png" as="image" fetchpriority="high" />
+  <link rel="preload" href="assets/img/carga-r.png" as="image" fetchpriority="high" />
+  <link rel="preload" href="assets/img/carga-texto.png" as="image" fetchpriority="high" />
   <link rel="icon" href="assets/img/favicon.png" sizes="32x32" />
   <link rel="apple-touch-icon" href="assets/img/icono-apple.png" />
   <link rel="manifest" href="manifest.json" />
@@ -34,20 +36,20 @@
   <main id="contenido">
     <section class="page-hero">
       <div class="wrap">
-        <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a> · <span>Únete</span></nav>
-        <h1>Aquí cabe todo el que quiera ayudar</h1>
+        <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a> · <span>Participa</span></nav>
+        <h1>Aquí cabe todo el que quiera aportar</h1>
         <p class="lead">
-          No necesitas experiencia política ni pertenecer a ningún partido. Necesitas ganas
-          de que el municipio mejore. Hay una forma de aportar para cada persona.
+          No necesitas pertenecer a ningún partido. Necesitas ganas de que Restrepo
+          mejore. Hay una forma de aportar para cada persona.
         </p>
         <div class="page-hero__cta">
           <a class="btn btn--claro btn--lg" href="#formulario">Dejar mis datos</a>
-          <a class="btn btn--ghost btn--lg" href="#formas">Ver cómo puedo ayudar</a>
+          <a class="btn btn--ghost btn--lg" href="#formas">Ver cómo puedo aportar</a>
         </div>
       </div>
     </section>
 
-    <!-- ============ FORMAS DE AYUDAR ============ -->
+    <!-- ============ FORMAS DE APORTAR ============ -->
     <section class="section" id="formas">
       <div class="wrap">
         <header class="section__head reveal">
@@ -58,34 +60,34 @@
 
         <div class="help">
           <article class="help__item reveal">
-            <span class="help__ico"><svg class="ico"><use href="#i-users"/></svg></span>
-            <h3>Sé voluntario</h3>
-            <p>Acompaña los recorridos, los encuentros veredales y las jornadas de puerta a puerta. Tú decides cuánto tiempo puedes dar.</p>
-          </article>
-          <article class="help__item reveal reveal--d1">
-            <span class="help__ico"><svg class="ico"><use href="#i-megaphone"/></svg></span>
-            <h3>Difunde el mensaje</h3>
-            <p>Comparte las propuestas con tu familia, tus vecinos y tus grupos de WhatsApp. El voz a voz sigue siendo lo que más pesa.</p>
-          </article>
-          <article class="help__item reveal reveal--d2">
-            <span class="help__ico"><svg class="ico"><use href="#i-shield"/></svg></span>
-            <h3>Sé testigo electoral</h3>
-            <p>Cuida los votos el día de las elecciones. Te damos la formación y el acompañamiento que necesitas.</p>
-          </article>
-          <article class="help__item reveal">
-            <span class="help__ico"><svg class="ico"><use href="#i-pin"/></svg></span>
-            <h3>Lidera tu sector</h3>
-            <p>Organiza a tus vecinos, recoge las necesidades de tu barrio o vereda y ayúdanos a coordinar un encuentro allí.</p>
-          </article>
-          <article class="help__item reveal reveal--d1">
             <span class="help__ico"><svg class="ico"><use href="#i-map"/></svg></span>
             <h3>Reporta lo que ves</h3>
-            <p>La forma más rápida de ayudar: cuéntanos qué necesita tu sector en el mapa ciudadano. Toma un minuto.</p>
+            <p>La forma más rápida de aportar: cuéntanos qué necesita tu sector en el mapa ciudadano. Toma un minuto y queda con seguimiento.</p>
+          </article>
+          <article class="help__item reveal reveal--d1">
+            <span class="help__ico"><svg class="ico"><use href="#i-pin"/></svg></span>
+            <h3>Lidera tu sector</h3>
+            <p>Organiza a tus vecinos, recoge las necesidades de tu barrio o vereda y ayúdanos a coordinar un encuentro allí con la junta de acción comunal.</p>
           </article>
           <article class="help__item reveal reveal--d2">
             <span class="help__ico"><svg class="ico"><use href="#i-calendar"/></svg></span>
             <h3>Ven a los encuentros</h3>
-            <p>Asistir ya es aportar. Llegar con un vecino más, todavía mejor. La agenda es pública y abierta.</p>
+            <p>Asistir ya es aportar. Llegar con un vecino más, todavía mejor. La agenda es pública y abierta, y las sesiones del Concejo también.</p>
+          </article>
+          <article class="help__item reveal">
+            <span class="help__ico"><svg class="ico"><use href="#i-megaphone"/></svg></span>
+            <h3>Difunde la información</h3>
+            <p>Comparte las gestiones, las convocatorias y las respuestas con tu familia, tus vecinos y tus grupos de WhatsApp. El voz a voz sigue siendo lo que más pesa.</p>
+          </article>
+          <article class="help__item reveal reveal--d1">
+            <span class="help__ico"><svg class="ico"><use href="#i-users"/></svg></span>
+            <h3>Acompaña los recorridos</h3>
+            <p>Camina con Arbey los barrios y las veredas: quien conoce su sector es quien mejor muestra lo que hace falta.</p>
+          </article>
+          <article class="help__item reveal reveal--d2">
+            <span class="help__ico"><svg class="ico"><use href="#i-news"/></svg></span>
+            <h3>Mantente informado</h3>
+            <p>Déjanos tu contacto y recibe las novedades de la gestión: qué se debatió, qué se gestionó y qué viene en la agenda.</p>
           </article>
         </div>
       </div>
@@ -99,12 +101,12 @@
           <h2 class="h2 h2--light">Te contactamos nosotros</h2>
           <p>
             Queremos conocerte y saber qué necesita tu barrio o tu vereda. Tus datos se usan
-            únicamente para comunicarnos contigo sobre la campaña: no se venden, no se comparten
+            únicamente para comunicarnos contigo: no se venden, no se comparten
             y no se publican.
           </p>
           <ul class="unete__list">
             <li><svg class="ico"><use href="#i-pin"/></svg> Encuentros en todas las veredas</li>
-            <li><svg class="ico"><use href="#i-users"/></svg> Equipos de trabajo por barrio</li>
+            <li><svg class="ico"><use href="#i-users"/></svg> Trabajo con las juntas de acción comunal</li>
             <li><svg class="ico"><use href="#i-megaphone"/></svg> Información de primera mano</li>
             <li><svg class="ico"><use href="#i-lock"/></svg> Puedes pedir que te saquemos cuando quieras</li>
           </ul>
@@ -137,13 +139,13 @@
             </div>
 
             <div class="form__row">
-              <label for="f-ayuda">¿Cómo quieres ayudar?</label>
+              <label for="f-ayuda">¿Cómo quieres aportar?</label>
               <select id="f-ayuda" name="ayuda">
                 <option value="">Selecciona una opción</option>
-                <option>Ser voluntario</option>
-                <option>Difundir el mensaje</option>
-                <option>Ser testigo electoral</option>
                 <option>Liderar mi barrio o vereda</option>
+                <option>Acompañar los recorridos</option>
+                <option>Difundir la información</option>
+                <option>Pedir un encuentro en mi sector</option>
                 <option>Solo quiero estar informado</option>
               </select>
             </div>
@@ -156,7 +158,7 @@
             <div class="form__row">
               <label class="form__check">
                 <input type="checkbox" id="f-hab" name="habeas" required />
-                <span>Autorizo el tratamiento de mis datos personales conforme a la Ley 1581 de 2012 para recibir información de la campaña.</span>
+                <span>Autorizo el tratamiento de mis datos personales conforme a la Ley 1581 de 2012 para recibir información de la gestión.</span>
               </label>
               <p class="form__err" data-err-for="f-hab"></p>
             </div>

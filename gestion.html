@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestión y proyectos · Arbey Ramos Gómez</title>
+  <meta name="description" content="La gestión de Arbey Ramos Gómez en el Concejo de Restrepo: tres periodos de trabajo en hacienda, campo, comunidad, educación y salud, con acciones concretas por frente." />
+  <meta name="theme-color" content="#07245C" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Gestión y proyectos · Arbey Ramos Gómez" />
+  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Las capas del logo de la pantalla de carga: que empiecen a bajar ya, no cuando las pida el script. -->
+  <link rel="preload" href="assets/img/carga-a.png" as="image" fetchpriority="high" />
+  <link rel="preload" href="assets/img/carga-r.png" as="image" fetchpriority="high" />
+  <link rel="preload" href="assets/img/carga-texto.png" as="image" fetchpriority="high" />
+  <link rel="icon" href="assets/img/favicon.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/img/icono-apple.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/plataforma.css" />
+</head>
+<body>
+  <!-- Pantalla de carga. Va primero y sin defer: se pinta antes que nada. -->
+  <script src="assets/js/carga.js"></script>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div id="app-header"></div>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="wrap">
+        <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a> · <span>Gestión</span></nav>
+        <h1>Gestión y proyectos</h1>
+        <p class="lead">
+          Tres periodos como concejal y la presidencia del Concejo no se cuentan con
+          discursos: se cuentan con trabajo. Estos son los seis frentes en los que Arbey
+          ha puesto su esfuerzo, y siguen abiertos con lo que la gente reporta en el mapa.
+        </p>
+        <div class="page-hero__cta">
+          <a class="btn btn--claro btn--lg" href="voz.html#reportar">Contarle una necesidad</a>
+          <a class="btn btn--ghost btn--lg" href="#ejes">Ver los seis frentes</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ÍNDICE DE FRENTES ============ -->
+    <section class="section section--alt" id="ejes">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Los frentes</p>
+          <h2 class="h2">¿Qué te interesa?</h2>
+          <p class="section__lead">Toca un frente para ir directo al trabajo adelantado.</p>
+        </header>
+        <div class="ejes-indice" id="indice"></div>
+      </div>
+    </section>
+
+    <!-- ============ DETALLE DE CADA FRENTE ============ -->
+    <section class="section">
+      <div class="wrap" id="ejes-detalle"></div>
+    </section>
+
+    <!-- ============ CIERRE ============ -->
+    <section class="section section--alt">
+      <div class="wrap">
+        <div class="destacado reveal">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__bar" aria-hidden="true"></span> El trabajo no está terminado</p>
+            <h2>¿Falta algo que tu comunidad necesita?</h2>
+            <p>
+              Todo lo de arriba salió de escuchar. Si lo que tu barrio o tu vereda
+              necesita no aparece, repórtalo: si la comunidad lo apoya, entra a la
+              agenda de gestión.
+            </p>
+            <div class="destacado__acciones">
+              <a class="btn btn--claro" href="voz.html#reportar">Reportar lo que falta</a>
+              <a class="btn btn--ghost" href="logros.html">Ver el semáforo de gestiones</a>
+            </div>
+          </div>
+          <div class="tablero">
+            <div class="tablero__item"><b data-stat="reportes">0</b><span>Reportes ciudadanos</span></div>
+            <div class="tablero__item"><b data-stat="atendidos">0</b><span>Ya en gestión</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/contenido.js" defer></script>
+  <script src="assets/js/store.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/gestion.js" defer></script>
+</body>
+</html>

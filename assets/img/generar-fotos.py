@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Prepara la foto del candidato y la imagen para compartir en redes.
+"""Prepara la foto de Arbey y la imagen para compartir en redes.
 
     python assets/img/generar-fotos.py
 
@@ -12,8 +12,8 @@ import os
 ORIGEN = 'assets/img/arbeyramos.PNG'
 LOGO_CLARO = 'assets/img/logo-claro.png'
 DEST = 'assets/img'
-AZUL_900 = (6, 26, 62)
-AZUL_700 = (14, 51, 116)
+AZUL_900 = (5, 25, 63)
+AZUL_700 = (10, 52, 136)
 
 foto = Image.open(ORIGEN).convert('RGBA')
 foto = foto.crop(foto.split()[3].getbbox())

@@ -1,7 +1,12 @@
-# Arbey Ramos Gómez · Alcaldía de Restrepo 2027–2030
+# Arbey Ramos Gómez · Presidente del Concejo de Restrepo
 
-Sitio de campaña **y plataforma de participación ciudadana**. HTML + CSS + JavaScript,
-sin dependencias ni proceso de compilación.
+Sitio personal de Arbey Ramos Gómez —su historia, su gestión como concejal—
+**y plataforma de participación ciudadana**, bajo la marca **Avanza Restrepo**.
+HTML + CSS + JavaScript, sin dependencias ni proceso de compilación.
+
+> **Importante:** el sitio no menciona candidaturas ni campañas. Es la página
+> personal del Presidente del Concejo: perfil, trayectoria, gestión y el canal
+> para que la comunidad reporte problemáticas.
 
 ## Cómo verlo
 
@@ -20,14 +25,17 @@ Nueve páginas. Cada tema tiene su propio espacio; la portada solo resume y enla
 | Página | Qué contiene |
 |---|---|
 | [index.html](index.html) | **Portada.** Hero, tablero en vivo, accesos a las secciones y un resumen de cada una |
-| [candidato.html](candidato.html) | Biografía completa, ficha de datos y valores |
-| [propuestas.html](propuestas.html) | Programa de gobierno: 6 ejes con sus compromisos detallados |
+| [perfil.html](perfil.html) | Biografía completa, ficha de datos y valores |
+| [gestion.html](gestion.html) | Gestión como concejal: 6 frentes con el trabajo adelantado |
 | [voz.html](voz.html) | **Tu voz**: mapa ciudadano, reportes, apoyos, ranking, formulario |
 | [noticias.html](noticias.html) | Sala de prensa con filtros |
 | [eventos.html](eventos.html) | Agenda con confirmación de asistencia y descarga al calendario |
-| [logros.html](logros.html) | Trayectoria y semáforo de compromisos |
-| [unete.html](unete.html) | Formas de aportar y formulario de registro |
+| [logros.html](logros.html) | Trayectoria y semáforo de gestiones |
+| [unete.html](unete.html) | Participa: formas de aportar y formulario de registro |
 | [contacto.html](contacto.html) | Datos de contacto y formulario de mensaje |
+
+`candidato.html` y `propuestas.html` son redirecciones a `perfil.html` y
+`gestion.html`: se conservan para no romper enlaces viejos ya compartidos.
 
 ### Navegación
 
@@ -35,36 +43,39 @@ El menú y el pie se generan desde `ui.js`, en las constantes `MENU` y `PIE`. **
 sitio donde vive la navegación**: cambiar un enlace ahí lo cambia en las nueve páginas.
 
 ```
-Inicio · El candidato · Propuestas · Tu voz · Actualidad ▾ · Contacto     [Únete]
-                                              ├─ Noticias
-                                              ├─ Eventos y agenda
-                                              └─ Trayectoria
+Inicio · Quién es Arbey · Gestión · Tu voz · Actualidad ▾ · Contacto     [Participa]
+                                             ├─ Noticias
+                                             ├─ Eventos y agenda
+                                             └─ Trayectoria
 ```
 
-El pie repite todo como mapa del sitio en tres columnas: La campaña, Participa y Contacto.
+El pie repite todo como mapa del sitio en tres columnas: Conoce a Arbey, Participa y Contacto.
 
 ## Archivos que el equipo edita
 
 | Archivo | Para qué |
 |---|---|
-| [assets/js/config.js](assets/js/config.js) | Nombre, municipio, contacto, redes, coordenadas del mapa, categorías, claves del servidor |
-| [assets/js/contenido.js](assets/js/contenido.js) | Perfil, propuestas, noticias, eventos, trayectoria y la pregunta de la semana |
-| [candidato.html](candidato.html) | La biografía larga (es prosa, se edita más cómodo en el HTML) |
+| [assets/js/config.js](assets/js/config.js) | Nombre, cargo, municipio, contacto, redes, coordenadas del mapa, categorías, claves del servidor |
+| [assets/js/contenido.js](assets/js/contenido.js) | Perfil, gestión, noticias, eventos, trayectoria y la pregunta de la semana |
+| [perfil.html](perfil.html) | La biografía larga (es prosa, se edita más cómodo en el HTML) |
 | [assets/img/](assets/img/) | Fotos y logo (ver `README.txt` dentro de la carpeta) |
 
 Todo lo marcado con `demo: true` sale con una etiqueta **"Ejemplo"** visible en la página.
 Al reemplazarlo por contenido real, borra esa línea.
 
-**Las propuestas viven en `contenido.js`**, no en el HTML: la portada muestra el resumen y
-`propuestas.html` el detalle, pero ambas leen del mismo sitio. Cambiar un eje una vez lo
-cambia en las dos.
+**La gestión vive en `contenido.js`** (clave `gestion`), no en el HTML: la portada muestra
+el resumen y `gestion.html` el detalle, pero ambas leen del mismo sitio. Cambiar un frente
+una vez lo cambia en las dos. Los puntos de cada frente están escritos en general: hay que
+afinarlos con los acuerdos, debates y gestiones reales (número de acuerdo, año y resultado).
 
 ## Código
 
 ```
 assets/css/styles.css        Base: paleta, tipografía, portada, pie
 assets/css/plataforma.css    Menú desplegable, mapa, tarjetas, modales, agenda, semáforo
-assets/js/carga.js           Pantalla de carga con la marca animada
+assets/js/carga.js           Pantalla de marca: el logo se ensambla por piezas
+                             y la flecha despega en ciclo; un toque la relanza
+                             y en escritorio la marca sigue al mouse
 assets/js/config.js          Configuración
 assets/js/contenido.js       Contenido editable
 assets/js/store.js           Capa de datos (local o servidor)
@@ -75,8 +86,8 @@ sw.js + manifest.json        Instalación como app y funcionamiento sin señal
 Un archivo JS por página, con el mismo nombre de la página:
 
 ```
-main.js        index.html          candidato.js   candidato.html
-propuestas.js  propuestas.html     voz.js         voz.html
+main.js        index.html          perfil.js      perfil.html
+gestion.js     gestion.html        voz.js         voz.html
 noticias.js    noticias.html       eventos.js     eventos.html
 logros.js      logros.html         unete.js       unete.html
 contacto.js    contacto.html
@@ -179,9 +190,9 @@ create policy "leer votos" on votos for select using (true);
 create policy "crear votos" on votos for insert with check (true);
 ```
 
-El estado de cada reporte (`recibido` → `revision` → `compromiso` → `cumplido`) se cambia
-a mano desde el panel de Supabase. Eso es lo que mueve el semáforo de
-[logros.html](logros.html).
+El estado de cada reporte (`recibido` → `revision` → `compromiso` → `cumplido`; en
+pantalla: Recibido → En estudio → En gestión → Gestionado) se cambia a mano desde el
+panel de Supabase. Eso es lo que mueve el semáforo de [logros.html](logros.html).
 
 ## Paleta
 
@@ -190,15 +201,15 @@ Todo sale de las variables al inicio de [assets/css/styles.css](assets/css/style
 
 | Variable | Color | Uso |
 |---|---|---|
-| `--azul-900` | `#061A3E` | Fondos oscuros, títulos |
-| `--azul-800` | `#0A2559` | Degradados, texto sobre blanco |
-| `--azul-700` | `#0E3374` | Logo, hover |
-| `--azul-600` | `#12448F` | Color primario, botones sobre fondo claro |
-| `--azul-500` | `#1A5FBF` | Foco, detalles |
-| `--azul-400` | `#3D7FD8` | Bordes activos |
-| `--azul-300` | `#6BA3E8` | **Acento sobre fondo oscuro** (antes era el dorado) |
-| `--azul-200` | `#A9C6EE` | Textos secundarios sobre azul |
-| `--azul-100` | `#D6E4F7` | Etiquetas |
+| `--azul-900` | `#05193F` | Fondos oscuros, títulos |
+| `--azul-800` | `#07245C` | Degradados, texto sobre blanco |
+| `--azul-700` | `#0A3488` | Logo, hover |
+| `--azul-600` | `#0D47B5` | Color primario, botones sobre fondo claro |
+| `--azul-500` | `#1E5CD6` | Foco, detalles |
+| `--azul-400` | `#3D7BEC` | Bordes activos |
+| `--azul-300` | `#6D9DF2` | **Acento sobre fondo oscuro** (antes era el dorado) |
+| `--azul-200` | `#A8C4F4` | Textos secundarios sobre azul |
+| `--azul-100` | `#D5E2FA` | Etiquetas |
 | `--azul-50` | `#EEF4FD` | Fondos suaves |
 | `--nieve` | `#F3F7FC` | Secciones alternas (blanco frío) |
 
@@ -256,9 +267,9 @@ el mapa ciudadano necesita para ubicar el reporte y adjuntar la foto.
 
 ### Lo que NO va al servidor
 
-El `.dockerignore` deja fuera las fuentes del logo y la foto —4 MB que solo
-sirven para regenerar los archivos con los scripts— y los propios scripts.
-La imagen final lleva únicamente las 10 páginas, el CSS, el JS y las 9
+El `.dockerignore` deja fuera las fuentes del logo y la foto —varios MB que
+solo sirven para regenerar los archivos con los scripts— y los propios
+scripts. La imagen final lleva únicamente las páginas, el CSS, el JS y las
 imágenes que el navegador pide.
 
 ## Imágenes
@@ -271,28 +282,28 @@ python assets/img/generar-logos.py    # 7 versiones del logo, favicon e iconos
 python assets/img/generar-fotos.py    # foto optimizada + imagen para redes
 ```
 
-Si llega un logo o una foto nueva, se reemplaza el archivo fuente
-(`logo-original.png` / `arbeyramos.PNG`) y se corre el script correspondiente.
+Si llega un logo o una foto nueva, se reemplaza el archivo fuente (el logo azul
+de `nuevo logo/` / `arbeyramos.PNG`) y se corre el script correspondiente.
 Ver [assets/img/README.txt](assets/img/README.txt).
 
-## Eslogan
+## Marca y eslogan
 
-**«Restrepo lo hacemos entre todos»** — vive en el hero de [index.html](index.html)
-y en `eslogan` dentro de `config.js`. Se eligió porque dice exactamente lo que
-promete la plataforma: el programa de gobierno lo escribe la gente.
+El logo es **Avanza Restrepo** (monograma AR con la flecha). Vive en
+`assets/img/nuevo logo/` y de ahí salen todas las versiones.
 
-Alternativa si algún día se quiere algo más territorial: *«La sal de Restrepo es
-su gente»*, que se apoya en los 160 años del municipio como Capital Salinera del
-Meta y en las Salinas de Upín, declaradas patrimonio inmaterial del departamento.
+**«Orgullosamente restrepense»** — el lema del perfil de Arbey. Vive en el hero
+de [index.html](index.html), en `eslogan` dentro de `config.js` y en la pantalla
+de carga (`carga.js`, donde se repite a propósito porque corre antes que config).
 
 ## Pendientes
 
-- [ ] **Biografía real** — el texto actual es de ejemplo y no afirma datos verificables
+- [ ] **Afinar la gestión** — los puntos de `gestion` en `contenido.js` están en general;
+      falta ponerles los acuerdos, debates y gestiones reales con año y resultado
 - [ ] **Datos de contacto y redes** — en `config.js`
 - [ ] **Conectar Supabase** para que los datos sean compartidos
 - [ ] **Política de tratamiento de datos** (Ley 1581 de 2012) — publicar la página y enlazarla
       desde los formularios
-- [ ] **Contenido real** en `contenido.js` (noticias, eventos, trayectoria)
+- [ ] **Contenido real** en `contenido.js` (noticias, eventos)
 
 ## Notas técnicas
 

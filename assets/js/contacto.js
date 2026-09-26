@@ -16,7 +16,7 @@
       { ico: "i-phone", tit: "Teléfono", txt: CFG.telefono, href: "tel:" + CFG.telefono.replace(/\s/g, "") },
       { ico: "i-whatsapp", tit: "WhatsApp", txt: "Escríbenos directo", href: "https://wa.me/" + CFG.whatsapp },
       { ico: "i-mail", tit: "Correo", txt: CFG.correo, href: "mailto:" + CFG.correo },
-      { ico: "i-pin", tit: "Sede de campaña", txt: CFG.sede, href: "" }
+      { ico: "i-pin", tit: "Punto de atención", txt: CFG.sede, href: "" }
     ];
 
     cont.innerHTML = items.map(function (i, n) {

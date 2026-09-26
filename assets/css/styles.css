@@ -1,6 +1,6 @@
 /* =========================================================
-   Campaña Arbey Ramos Gómez — Alcaldía de Restrepo 2027–2030
-   Paleta: Partido Conservador Colombiano — azul y blanco
+   Arbey Ramos Gómez — Presidente del Concejo de Restrepo
+   Marca: Avanza Restrepo · Paleta: azul y blanco
    ========================================================= */
 
 /* ---------- 1. Tokens ---------- */
@@ -9,15 +9,15 @@
      Del 900 (fondos oscuros) al 50 (fondos suaves).
      El 300 es el acento sobre fondo oscuro; sobre fondo claro
      el acento es el 600. No hay ningún otro color de marca. */
-  --azul-900: #061A3E;
-  --azul-800: #0A2559;
-  --azul-700: #0E3374;
-  --azul-600: #12448F;
-  --azul-500: #1A5FBF;
-  --azul-400: #3D7FD8;
-  --azul-300: #6BA3E8;
-  --azul-200: #A9C6EE;
-  --azul-100: #D6E4F7;
+  --azul-900: #05193F;
+  --azul-800: #07245C;
+  --azul-700: #0A3488;
+  --azul-600: #0D47B5;
+  --azul-500: #1E5CD6;
+  --azul-400: #3D7BEC;
+  --azul-300: #6D9DF2;
+  --azul-200: #A8C4F4;
+  --azul-100: #D5E2FA;
   --azul-50:  #EEF4FD;
 
   /* Neutros */
@@ -32,9 +32,9 @@
   --radio:   14px;
   --radio-s: 10px;
   --radio-l: 24px;
-  --sombra:    0 4px 20px rgba(6, 26, 62, .07);
-  --sombra-md: 0 12px 34px rgba(6, 26, 62, .12);
-  --sombra-lg: 0 28px 60px rgba(6, 26, 62, .20);
+  --sombra:    0 4px 20px rgba(5, 25, 63, .07);
+  --sombra-md: 0 12px 34px rgba(5, 25, 63, .12);
+  --sombra-lg: 0 28px 60px rgba(5, 25, 63, .20);
   --ancho: 1200px;
   /* La altura del logo manda: el header y los desplazamientos se
      calculan a partir de ella. Cambiar --alto-logo basta. */
@@ -239,16 +239,21 @@ ul { margin: 0; padding: 0; list-style: none; }
   height: var(--alto-logo); width: auto; flex: none;
   display: block;
 }
-/* El logo ya dice el nombre; el texto solo aporta lo que el logo no trae. */
+/* El logo dice la marca; el texto pone el nombre y el cargo. */
 .brand__txt {
   display: flex; flex-direction: column; justify-content: center;
   padding-left: .7rem;
   border-left: 1px solid var(--linea);
   line-height: 1.25;
 }
+.brand__txt strong {
+  font-family: var(--f-display);
+  font-size: .86rem; font-weight: 800; color: var(--azul-800);
+  letter-spacing: .01em; white-space: nowrap;
+}
 .brand__txt small {
-  font-size: .78rem; color: var(--gris); letter-spacing: .02em;
-  max-width: 9.5rem;   /* dos líneas, no tres */
+  font-size: .72rem; color: var(--gris); letter-spacing: .02em;
+  max-width: 12rem;   /* dos líneas, no tres */
 }
 
 .nav { display: flex; align-items: center; gap: clamp(.4rem, 1.6vw, 1.4rem); }
@@ -296,8 +301,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero__bg {
   position: absolute; inset: 0; z-index: -1;
   background:
-    radial-gradient(1000px 520px at 78% 8%, rgba(26, 95, 191, .55), transparent 60%),
-    radial-gradient(700px 420px at 5% 90%, rgba(61, 127, 216, .3), transparent 62%),
+    radial-gradient(1000px 520px at 78% 8%, rgba(30, 92, 214, .55), transparent 60%),
+    radial-gradient(700px 420px at 5% 90%, rgba(61, 123, 236, .3), transparent 62%),
     linear-gradient(160deg, var(--azul-800) 0%, var(--azul-900) 55%, #04122C 100%);
 }
 .hero__bg::after {
@@ -449,7 +454,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: 16px;
   background: linear-gradient(145deg, var(--azul-600), var(--azul-800));
   color: #fff; font-size: 1.5rem;
-  box-shadow: 0 8px 18px rgba(18, 68, 143, .25);
+  box-shadow: 0 8px 18px rgba(13, 71, 181, .25);
 }
 .card h3 { font-size: 1.22rem; color: var(--azul-900); margin-bottom: .5rem; }
 .card p { color: var(--gris); font-size: .96rem; margin: 0; }
@@ -478,7 +483,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .band::after {
   content: ""; position: absolute; inset: auto -10% -60% -10%; height: 60%;
-  background: radial-gradient(closest-side, rgba(61, 127, 216, .28), transparent);
+  background: radial-gradient(closest-side, rgba(61, 123, 236, .28), transparent);
 }
 .band__in { position: relative; max-width: 860px; }
 .band__quote { width: 44px; height: 44px; fill: var(--azul-300); opacity: .9; margin-bottom: 1rem; }
@@ -526,7 +531,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .unete::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(760px 420px at 88% 12%, rgba(26, 95, 191, .45), transparent 62%);
+  background: radial-gradient(760px 420px at 88% 12%, rgba(30, 92, 214, .45), transparent 62%);
   pointer-events: none;
 }
 .unete .wrap { position: relative; }
@@ -572,7 +577,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   outline: none;
   background: #fff;
   border-color: var(--azul-500);
-  box-shadow: 0 0 0 4px rgba(26, 95, 191, .13);
+  box-shadow: 0 0 0 4px rgba(30, 92, 214, .13);
 }
 .form .is-invalid { border-color: #C0392B; background: #FDF3F2; }
 
@@ -683,7 +688,7 @@ a.contact__item:hover { transform: translateY(-5px); border-color: var(--azul-40
   display: grid; place-items: center;
   width: 54px; height: 54px; border-radius: 50%;
   background: var(--azul-600); color: #fff; font-size: 1.6rem;
-  box-shadow: 0 10px 24px rgba(18, 68, 143, .4);
+  box-shadow: 0 10px 24px rgba(13, 71, 181, .4);
   transition: transform .25s var(--ease);
 }
 .wa-float:hover { transform: scale(1.08); }
@@ -702,8 +707,12 @@ html.cargando, html.cargando body { overflow: hidden; }
   transition: opacity .5s var(--ease), visibility .5s var(--ease);
 }
 
-/* Visita repetida o movimiento reducido: la misma animación, más corta. */
+/* Visita repetida o movimiento reducido: tiempos cortos y el logo ya
+   ensamblado; el disparo de la flecha sí se conserva, que es la firma. */
 .carga--express { --carga-t: .55; }
+.carga--express .carga__cp-a,
+.carga--express .carga__cp-r,
+.carga--express .carga__cp-texto { animation: none; opacity: 1; transform: none; }
 
 /* Halo azul muy suave que respira detrás de la marca. */
 .carga::before {
@@ -720,6 +729,15 @@ html.cargando, html.cargando body { overflow: hidden; }
   display: grid; justify-items: center;
   padding: var(--pad);
   transition: transform .5s var(--ease);
+  perspective: 900px;          /* para la inclinación 3D que sigue al mouse */
+}
+
+/* La capa que se inclina con el mouse (carga.js le pone el transform).
+   Va aparte de .carga__in para no pelear con su transición de salida. */
+.carga__tilt {
+  display: grid; justify-items: center;
+  transition: transform .18s ease-out;
+  will-change: transform;
 }
 
 /* Hasta que el logo no ha bajado no se ve nada más que el halo, y ninguna
@@ -729,30 +747,85 @@ html.cargando, html.cargando body { overflow: hidden; }
 .carga:not(.is-lista) .carga__in *,
 .carga:not(.is-lista) .carga__brillo::before { animation-play-state: paused; }
 
-/* El logo se pinta de izquierda a derecha: la máscara es un degradado
-   dos veces y media más ancho que el logo, que se desplaza sobre él. Esa
-   proporción es la que hace que el trazo entre por el borde izquierdo justo
-   al empezar y salga por el derecho justo al terminar. Si el navegador no
-   entiende `mask`, el logo se ve entero desde el principio. */
+/* La marca es un lienzo de proporción fija: las tres capas del logo van
+   apiladas (juntas reconstruyen el logo exacto) y la punta de la flecha
+   se ancla con porcentajes. El ::before es la caja de proporción
+   (274/480 = 57.083%), que funciona hasta en navegadores viejos. */
 .carga__marca {
   position: relative;
   width: min(330px, 66vw);
-  animation: carga-crece calc(1.3s * var(--carga-t)) var(--ease) both;
+  animation:
+    carga-pop   calc(.5s * var(--carga-t)) var(--ease) calc(1.2s * var(--carga-t)) both,
+    carga-flota 3.8s ease-in-out calc(2.2s * var(--carga-t)) infinite alternate;
 }
-.carga__marca img {
-  width: 100%; height: auto;
-  -webkit-mask-image: linear-gradient(95deg, #000, #000 40%, transparent 60%);
-          mask-image: linear-gradient(95deg, #000, #000 40%, transparent 60%);
-  -webkit-mask-size: 250% 100%;    mask-size: 250% 100%;
-  -webkit-mask-repeat: no-repeat;  mask-repeat: no-repeat;
-  -webkit-mask-position: 100% 0;   mask-position: 100% 0;
-  /* Curva propia, no --ease: un trazo de pincel se lee mejor a velocidad
-     pareja que arrancando de golpe. */
-  animation: carga-pinta calc(1.15s * var(--carga-t)) cubic-bezier(.4, .05, .6, 1) calc(.08s * var(--carga-t)) forwards;
+.carga__marca::before { content: ""; display: block; padding-top: 57.083%; }
+.carga__capa {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
 }
 
-/* Destello que cruza el logo cuando termina de pintarse. Se recorta con la
-   silueta del propio logo: si no, sobre el halo se vería la banda blanca. */
+/* El ensamblaje: la A llega desde la izquierda, la R con la banda desde
+   la derecha (con un rebote leve) y el texto sube de último, cuando ya
+   hay de dónde colgarse. */
+.carga__cp-a     { animation: carga-entra-izq calc(.65s * var(--carga-t)) cubic-bezier(.2, .9, .25, 1.15) calc(.08s * var(--carga-t)) both; }
+.carga__cp-r     { animation: carga-entra-der calc(.65s * var(--carga-t)) cubic-bezier(.2, .9, .25, 1.15) calc(.22s * var(--carga-t)) both; }
+.carga__cp-texto { animation: carga-asoma calc(.6s * var(--carga-t)) var(--ease) calc(.55s * var(--carga-t)) both; }
+
+/* ---- La flecha-cohete ---- */
+/* Todo lo que despega vive en un ancla puesta sobre la punta de la
+   flecha del logo. El ancla es un cuadrado (34% del ancho del lienzo)
+   centrado en ese punto. */
+.carga__punta {
+  position: absolute; left: 70.8%; top: 7.5%;
+  width: 34%; height: 59.56%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.carga__cohete {
+  position: absolute; inset: 0; opacity: 0;
+  animation: carga-vuelo calc(2.8s * var(--carga-t)) linear calc(1.1s * var(--carga-t)) infinite;
+}
+.carga__cohete svg {
+  display: block; width: 100%; height: 100%; overflow: visible;
+  filter: drop-shadow(0 4px 12px rgba(30, 92, 214, .4));
+}
+.carga__cohete line    { stroke: var(--azul-500); stroke-width: 13; stroke-linecap: round; }
+.carga__cohete polygon { fill: var(--azul-600); }
+
+/* La estela: un haz de luz fijo en el ancla que crece con el disparo. */
+.carga__rastro {
+  position: absolute; left: 50%; top: 50%;
+  width: 330%; height: 3px; border-radius: 3px;
+  transform-origin: 0 50%;
+  transform: rotate(-45deg) scaleX(0);
+  background: linear-gradient(90deg, rgba(61, 123, 236, .75), rgba(61, 123, 236, 0) 85%);
+  opacity: 0;
+  animation: carga-rastro calc(2.8s * var(--carga-t)) linear calc(1.1s * var(--carga-t)) infinite;
+}
+
+/* Chispas del despegue, cada una hacia su lado. */
+.carga__chispas i {
+  position: absolute; left: 50%; top: 50%;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--azul-400); opacity: 0;
+  animation: carga-chispa calc(2.8s * var(--carga-t)) var(--ease) calc(1.1s * var(--carga-t)) infinite;
+}
+.carga__chispas i:nth-child(1) { --cx:  46px; --cy: -34px; }
+.carga__chispas i:nth-child(2) { --cx:  10px; --cy: -52px; }
+.carga__chispas i:nth-child(3) { --cx: -30px; --cy: -30px; width: 5px; height: 5px; }
+.carga__chispas i:nth-child(4) { --cx:  54px; --cy:   6px; width: 5px; height: 5px; }
+.carga__chispas i:nth-child(5) { --cx: -12px; --cy:  40px; }
+.carga__chispas i:nth-child(6) { --cx:  30px; --cy:  44px; width: 4px; height: 4px; }
+
+/* Un toque relanza la flecha: carga.js reinicia estas animaciones y la
+   clase anula los retrasos para que el disparo sea inmediato. */
+.carga.is-relanzo .carga__cohete,
+.carga.is-relanzo .carga__rastro,
+.carga.is-relanzo .carga__chispas i { animation-delay: 0s; }
+
+/* Destello que cruza el logo cuando termina de ensamblarse. Se recorta con
+   la silueta del propio logo: si no, sobre el halo se vería la banda blanca. */
 .carga__brillo {
   position: absolute; inset: 0; overflow: hidden; pointer-events: none;
   -webkit-mask-image: url(../img/logo.png); mask-image: url(../img/logo.png);
@@ -762,7 +835,7 @@ html.cargando, html.cargando body { overflow: hidden; }
 .carga__brillo::before {
   content: ""; position: absolute; top: -30%; bottom: -30%; left: 0; width: 26%;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .72) 50%, rgba(255, 255, 255, 0));
-  animation: carga-brillo calc(.8s * var(--carga-t)) var(--ease) calc(.95s * var(--carga-t)) both;
+  animation: carga-brillo calc(.8s * var(--carga-t)) var(--ease) calc(1.45s * var(--carga-t)) both;
 }
 
 /* El arco azul del logo, dibujándose una y otra vez: es el progreso. */
@@ -779,16 +852,59 @@ html.cargando, html.cargando body { overflow: hidden; }
   font-size: clamp(.72rem, .66rem + .3vw, .86rem);
   letter-spacing: .22em; text-transform: uppercase; text-align: center;
   color: var(--azul-600);
-  animation: carga-entra calc(.9s * var(--carga-t)) var(--ease) calc(.65s * var(--carga-t)) both;
+  /* Entra después del bloque AVANZA/RESTREPO del logo (que termina ~1.15s). */
+  animation: carga-entra calc(.9s * var(--carga-t)) var(--ease) calc(1.25s * var(--carga-t)) both;
 }
 
-@keyframes carga-pinta {
-  from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
-  to   { -webkit-mask-position: 0 0;    mask-position: 0 0; }
+/* --- Ensamblaje de las piezas del logo --- */
+@keyframes carga-entra-izq {
+  from { opacity: 0; transform: translate(-9%, 4%) rotate(-6deg); }
+  to   { opacity: 1; transform: none; }
 }
-@keyframes carga-crece {
-  from { transform: scale(.93); }
-  to   { transform: none; }
+@keyframes carga-entra-der {
+  from { opacity: 0; transform: translate(9%, -4%) rotate(5deg); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes carga-asoma {
+  from { opacity: 0; transform: translateY(6%); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* --- El despegue de la flecha --- */
+/* El ciclo dura 2.8s: la flecha vuela en el primer 30% y el resto es
+   pausa, para que el disparo se repita con un respiro en medio. */
+@keyframes carga-vuelo {
+  0%   { opacity: 0; transform: translate(-6%, 6%) scale(.3);
+         animation-timing-function: cubic-bezier(.3, .6, .6, 1); }
+  6%   { opacity: 1; transform: translate(0, 0) scale(.62);
+         animation-timing-function: cubic-bezier(.55, 0, .85, .45); }
+  24%  { opacity: 1; }
+  30%  { opacity: 0; transform: translate(310%, -310%) scale(1.12); }
+  100% { opacity: 0; transform: translate(310%, -310%) scale(1.12); }
+}
+@keyframes carga-rastro {
+  0%, 6% { opacity: 0; transform: rotate(-45deg) scaleX(0); }
+  14%    { opacity: .8; }
+  30%    { opacity: 0; transform: rotate(-45deg) scaleX(1); }
+  100%   { opacity: 0; transform: rotate(-45deg) scaleX(1); }
+}
+@keyframes carga-chispa {
+  0%, 5% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+  9%     { opacity: .95; }
+  22%    { opacity: 0; transform: translate(calc(-50% + var(--cx)), calc(-50% + var(--cy))) scale(.3); }
+  100%   { opacity: 0; transform: translate(calc(-50% + var(--cx)), calc(-50% + var(--cy))) scale(.3); }
+}
+
+/* El retroceso del disparo y el flote mientras termina de cargar. */
+@keyframes carga-pop {
+  0%   { transform: none; }
+  30%  { transform: translate(2px, 2px) scale(.985); }
+  70%  { transform: scale(1.012); }
+  100% { transform: none; }
+}
+@keyframes carga-flota {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-6px); }
 }
 @keyframes carga-brillo {
   from { transform: translateX(-140%) skewX(-16deg); }
@@ -835,8 +951,8 @@ html.cargando, html.cargando body { overflow: hidden; }
 .reveal--der  { transform: translateX(30px); }
 
 /* --- 17.2 Barra de lectura --- */
-/* Cuánto falta para el final de la página. En un sitio de campaña, donde
-   la gente llega de un enlace y no sabe qué tan largo es, ubica. */
+/* Cuánto falta para el final de la página. En un sitio al que la gente
+   llega de un enlace y no sabe qué tan largo es, ubica. */
 .progreso {
   position: fixed; top: 0; left: 0; right: 0; z-index: 80;
   height: 3px; pointer-events: none;
@@ -962,7 +1078,7 @@ body.nav-open .arriba { opacity: 0; pointer-events: none; }
   body.nav-open { overflow: hidden; }
   .nav-scrim {
     position: fixed; inset: 0; z-index: 55;
-    background: rgba(6, 26, 62, .55);
+    background: rgba(5, 25, 63, .55);
     backdrop-filter: blur(2px);
     opacity: 0; transition: opacity .3s var(--ease);
   }
@@ -1020,10 +1136,11 @@ body.nav-open .arriba { opacity: 0; pointer-events: none; }
     transition-duration: .01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
-  /* La pantalla de carga se queda quieta: el logo entero, el arco dibujado
-     y nada de destello. Sin depender de cómo terminen las animaciones. */
+  /* La pantalla de carga se queda quieta: el logo entero y ensamblado,
+     el arco dibujado, sin destello y sin despegue de la flecha. */
   .carga__brillo { display: none; }
-  .carga__marca img { -webkit-mask-image: none; mask-image: none; }
+  .carga__punta { display: none; }
+  .carga__capa { opacity: 1 !important; transform: none !important; }
   .carga__trazo path { stroke-dashoffset: 0; }
 }
 

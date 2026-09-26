@@ -4,13 +4,13 @@
    y que las páginas ya visitadas se puedan abrir sin señal.
    Sube la versión al publicar cambios para forzar la actualización.
    ========================================================= */
-var VERSION = "arbey-v20";
+var VERSION = "arbey-v22";
 
 var ESENCIALES = [
   "./",
   "index.html",
-  "candidato.html",
-  "propuestas.html",
+  "perfil.html",
+  "gestion.html",
   "voz.html",
   "noticias.html",
   "eventos.html",
@@ -27,8 +27,8 @@ var ESENCIALES = [
   "assets/js/store.js",
   "assets/js/ui.js",
   "assets/js/main.js",
-  "assets/js/candidato.js",
-  "assets/js/propuestas.js",
+  "assets/js/perfil.js",
+  "assets/js/gestion.js",
   "assets/js/voz.js",
   "assets/js/noticias.js",
   "assets/js/eventos.js",
@@ -40,6 +40,9 @@ var ESENCIALES = [
   "assets/img/og-image.jpg",
   "assets/img/logo.png",
   "assets/img/logo-claro.png",
+  "assets/img/carga-a.png",
+  "assets/img/carga-r.png",
+  "assets/img/carga-texto.png",
   "assets/img/favicon.png",
   "assets/img/icono-192.png"
 ];

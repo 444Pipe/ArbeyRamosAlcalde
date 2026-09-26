@@ -8,7 +8,7 @@ window.UI = (function () {
   "use strict";
 
   var CFG = window.CAMPANA || {};
-  var ALT = 'Arbey Ramos Gómez, candidato a la Alcaldía de Restrepo';
+  var ALT = 'Avanza Restrepo · Arbey Ramos Gómez';
 
   /* =========================================================
      1. SPRITE DE ICONOS
@@ -69,15 +69,15 @@ window.UI = (function () {
      las páginas: es el único lugar donde vive la navegación. */
   var MENU = [
     { txt: "Inicio", href: "index.html" },
-    { txt: "El candidato", href: "candidato.html" },
-    { txt: "Propuestas", href: "propuestas.html" },
+    { txt: "Quién es Arbey", href: "perfil.html" },
+    { txt: "Gestión", href: "gestion.html" },
     { txt: "Tu voz", href: "voz.html", destacado: true },
     {
       txt: "Actualidad",
       hijos: [
-        { txt: "Noticias", href: "noticias.html", desc: "Comunicados y recorridos" },
+        { txt: "Noticias", href: "noticias.html", desc: "Gestiones y recorridos" },
         { txt: "Eventos y agenda", href: "eventos.html", desc: "Dónde estamos y cuándo" },
-        { txt: "Trayectoria", href: "logros.html", desc: "Y el semáforo de compromisos" }
+        { txt: "Trayectoria", href: "logros.html", desc: "Y el semáforo de gestiones" }
       ]
     },
     { txt: "Contacto", href: "contacto.html" }
@@ -86,11 +86,11 @@ window.UI = (function () {
   /* Mapa del sitio que se pinta en el pie de página. */
   var PIE = [
     {
-      titulo: "La campaña",
+      titulo: "Conoce a Arbey",
       enlaces: [
-        { txt: "El candidato", href: "candidato.html" },
-        { txt: "Programa de gobierno", href: "propuestas.html" },
-        { txt: "Trayectoria y compromisos", href: "logros.html" },
+        { txt: "Quién es Arbey", href: "perfil.html" },
+        { txt: "Gestión y proyectos", href: "gestion.html" },
+        { txt: "Trayectoria", href: "logros.html" },
         { txt: "Noticias", href: "noticias.html" }
       ]
     },
@@ -100,7 +100,7 @@ window.UI = (function () {
         { txt: "Mapa ciudadano", href: "voz.html" },
         { txt: "Reportar una problemática", href: "voz.html#reportar" },
         { txt: "Eventos y agenda", href: "eventos.html" },
-        { txt: "Únete a la campaña", href: "unete.html" }
+        { txt: "Participa", href: "unete.html" }
       ]
     }
   ];
@@ -147,8 +147,8 @@ window.UI = (function () {
 
     host.innerHTML =
       '<div class="topbar"><div class="wrap topbar__in">' +
-        '<p class="topbar__txt"><span class="dot" aria-hidden="true"></span> Precandidatura a la ' +
-          CFG.cargo + '<span class="topbar__extra"> · Período ' + CFG.periodo + "</span></p>" +
+        '<p class="topbar__txt"><span class="dot" aria-hidden="true"></span> ' +
+          CFG.cargo + '<span class="topbar__extra"> · ' + CFG.periodo + " · " + CFG.partido + "</span></p>" +
         '<div class="topbar__social">' +
           '<a href="' + CFG.redes.facebook + '" aria-label="Facebook">' + icono("i-facebook") + "</a>" +
           '<a href="' + CFG.redes.instagram + '" aria-label="Instagram">' + icono("i-instagram") + "</a>" +
@@ -159,12 +159,12 @@ window.UI = (function () {
 
       '<header class="header" id="header"><div class="wrap header__in">' +
         '<a class="brand" href="index.html">' +
-          '<img class="brand__logo" src="assets/img/logo.png" width="480" height="292" alt="' + ALT + '">' +
-          '<span class="brand__txt"><small>' + CFG.cargo + " · " + CFG.periodo + "</small></span>" +
+          '<img class="brand__logo" src="assets/img/logo.png" width="480" height="274" alt="' + ALT + '">' +
+          '<span class="brand__txt"><strong>' + CFG.candidato + "</strong><small>" + CFG.cargo + "</small></span>" +
         "</a>" +
         '<nav class="nav" id="nav" aria-label="Navegación principal">' +
           MENU.map(enlaceMenu).join("") +
-          '<a class="btn btn--primary nav__cta" href="unete.html">' + icono("i-hand") + " Únete</a>" +
+          '<a class="btn btn--primary nav__cta" href="unete.html">' + icono("i-hand") + " Participa</a>" +
         "</nav>" +
         '<button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">' +
           "<span></span><span></span><span></span></button>" +
@@ -179,8 +179,8 @@ window.UI = (function () {
       '<footer class="footer"><div class="wrap footer__mapa">' +
 
         '<div class="footer__brand">' +
-          '<img class="footer__logo" src="assets/img/logo-claro.png" width="480" height="292" alt="' + ALT + '">' +
-          "<div><p>Candidato a la " + CFG.cargo + "<br>" + CFG.periodo + " · " + CFG.partido + "</p></div>" +
+          '<img class="footer__logo" src="assets/img/logo-claro.png" width="480" height="274" alt="' + ALT + '">' +
+          "<div><p>" + CFG.candidato + "<br>" + CFG.cargo + "<br>" + CFG.periodo + " · " + CFG.partido + "</p></div>" +
           '<div class="footer__social">' +
             '<a href="' + CFG.redes.facebook + '" aria-label="Facebook">' + icono("i-facebook") + "</a>" +
             '<a href="' + CFG.redes.instagram + '" aria-label="Instagram">' + icono("i-instagram") + "</a>" +
@@ -206,7 +206,7 @@ window.UI = (function () {
 
       "</div>" +
       '<div class="wrap footer__legal">' +
-        "<p>© " + new Date().getFullYear() + " Campaña " + CFG.candidato + ". Todos los derechos reservados.</p>" +
+        "<p>© " + new Date().getFullYear() + " " + CFG.candidato + ". Todos los derechos reservados.</p>" +
         "<p>Sitio en construcción · Contenido preliminar sujeto a actualización.</p>" +
       "</div></footer>" +
       '<a class="wa-float" href="https://wa.me/' + CFG.whatsapp + '" target="_blank" rel="noopener" ' +
@@ -484,7 +484,7 @@ window.UI = (function () {
               "<span>Autorizo el tratamiento de mis datos conforme a la Ley 1581 de 2012.</span></label>" +
             '<p class="form__err" data-err-for="r-hab"></p>' +
             '<button class="btn btn--primary btn--block btn--lg" type="submit">Registrarme</button>' +
-            '<p class="registro__nota">' + icono("i-lock") + " Tus datos no se publican. Solo el equipo de campaña los ve.</p>" +
+            '<p class="registro__nota">' + icono("i-lock") + " Tus datos no se publican. Solo el equipo de Arbey los ve.</p>" +
           "</form>" +
         "</div>",
         { titulo: "Registro" }

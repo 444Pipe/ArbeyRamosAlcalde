@@ -1,17 +1,25 @@
-Imágenes de la campaña.
+Imágenes del sitio.
 
 LOGO
 ----
-logo-original.png   Archivo tal como lo entregó el diseñador (1536x1024, 1.2 MB).
-                    Es la fuente: no se usa directamente en el sitio.
-logo-anterior.png   Versión anterior del logo (sin el símbolo de las figuras).
-                    Ya no se usa: se puede borrar.
-logo.png            Logo recortado y optimizado, para FONDO CLARO (cabecera).
-logo-claro.png      Versión aclarada, para FONDO OSCURO (pie de página).
-                    El arte original es azul muy oscuro y sobre el azul del
-                    pie desaparecía; esta versión lleva a blanco solo las
-                    zonas oscuras y conserva el destello azul.
-simbolo.png         Solo el símbolo de las tres figuras, en cuadrado.
+nuevo logo/         La fuente de la marca "Avanza Restrepo" tal como llegó:
+                    la versión azul (limpia, la que se usa) y una versión
+                    blanca con bordes sucios que NO se usa (la versión clara
+                    se fabrica desde la azul).
+logo-original.png   Logo anterior ("Arbey Ramos Gómez · Alcalde"). Ya no se
+                    usa: se conserva solo como histórico. Se puede borrar.
+logo-anterior.png   Versión aún más vieja. Se puede borrar.
+logo.png            Logo "Avanza Restrepo" recortado y optimizado, para
+                    FONDO CLARO (cabecera y pantalla de carga).
+logo-claro.png      Versión en blanco, para FONDO OSCURO (pie de página).
+                    Se fabrica rellenando de blanco la silueta del logo azul.
+simbolo.png         Solo el monograma AR, en cuadrado.
+carga-a.png         Capa para la pantalla de carga: la A del monograma.
+carga-r.png         Capa: la R con la banda y la flecha calada.
+carga-texto.png     Capa: el bloque AVANZA / RESTREPO.
+                    Las tres van en el mismo lienzo que logo.png: apiladas
+                    reconstruyen el logo, y por eso pueden entrar animadas
+                    cada una por su lado (ver carga.js y styles.css).
 favicon.png         Ícono del navegador (32x32).
 icono-apple.png     Ícono para iOS al agregar a pantalla de inicio (180x180).
 icono-192.png       Ícono de la app instalable.
@@ -21,11 +29,12 @@ Todos los derivados se generan con:
 
     python assets/img/generar-logos.py
 
-Si llega un logo nuevo, se reemplaza logo-original.png y se vuelve a correr
-ese script: regenera las 7 versiones con las mismas medidas.
+Si llega un logo nuevo, se reemplaza el archivo que apunta ORIGEN dentro de
+ese script y se vuelve a correr: regenera las 7 versiones con las mismas
+medidas.
 
-FOTO DEL CANDIDATO
-------------------
+FOTO DE ARBEY
+-------------
 arbeyramos.PNG      Foto tal como llegó (recorte con fondo transparente).
                     Es la fuente: no se usa directamente en el sitio.
 arbey.webp          Foto optimizada, la que carga el sitio (88 KB).
@@ -45,5 +54,6 @@ con fondo transparente) y se vuelve a correr el script.
 
 FOTOS QUE AÚN FALTAN
 --------------------
-Fotos en territorio (recorridos, encuentros veredales) para las noticias
-y la galería. Formato libre; conviene exportarlas también a WebP.
+Fotos en territorio (recorridos, encuentros veredales, sesiones del Concejo)
+para las noticias y la galería. Formato libre; conviene exportarlas también
+a WebP.

@@ -18,14 +18,14 @@
     });
   }
 
-  /* ---------- Resumen del candidato ---------- */
+  /* ---------- Resumen del perfil ---------- */
   function pintarPerfil() {
     var cont = document.getElementById("perfil-resumen");
     var p = window.CONTENIDO.perfil;
     if (!cont || !p) return;
 
     cont.innerHTML =
-      '<p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> El candidato</p>' +
+      '<p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Quién es Arbey</p>' +
       '<h2 class="h2">' + esc(p.titular) + "</h2>" +
       "<p>" + esc(p.resumen) + "</p>" +
       '<ul class="values">' +
@@ -36,17 +36,17 @@
         "</li>";
       }).join("") +
       "</ul>" +
-      '<a class="btn btn--primary" href="candidato.html">Conocer su historia ' + UI.icono("i-arrow") + "</a>";
+      '<a class="btn btn--primary" href="perfil.html">Conocer su historia ' + UI.icono("i-arrow") + "</a>";
   }
 
-  /* ---------- Resumen de las propuestas ---------- */
+  /* ---------- Resumen de la gestión ---------- */
   function pintarPropuestas() {
     var cont = document.getElementById("propuestas-resumen");
-    var ejes = window.CONTENIDO.propuestas || [];
+    var ejes = window.CONTENIDO.gestion || [];
     if (!cont) return;
 
     cont.innerHTML = ejes.map(function (e, i) {
-      return '<a class="card reveal' + (i % 3 ? " reveal--d" + (i % 3) : "") + '" href="propuestas.html#' + e.id + '">' +
+      return '<a class="card reveal' + (i % 3 ? " reveal--d" + (i % 3) : "") + '" href="gestion.html#' + e.id + '">' +
         '<span class="card__ico">' + UI.icono(e.icono) + "</span>" +
         "<h3>" + esc(e.titulo) + "</h3>" +
         "<p>" + esc(e.resumen) + "</p>" +

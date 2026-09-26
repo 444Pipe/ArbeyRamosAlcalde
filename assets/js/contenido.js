@@ -1,7 +1,7 @@
 /* =========================================================
    CONTENIDO EDITABLE DEL SITIO
-   Noticias, eventos, logros y encuesta. El equipo de campaña
-   puede editar este archivo sin tocar nada más.
+   Noticias, eventos, trayectoria y encuesta. El equipo puede
+   editar este archivo sin tocar nada más.
 
    IMPORTANTE: todo lo que está marcado con  demo: true  es
    contenido de EJEMPLO. El sitio le pone una etiqueta visible
@@ -12,119 +12,128 @@
 window.CONTENIDO = {
 
   /* ---------------------------------------------------------
-     PERFIL DEL CANDIDATO
-     El texto largo de la biografía está en candidato.html.
+     PERFIL DE ARBEY
+     El texto largo de la biografía está en perfil.html.
      Esto es solo el resumen que aparece en la portada.
      --------------------------------------------------------- */
   perfil: {
-    demo: true,
-    titular: "Un liderazgo cercano, con los pies en el territorio",
-    resumen: "Arbey Ramos Gómez es un hombre de trabajo, formado en los valores de la " +
-             "familia, la fe y el esfuerzo honesto. Su compromiso con Restrepo nace de " +
-             "recorrer sus calles y sus veredas, y de escuchar a quienes nunca son escuchados.",
+    titular: "Restrepense de nacimiento, padre de familia y hombre de trabajo",
+    resumen: "Arbey Ramos Gómez es oriundo de Restrepo y padre de familia. Contador " +
+             "Público y estudiante de Administración Pública, ha sido concejal del " +
+             "municipio por tres periodos y hoy es el Presidente del Concejo de Restrepo " +
+             "y del Directorio Municipal del Partido Conservador.",
     valores: [
-      { titulo: "Cercanía real",  texto: "Despacho abierto y presencia permanente en barrios y veredas." },
-      { titulo: "Manejo honesto", texto: "Cada peso público se informa y se explica a la comunidad." },
-      { titulo: "Obras que se ven", texto: "Metas claras, plazos definidos y seguimiento público." }
+      { titulo: "Cercanía real",   texto: "Tres periodos recorriendo los barrios y las veredas, escuchando a la gente donde vive." },
+      { titulo: "Manejo técnico",  texto: "Contador Público: los recursos del municipio se revisan con rigor y se explican con claridad." },
+      { titulo: "Trabajo que se ve", texto: "Gestiones con seguimiento público: aquí queda registrado qué se pidió y en qué va." }
     ]
   },
 
   /* ---------------------------------------------------------
-     PROGRAMA DE GOBIERNO
-     Cada eje tiene su propio bloque en propuestas.html.
-     "acciones" son los compromisos concretos de ese eje.
+     GESTIÓN COMO CONCEJAL
+     Los frentes de trabajo de tres periodos en el Concejo.
+     Cada frente tiene su propio bloque en gestion.html.
+     "acciones" es el trabajo adelantado en ese frente.
+
+     EDITAR: afinar cada punto con los acuerdos, debates y
+     gestiones reales (número de acuerdo, año y resultado).
      --------------------------------------------------------- */
-  propuestas: [
+  gestion: [
     {
-      id: "seguridad",
-      icono: "i-shield",
-      titulo: "Seguridad y convivencia",
-      resumen: "Que la gente pueda salir tranquila de su casa y volver tranquila, de día y de noche.",
-      detalle: "La seguridad no se resuelve solo con discursos. Se resuelve con presencia " +
-               "institucional constante, con iluminación donde hoy hay oscuridad y con una " +
-               "comunidad organizada que se conoce y se cuida.",
+      id: "hacienda",
+      icono: "i-chart",
+      titulo: "Hacienda y recursos públicos",
+      resumen: "Las cuentas del municipio revisadas con ojos de Contador Público.",
+      detalle: "El presupuesto de Restrepo no es un papel: es la plata de la gente. " +
+               "Como contador, Arbey ha estudiado peso a peso cada presupuesto que pasa " +
+               "por el Concejo, para que los recursos rindan y se sepa en qué se van.",
       acciones: [
-        "Plan de alumbrado público priorizando los puntos que la comunidad reporte como críticos.",
-        "Mesas de seguridad periódicas con la Policía, las JAC y los comerciantes.",
-        "Cámaras de vigilancia en los accesos al municipio y en los puntos de mayor afluencia.",
-        "Apoyo real a los frentes de seguridad de barrios y veredas."
+        "Estudio y debate técnico del presupuesto municipal en cada vigencia.",
+        "Control político a la ejecución de los recursos y a la contratación pública.",
+        "Seguimiento a los informes de la administración con criterio contable.",
+        "Explicación de las cuentas públicas a la comunidad en lenguaje claro."
       ]
     },
     {
-      id: "empleo",
-      icono: "i-briefcase",
-      titulo: "Empleo y emprendimiento",
-      resumen: "Que quien quiera trabajar en Restrepo encuentre cómo, sin tener que irse.",
-      detalle: "El empleo se genera acompañando al que ya está produciendo: el comerciante, " +
-               "el campesino, la mujer que vende desde su casa. Menos trámite y más apoyo.",
+      id: "campo",
+      icono: "i-sprout",
+      titulo: "El campo y las veredas",
+      resumen: "La zona rural de Restrepo presente en cada debate del Concejo.",
+      detalle: "Casi siete mil restrepenses viven en las veredas. Arbey ha llevado sus " +
+               "necesidades al recinto del Concejo una y otra vez: las vías terciarias, " +
+               "los acueductos veredales y el apoyo al que produce la comida.",
       acciones: [
-        "Ventanilla única para abrir y formalizar un negocio en el municipio.",
-        "Ferias productivas periódicas para que el comercio local venda directo.",
-        "Formación para el trabajo articulada con el SENA, enfocada en jóvenes y mujeres.",
-        "Compras públicas del municipio con preferencia por proveedores locales."
+        "Debates sobre el estado y el mantenimiento de las vías terciarias.",
+        "Gestión y seguimiento a los acueductos veredales y al saneamiento rural.",
+        "Respaldo desde el Concejo a los productores y a la asistencia técnica agropecuaria.",
+        "Acompañamiento a las comunidades veredales en sus solicitudes ante la administración."
+      ]
+    },
+    {
+      id: "comunidad",
+      icono: "i-users",
+      titulo: "Comunidad y acción comunal",
+      resumen: "El trabajo codo a codo con las juntas de acción comunal.",
+      detalle: "Las JAC son la primera puerta que toca un vecino cuando algo falta. " +
+               "Por eso el trabajo de Arbey empieza ahí: escuchando a los líderes " +
+               "comunales y ayudándolos a mover sus necesidades ante quien corresponde.",
+      acciones: [
+        "Acompañamiento permanente a las juntas de acción comunal de barrios y veredas.",
+        "Gestión de necesidades puntuales de la comunidad ante la administración municipal.",
+        "Impulso a la participación ciudadana en las sesiones del Concejo.",
+        "Presencia constante en los sectores: los problemas se conocen caminándolos."
       ]
     },
     {
       id: "educacion",
       icono: "i-graduation",
-      titulo: "Educación y juventud",
-      resumen: "Que ningún joven tenga que irse del municipio para poder estudiar.",
-      detalle: "La educación es la única política que cambia una familia de raíz. Necesitamos " +
-               "sedes dignas, conectividad de verdad y una ruta clara después del grado once.",
+      titulo: "Educación, deporte y juventud",
+      resumen: "Oportunidades para que los jóvenes no tengan que irse del municipio.",
+      detalle: "En tres periodos, Arbey ha defendido en el Concejo lo que las familias " +
+               "más piden para sus hijos: sedes educativas dignas, transporte escolar " +
+               "que llegue a las veredas y espacios para el deporte y la cultura.",
       acciones: [
-        "Mejoramiento de las sedes educativas rurales: baños, techos, comedores y pupitres.",
-        "Conectividad en las instituciones y puntos de internet comunitario.",
-        "Transporte escolar garantizado para la zona rural.",
-        "Fondo de becas municipal para educación técnica y universitaria."
+        "Debates y seguimiento al transporte escolar rural y a la alimentación escolar.",
+        "Gestión por el mejoramiento de las sedes educativas del municipio.",
+        "Apoyo a las escuelas deportivas y a los espacios para la juventud.",
+        "Respaldo a las actividades culturales y a las tradiciones restrepenses."
       ]
     },
     {
       id: "salud",
       icono: "i-salud",
       titulo: "Salud y bienestar",
-      resumen: "Atención oportuna y cerca, sin tener que viajar para todo.",
-      detalle: "La salud del municipio se mide en cuánto tiempo tarda una persona en ser " +
-               "atendida. Ese es el indicador que vamos a mejorar.",
+      resumen: "Que la atención llegue a tiempo y también a la zona rural.",
+      detalle: "La salud se mide en cuánto tarda una persona en ser atendida. Desde el " +
+               "Concejo, Arbey ha insistido en fortalecer el centro de salud y en que " +
+               "las jornadas de atención lleguen hasta las veredas.",
       acciones: [
-        "Jornadas médicas y odontológicas periódicas en la zona rural.",
-        "Fortalecimiento del centro de salud en dotación y personal.",
-        "Programa de atención al adulto mayor y a la primera infancia.",
-        "Atención en salud mental y prevención del consumo en jóvenes."
+        "Control político a la prestación del servicio de salud en el municipio.",
+        "Gestión por la dotación y el personal del centro de salud.",
+        "Impulso a las jornadas de salud en la zona rural.",
+        "Seguimiento a los programas del adulto mayor y de la primera infancia."
       ]
     },
     {
-      id: "vias",
-      icono: "i-road",
-      titulo: "Vías e infraestructura",
-      resumen: "Vías transitables todo el año y agua potable en cada casa.",
-      detalle: "Sin vías no hay cosecha que salga, ni enfermo que llegue a tiempo, ni niño " +
-               "que llegue al colegio. Es la base de todo lo demás.",
+      id: "concejo",
+      icono: "i-flag",
+      titulo: "Un Concejo abierto y cercano",
+      resumen: "Como presidente, una corporación con las puertas abiertas.",
+      detalle: "Presidir el Concejo es un encargo de confianza: dirigir el debate con " +
+               "respeto, darle la palabra a la comunidad y hacer de la corporación una " +
+               "casa donde cualquier restrepense pueda entrar, hablar y ser escuchado.",
       acciones: [
-        "Plan de mantenimiento permanente de vías terciarias, no solo en época de lluvias.",
-        "Banco de maquinaria propio del municipio para no depender de terceros.",
-        "Mejoramiento de acueductos veredales y del sistema de saneamiento.",
-        "Recuperación de parques, polideportivos y espacio público."
-      ]
-    },
-    {
-      id: "campo",
-      icono: "i-sprout",
-      titulo: "Campo, turismo y ambiente",
-      resumen: "Que producir en el campo vuelva a ser rentable, cuidando lo que tenemos.",
-      detalle: "El campesino no necesita que le regalen nada: necesita vías, asistencia " +
-               "técnica y un comprador justo. Y necesita que protejamos el agua.",
-      acciones: [
-        "Asistencia técnica agropecuaria permanente y gratuita.",
-        "Apoyo a la comercialización directa, eliminando intermediarios innecesarios.",
-        "Protección de las fuentes hídricas y reforestación de nacimientos.",
-        "Ruta turística municipal que deje ingresos en manos de las familias locales."
+        "Sesiones públicas y abiertas: cualquier ciudadano puede asistir y participar.",
+        "Vocería del Concejo ante la administración y las demás instituciones.",
+        "Trámite ordenado y transparente de los proyectos de acuerdo.",
+        "Atención directa a la ciudadanía desde la presidencia de la corporación."
       ]
     }
   ],
 
   /* ---------------------------------------------------------
      NOTICIAS  ·  las más recientes primero
-     categoria: "Comunicado" | "Prensa" | "Territorio" | "Propuesta"
+     categoria: "Concejo" | "Territorio" | "Comunicado" | "Prensa"
      --------------------------------------------------------- */
   noticias: [
     {
@@ -133,8 +142,8 @@ window.CONTENIDO = {
       fecha: "2026-08-12",
       categoria: "Territorio",
       titulo: "Arbey Ramos recorrió la zona rural escuchando a los productores",
-      resumen: "Durante toda la jornada el precandidato visitó fincas y escuchó las dificultades para sacar los productos al mercado por el mal estado de las vías terciarias.",
-      cuerpo: "Texto completo de la noticia. Reemplaza este contenido por la nota real, con los nombres de las veredas visitadas, las personas que acompañaron y los compromisos concretos que salieron del recorrido.",
+      resumen: "Durante toda la jornada, el presidente del Concejo visitó fincas y escuchó las dificultades para sacar los productos al mercado por el estado de las vías terciarias.",
+      cuerpo: "Texto completo de la noticia. Reemplaza este contenido por la nota real, con los nombres de las veredas visitadas, las personas que acompañaron y las gestiones concretas que salieron del recorrido.",
       destacada: true,
       imagen: ""
     },
@@ -142,9 +151,9 @@ window.CONTENIDO = {
       id: "n2",
       demo: true,
       fecha: "2026-08-05",
-      categoria: "Propuesta",
-      titulo: "Presentamos el primer borrador del programa de gobierno",
-      resumen: "Seis ejes construidos a partir de los reportes ciudadanos recibidos en esta plataforma y de los encuentros barriales realizados hasta hoy.",
+      categoria: "Concejo",
+      titulo: "Balance del periodo de sesiones: los debates que le importan a la gente",
+      resumen: "Resumen de los proyectos de acuerdo tramitados y de los debates de control político adelantados por la corporación en el último periodo.",
       cuerpo: "Texto completo de la noticia.",
       destacada: false,
       imagen: ""
@@ -154,8 +163,8 @@ window.CONTENIDO = {
       demo: true,
       fecha: "2026-07-28",
       categoria: "Comunicado",
-      titulo: "Nuestro compromiso con la transparencia en la campaña",
-      resumen: "Publicaremos periódicamente el origen de los aportes y los gastos de la campaña, más allá de lo que exige la ley.",
+      titulo: "Así va la gestión: cuentas claras ante la comunidad",
+      resumen: "Informe periódico del trabajo adelantado desde el Concejo: qué se ha debatido, qué se ha gestionado y en qué va cada compromiso.",
       cuerpo: "Texto completo del comunicado.",
       destacada: false,
       imagen: ""
@@ -165,8 +174,8 @@ window.CONTENIDO = {
       demo: true,
       fecha: "2026-07-19",
       categoria: "Prensa",
-      titulo: "Entrevista en la emisora local: seguridad y empleo",
-      resumen: "Arbey Ramos habló sobre las dos preocupaciones que más aparecen en los reportes ciudadanos del municipio.",
+      titulo: "Entrevista en la emisora local: el trabajo del Concejo Municipal",
+      resumen: "Arbey Ramos habló sobre las prioridades de la corporación y sobre los reportes que la ciudadanía deja en esta plataforma.",
       cuerpo: "Texto completo o enlace a la entrevista.",
       destacada: false,
       imagen: ""
@@ -174,7 +183,7 @@ window.CONTENIDO = {
   ],
 
   /* ---------------------------------------------------------
-     EVENTOS  ·  la agenda pública de la campaña
+     EVENTOS  ·  la agenda pública de Arbey
      fecha: "AAAA-MM-DD"   hora: "HH:MM" (24h)
      --------------------------------------------------------- */
   eventos: [
@@ -193,9 +202,9 @@ window.CONTENIDO = {
       demo: true,
       fecha: "2026-09-14",
       hora: "17:30",
-      titulo: "Conversatorio con jóvenes: educación y empleo",
+      titulo: "Conversatorio con jóvenes: educación y oportunidades",
       lugar: "Parque principal",
-      descripcion: "Un espacio abierto para hablar de becas, conectividad y oportunidades para no tener que irse del municipio.",
+      descripcion: "Un espacio abierto para hablar de estudio, deporte y oportunidades para quedarse en el municipio.",
       cupo: 200
     },
     {
@@ -203,9 +212,9 @@ window.CONTENIDO = {
       demo: true,
       fecha: "2026-09-27",
       hora: "08:00",
-      titulo: "Jornada puerta a puerta en el casco urbano",
-      lugar: "Punto de encuentro: sede de campaña",
-      descripcion: "Convocatoria abierta a voluntarios. Llevamos el mensaje casa por casa y recogemos problemáticas.",
+      titulo: "Jornada de atención ciudadana",
+      lugar: "Recinto del Concejo Municipal",
+      descripcion: "Atención directa: trae tu caso, tu solicitud o la necesidad de tu sector y le hacemos seguimiento.",
       cupo: 60
     },
     {
@@ -213,48 +222,51 @@ window.CONTENIDO = {
       demo: true,
       fecha: "2026-07-11",
       hora: "10:00",
-      titulo: "Lanzamiento de la plataforma ciudadana",
+      titulo: "Rendición de cuentas del trabajo en el Concejo",
       lugar: "Salón comunal del Centro",
-      descripcion: "Presentamos el mapa de problemáticas y explicamos cómo cualquier habitante puede reportar desde su celular.",
+      descripcion: "Presentamos el balance de la gestión y explicamos cómo cualquier habitante puede reportar desde su celular.",
       cupo: 150
     }
   ],
 
   /* ---------------------------------------------------------
-     TRAYECTORIA Y LOGROS  ·  línea de tiempo
+     TRAYECTORIA  ·  línea de tiempo (lo más reciente primero)
      --------------------------------------------------------- */
   logros: [
     {
       id: "l1",
-      demo: true,
-      icono: "i-map",
-      anio: "2026",
-      titulo: "Plataforma ciudadana de problemáticas",
-      texto: "Pusimos en marcha el primer mapa abierto donde cualquier habitante del municipio reporta lo que necesita su barrio o su vereda."
+      icono: "i-flag",
+      anio: "2024–2027",
+      titulo: "Presidente del Concejo de Restrepo",
+      texto: "Elegido por la corporación para presidirla: dirigir el debate, darle la palabra a la comunidad y ser la vocería del Concejo ante las instituciones."
     },
     {
       id: "l2",
-      demo: true,
-      icono: "i-pin",
-      anio: "2025",
-      titulo: "Recorrido por todas las veredas",
-      texto: "Completamos la visita a la zona rural del municipio escuchando de primera mano a las comunidades."
+      icono: "i-star",
+      anio: "Hoy",
+      titulo: "Presidente del Directorio del Partido Conservador",
+      texto: "Al frente del directorio municipal del Partido Conservador Colombiano en Restrepo."
     },
     {
       id: "l3",
-      demo: true,
       icono: "i-users",
-      anio: "2024",
-      titulo: "Acompañamiento a las juntas de acción comunal",
-      texto: "Trabajo conjunto con líderes comunales para gestionar necesidades puntuales ante la administración."
+      anio: "3 periodos",
+      titulo: "Concejal de Restrepo",
+      texto: "Elegido y reelegido por voto popular durante tres periodos: años de escuchar a la gente y llevar su voz a los debates del Concejo."
     },
     {
       id: "l4",
-      demo: true,
-      icono: "i-star",
-      anio: "2023",
-      titulo: "Trabajo social y comunitario",
-      texto: "Reemplaza este punto con los hitos reales de la trayectoria de Arbey: estudios, cargos, gestiones y reconocimientos."
+      icono: "i-graduation",
+      anio: "Formación",
+      titulo: "Contador Público · Est. de Administración Pública",
+      texto: "Profesional en Contaduría Pública y estudiante de Administración Pública: números claros y lo público manejado con seriedad."
+    },
+    {
+      id: "l5",
+      icono: "i-pin",
+      anio: "Raíces",
+      titulo: "Restrepense de nacimiento y padre de familia",
+      texto: "Nació y creció en Restrepo. Padre de familia, orgulloso de su pueblo y de su gente."
     }
   ],
 
@@ -262,8 +274,8 @@ window.CONTENIDO = {
      ENCUESTA RELÁMPAGO  ·  la pregunta de la semana
      --------------------------------------------------------- */
   encuesta: {
-    id: "q-2026-33",
-    pregunta: "¿Cuál debería ser la primera obra del próximo alcalde?",
+    id: "q-2026-39",
+    pregunta: "¿Qué tema debería priorizar el Concejo en los próximos debates?",
     opciones: [
       { id: "a", texto: "Arreglo de las vías rurales" },
       { id: "b", texto: "Agua potable en toda la zona rural" },

@@ -114,7 +114,7 @@
     });
 
     document.getElementById("btn-suscribir").addEventListener("click", function () {
-      UI.pedirRegistro("Déjanos tu celular y te avisamos de cada novedad de la campaña.")
+      UI.pedirRegistro("Déjanos tu celular y te avisamos de cada novedad de la gestión.")
         .then(function (p) { if (p) UI.toast("Listo. Te avisaremos por WhatsApp."); });
     });
   }

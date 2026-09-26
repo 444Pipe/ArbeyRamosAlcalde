@@ -1,13 +1,13 @@
 {
-  "name": "Arbey Ramos Gómez · Alcaldía de Restrepo",
+  "name": "Arbey Ramos Gómez · Concejo de Restrepo",
   "short_name": "Arbey Ramos",
-  "description": "Plataforma ciudadana de la campaña: reporta lo que necesita tu barrio o tu vereda.",
+  "description": "Sitio oficial de Arbey Ramos Gómez: su gestión como concejal y la plataforma para reportar lo que necesita tu barrio o tu vereda.",
   "start_url": "index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#061A3E",
-  "theme_color": "#0A2559",
+  "background_color": "#05193F",
+  "theme_color": "#07245C",
   "lang": "es-CO",
   "categories": [
     "government",
