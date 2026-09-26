@@ -31,8 +31,9 @@ for pagina in sorted(glob.glob('*.html')):
     s = io.open(pagina, encoding='utf-8').read()
     original = s
 
-    # index.html es la raíz del sitio, no "/index.html"
-    ruta = '/' if pagina == 'index.html' else '/' + pagina
+    # Las URLs públicas son limpias: la raíz para index.html y
+    # "/perfil" (sin ".html") para las demás páginas.
+    ruta = '/' if pagina == 'index.html' else '/' + pagina[:-len('.html')]
     url = dominio + ruta
     imagen = dominio + '/assets/img/og-image.jpg'
 

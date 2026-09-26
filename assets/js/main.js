@@ -36,7 +36,7 @@
         "</li>";
       }).join("") +
       "</ul>" +
-      '<a class="btn btn--primary" href="perfil.html">Conocer su historia ' + UI.icono("i-arrow") + "</a>";
+      '<a class="btn btn--primary" href="/perfil">Conocer su historia ' + UI.icono("i-arrow") + "</a>";
   }
 
   /* ---------- Resumen de la gestión ---------- */
@@ -46,7 +46,7 @@
     if (!cont) return;
 
     cont.innerHTML = ejes.map(function (e, i) {
-      return '<a class="card reveal' + (i % 3 ? " reveal--d" + (i % 3) : "") + '" href="gestion.html#' + e.id + '">' +
+      return '<a class="card reveal' + (i % 3 ? " reveal--d" + (i % 3) : "") + '" href="/gestion#' + e.id + '">' +
         '<span class="card__ico">' + UI.icono(e.icono) + "</span>" +
         "<h3>" + esc(e.titulo) + "</h3>" +
         "<p>" + esc(e.resumen) + "</p>" +
@@ -85,7 +85,7 @@
           "</div>" +
           "<h3>" + esc(n.titulo) + "</h3>" +
           "<p>" + esc(n.resumen) + "</p>" +
-          '<a class="noticia__mas" href="noticias.html">Leer completo ' + UI.icono("i-arrow") + "</a>" +
+          '<a class="noticia__mas" href="/noticias">Leer completo ' + UI.icono("i-arrow") + "</a>" +
         "</div>" +
       "</article>";
     }).join("");
@@ -121,7 +121,7 @@
           "</div>" +
         "</div>" +
         '<div class="evento__accion">' +
-          '<a class="btn ' + (confirmado ? "btn--linea" : "btn--primary") + '" href="eventos.html">' +
+          '<a class="btn ' + (confirmado ? "btn--linea" : "btn--primary") + '" href="/eventos">' +
             UI.icono(confirmado ? "i-check" : "i-calendar") +
             (confirmado ? "Ya confirmaste" : "Confirmar asistencia") + "</a>" +
         "</div>" +

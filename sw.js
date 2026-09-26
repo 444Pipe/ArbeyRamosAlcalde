@@ -4,47 +4,48 @@
    y que las páginas ya visitadas se puedan abrir sin señal.
    Sube la versión al publicar cambios para forzar la actualización.
    ========================================================= */
-var VERSION = "arbey-v24";
+var VERSION = "arbey-v25";
 
+/* Las páginas se guardan por su URL limpia (sin ".html"), que es como
+   las sirve Caddy y como las pide el navegador. */
 var ESENCIALES = [
-  "./",
-  "index.html",
-  "perfil.html",
-  "gestion.html",
-  "voz.html",
-  "noticias.html",
-  "eventos.html",
-  "logros.html",
-  "unete.html",
-  "contacto.html",
-  "404.html",
-  "manifest.json",
-  "assets/css/styles.css",
-  "assets/css/plataforma.css",
-  "assets/js/carga.js",
-  "assets/js/config.js",
-  "assets/js/contenido.js",
-  "assets/js/store.js",
-  "assets/js/ui.js",
-  "assets/js/main.js",
-  "assets/js/perfil.js",
-  "assets/js/gestion.js",
-  "assets/js/voz.js",
-  "assets/js/noticias.js",
-  "assets/js/eventos.js",
-  "assets/js/logros.js",
-  "assets/js/unete.js",
-  "assets/js/contacto.js",
-  "assets/img/arbey.webp",
-  "assets/img/arbey.png",
-  "assets/img/og-image.jpg",
-  "assets/img/logo.png",
-  "assets/img/logo-claro.png",
-  "assets/img/carga-a.png",
-  "assets/img/carga-r.png",
-  "assets/img/carga-texto.png",
-  "assets/img/favicon.png",
-  "assets/img/icono-192.png"
+  "/",
+  "/perfil",
+  "/gestion",
+  "/voz",
+  "/noticias",
+  "/eventos",
+  "/logros",
+  "/unete",
+  "/contacto",
+  "/404",
+  "/manifest.json",
+  "/assets/css/styles.css",
+  "/assets/css/plataforma.css",
+  "/assets/js/carga.js",
+  "/assets/js/config.js",
+  "/assets/js/contenido.js",
+  "/assets/js/store.js",
+  "/assets/js/ui.js",
+  "/assets/js/main.js",
+  "/assets/js/perfil.js",
+  "/assets/js/gestion.js",
+  "/assets/js/voz.js",
+  "/assets/js/noticias.js",
+  "/assets/js/eventos.js",
+  "/assets/js/logros.js",
+  "/assets/js/unete.js",
+  "/assets/js/contacto.js",
+  "/assets/img/arbey.webp",
+  "/assets/img/arbey.png",
+  "/assets/img/og-image.jpg",
+  "/assets/img/logo.png",
+  "/assets/img/logo-claro.png",
+  "/assets/img/carga-a.png",
+  "/assets/img/carga-r.png",
+  "/assets/img/carga-texto.png",
+  "/assets/img/favicon.png",
+  "/assets/img/icono-192.png"
 ];
 
 self.addEventListener("install", function (e) {
@@ -92,7 +93,7 @@ self.addEventListener("fetch", function (e) {
       fetch(req)
         .then(guardarSiSirve)
         .catch(function () {
-          return caches.match(req).then(function (r) { return r || caches.match("index.html"); });
+          return caches.match(req).then(function (r) { return r || caches.match("/"); });
         })
     );
     return;

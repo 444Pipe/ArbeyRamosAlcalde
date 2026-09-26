@@ -10,13 +10,19 @@ HTML + CSS + JavaScript, sin dependencias ni proceso de compilación.
 
 ## Cómo verlo
 
+El sitio usa **URLs limpias** (`/perfil`, `/gestion`, `/voz`… sin `.html`),
+así que en local conviene servirlo con el mismo Caddy de producción:
+
 ```bash
-python -m http.server 8000
-# abre http://localhost:8000
+# Con Caddy instalado (caddyserver.com):
+SITE_ROOT=. caddy run
+# abre http://localhost:8080
 ```
 
-Funciona también abriendo `index.html` con doble clic, pero **conviene usar el servidor local**:
-la instalación como app y el service worker solo funcionan sobre `http://` o `https://`.
+También sirve `python -m http.server 8000`, pero ahí las páginas solo
+responden con su nombre de archivo (`/perfil.html`); los enlaces del menú
+apuntan a las rutas limpias y necesitan Caddy. La instalación como app y el
+service worker solo funcionan sobre `http://` o `https://`.
 
 ## Estructura del sitio
 
@@ -34,8 +40,10 @@ Nueve páginas. Cada tema tiene su propio espacio; la portada solo resume y enla
 | [unete.html](unete.html) | Participa: formas de aportar y formulario de registro |
 | [contacto.html](contacto.html) | Datos de contacto y formulario de mensaje |
 
-`candidato.html` y `propuestas.html` son redirecciones a `perfil.html` y
-`gestion.html`: se conservan para no romper enlaces viejos ya compartidos.
+Cada página se publica con su URL limpia: `perfil.html` responde en
+`/perfil`, y las direcciones viejas con `.html` redirigen (301) a la limpia.
+`/candidato` y `/propuestas` —nombres antiguos ya compartidos— redirigen a
+`/perfil` y `/gestion` desde el `Caddyfile`.
 
 ### Navegación
 
@@ -252,10 +260,14 @@ etiquetas en vez de duplicarlas.
 
 ### Qué hace el `Caddyfile`
 
+**URLs limpias.** `/perfil` sirve `perfil.html` (`try_files`), `/index.html`
+redirige a `/`, cualquier `/pagina.html` redirige a `/pagina` (301), y los
+nombres antiguos `/candidato` y `/propuestas` redirigen a `/perfil` y
+`/gestion`.
+
 | Archivos | Caché | Por qué |
 |---|---|---|
-| `sw.js`, `manifest.json` | `no-cache` | Si se sirven de caché, la app instalada se queda en la versión vieja |
-| `.html`, `.css`, `.js` | `no-cache` | No llevan hash en el nombre; una caché larga dejaría el sitio desactualizado |
+| Páginas, `.css`, `.js`, `sw.js`, `manifest.json` | `no-cache` | No llevan hash en el nombre; una caché larga dejaría el sitio (o la app instalada) en la versión vieja |
 | Imágenes | 1 día | Cambian poco y pesan |
 
 `no-cache` no significa "no guardar": guarda y revalida, y una respuesta 304

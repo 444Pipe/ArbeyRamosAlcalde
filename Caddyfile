@@ -7,8 +7,27 @@
 }
 
 :{$PORT:8080} {
-	root * /srv
+	# SITE_ROOT permite previsualizar en local: SITE_ROOT=. caddy run
+	root * {$SITE_ROOT:/srv}
 	encode zstd gzip
+
+	# --- URLs limpias ---
+	# La dirección pública es sin ".html": /perfil, /gestion, /voz...
+	# Los enlaces viejos con extensión redirigen de forma permanente
+	# para que lo ya compartido siga funcionando y el buscador entienda
+	# que es la misma página.
+	@indice path /index.html
+	redir @indice / permanent
+
+	@extension path_regexp limpia ^/(.+)\.html$
+	redir @extension /{re.limpia.1} permanent
+
+	# Páginas que cambiaron de nombre en su momento.
+	redir /candidato /perfil permanent
+	redir /propuestas /gestion permanent
+
+	# /perfil se sirve desde el archivo perfil.html.
+	try_files {path} {path}.html
 
 	# --- Cabeceras de seguridad ---
 	header {
@@ -26,17 +45,14 @@
 	# "no-cache" no significa no guardar: guarda y revalida, y una respuesta
 	# 304 pesa unos pocos bytes.
 
-	# El service worker y el manifest, siempre frescos: si se sirven de caché,
-	# la app instalada se queda clavada en la versión anterior.
-	@critico path /sw.js /manifest.json
-	header @critico Cache-Control "no-cache"
-
-	@codigo path *.html *.css *.js
-	header @codigo Cache-Control "no-cache"
-
 	# Las imágenes sí se pueden guardar: cambian poco y pesan.
 	@medios path *.png *.jpg *.jpeg *.webp *.svg *.ico *.woff2
 	header @medios Cache-Control "public, max-age=86400"
+
+	# Todo lo demás se revalida siempre: las páginas (que ahora se piden
+	# sin ".html"), el código, el service worker y el manifest.
+	# La "?" fija la cabecera solo donde no la puso la regla anterior.
+	header ?Cache-Control "no-cache"
 
 	file_server
 

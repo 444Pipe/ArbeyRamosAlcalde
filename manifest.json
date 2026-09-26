@@ -2,8 +2,8 @@
   "name": "Arbey Ramos Gómez · Concejo de Restrepo",
   "short_name": "Arbey Ramos",
   "description": "Sitio oficial de Arbey Ramos Gómez: su gestión como concejal y la plataforma para reportar lo que necesita tu barrio o tu vereda.",
-  "start_url": "index.html",
-  "scope": "./",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#05193F",
@@ -38,17 +38,17 @@
     {
       "name": "Reportar una problemática",
       "short_name": "Reportar",
-      "url": "voz.html#reportar"
+      "url": "/voz#reportar"
     },
     {
       "name": "Ver el mapa ciudadano",
       "short_name": "Mapa",
-      "url": "voz.html"
+      "url": "/voz"
     },
     {
       "name": "Agenda de eventos",
       "short_name": "Eventos",
-      "url": "eventos.html"
+      "url": "/eventos"
     }
   ]
 }

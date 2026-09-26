@@ -88,7 +88,7 @@
         "<p>" + esc(n.cuerpo || "").replace(/\n/g, "</p><p>") + "</p>" +
         '<div class="detalle__acciones">' +
           '<button class="btn btn--primary" data-compartir="' + n.id + '">' + UI.icono("i-share") + "Compartir</button>" +
-          '<a class="btn btn--linea" href="voz.html#reportar">' + UI.icono("i-megaphone") + "Reportar algo</a>" +
+          '<a class="btn btn--linea" href="/voz#reportar">' + UI.icono("i-megaphone") + "Reportar algo</a>" +
         "</div>" +
       "</div>",
       { titulo: n.titulo }

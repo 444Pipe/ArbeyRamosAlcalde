@@ -85,7 +85,7 @@
       "?text=" + encodeURIComponent("Hola " + CFG.candidatoCorto + ", quiero participar en el trabajo por Restrepo.");
 
     /* Si alguien llega desde otra página con la ayuda ya elegida:
-       unete.html?ayuda=Liderar+mi+barrio+o+vereda */
+       /unete?ayuda=Liderar+mi+barrio+o+vereda */
     var params = new URLSearchParams(location.search);
     var ayuda = params.get("ayuda");
     if (ayuda) {

@@ -68,19 +68,19 @@ window.UI = (function () {
   /* Estructura del sitio. Cambiar aquí cambia el menú y el pie de TODAS
      las páginas: es el único lugar donde vive la navegación. */
   var MENU = [
-    { txt: "Inicio", href: "index.html" },
-    { txt: "Quién es Arbey", href: "perfil.html" },
-    { txt: "Gestión", href: "gestion.html" },
-    { txt: "Tu voz", href: "voz.html", destacado: true },
+    { txt: "Inicio", href: "/" },
+    { txt: "Quién es Arbey", href: "/perfil" },
+    { txt: "Gestión", href: "/gestion" },
+    { txt: "Tu voz", href: "/voz", destacado: true },
     {
       txt: "Actualidad",
       hijos: [
-        { txt: "Noticias", href: "noticias.html", desc: "Gestiones y recorridos" },
-        { txt: "Eventos y agenda", href: "eventos.html", desc: "Dónde estamos y cuándo" },
-        { txt: "Trayectoria", href: "logros.html", desc: "Y el semáforo de gestiones" }
+        { txt: "Noticias", href: "/noticias", desc: "Gestiones y recorridos" },
+        { txt: "Eventos y agenda", href: "/eventos", desc: "Dónde estamos y cuándo" },
+        { txt: "Trayectoria", href: "/logros", desc: "Y el semáforo de gestiones" }
       ]
     },
-    { txt: "Contacto", href: "contacto.html" }
+    { txt: "Contacto", href: "/contacto" }
   ];
 
   /* Mapa del sitio que se pinta en el pie de página. */
@@ -88,32 +88,35 @@ window.UI = (function () {
     {
       titulo: "Conoce a Arbey",
       enlaces: [
-        { txt: "Quién es Arbey", href: "perfil.html" },
-        { txt: "Gestión y proyectos", href: "gestion.html" },
-        { txt: "Trayectoria", href: "logros.html" },
-        { txt: "Noticias", href: "noticias.html" }
+        { txt: "Quién es Arbey", href: "/perfil" },
+        { txt: "Gestión y proyectos", href: "/gestion" },
+        { txt: "Trayectoria", href: "/logros" },
+        { txt: "Noticias", href: "/noticias" }
       ]
     },
     {
       titulo: "Participa",
       enlaces: [
-        { txt: "Mapa ciudadano", href: "voz.html" },
-        { txt: "Reportar una problemática", href: "voz.html#reportar" },
-        { txt: "Eventos y agenda", href: "eventos.html" },
-        { txt: "Participa", href: "unete.html" }
+        { txt: "Mapa ciudadano", href: "/voz" },
+        { txt: "Reportar una problemática", href: "/voz#reportar" },
+        { txt: "Eventos y agenda", href: "/eventos" },
+        { txt: "Participa", href: "/unete" }
       ]
     }
   ];
 
   function paginaActual() {
-    var p = location.pathname.split("/").pop();
-    return p === "" ? "index.html" : p;
+    /* Ruta limpia de la página actual: "/", "/perfil", "/gestion"...
+       Acepta también la versión vieja con ".html" por si el navegador
+       llega con una URL guardada de antes. */
+    var p = location.pathname.split("/").pop().replace(/\.html$/, "");
+    return p === "" || p === "index" ? "/" : "/" + p;
   }
 
   function esActivo(href) {
     if (!href) return false;
     var base = href.split("#")[0];
-    if (href.indexOf("#") >= 0 && base === "index.html") return false;
+    if (href.indexOf("#") >= 0 && base === "/") return false;
     return base === paginaActual();
   }
 
@@ -158,13 +161,13 @@ window.UI = (function () {
       "</div></div>" +
 
       '<header class="header" id="header"><div class="wrap header__in">' +
-        '<a class="brand" href="index.html">' +
+        '<a class="brand" href="/">' +
           '<img class="brand__logo" src="assets/img/logo.png" width="480" height="274" alt="' + ALT + '">' +
           '<span class="brand__txt"><strong>' + CFG.candidato + "</strong><small>" + CFG.cargo + "</small></span>" +
         "</a>" +
         '<nav class="nav" id="nav" aria-label="Navegación principal">' +
           MENU.map(enlaceMenu).join("") +
-          '<a class="btn btn--primary nav__cta" href="unete.html">' + icono("i-hand") + " Participa</a>" +
+          '<a class="btn btn--primary nav__cta" href="/unete">' + icono("i-hand") + " Participa</a>" +
         "</nav>" +
         '<button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">' +
           "<span></span><span></span><span></span></button>" +
@@ -674,7 +677,7 @@ window.UI = (function () {
     /* App instalable. Solo funciona servido por http/https,
        no al abrir el archivo con doble clic. */
     if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
-      navigator.serviceWorker.register("sw.js").catch(function () {});
+      navigator.serviceWorker.register("/sw.js").catch(function () {});
     }
   }
 
