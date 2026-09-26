@@ -818,6 +818,12 @@ html.cargando, html.cargando body { overflow: hidden; }
 .carga__chispas i:nth-child(5) { --cx: -12px; --cy:  40px; }
 .carga__chispas i:nth-child(6) { --cx:  30px; --cy:  44px; width: 4px; height: 4px; }
 
+/* Plan B: si alguna capa no baja, carga.js mete el logo completo y
+   esconde las capas. La flecha-cohete sigue despegando sobre él. */
+.carga__plano { position: absolute; inset: 0; width: 100%; height: 100%; }
+.carga--plano .carga__capa { display: none; }
+.carga--plano .carga__plano { animation: carga-asoma calc(.6s * var(--carga-t)) var(--ease) both; }
+
 /* Un toque relanza la flecha: carga.js reinicia estas animaciones y la
    clase anula los retrasos para que el disparo sea inmediato. */
 .carga.is-relanzo .carga__cohete,

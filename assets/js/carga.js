@@ -95,6 +95,7 @@
      ya están aquí. */
   var capas = pantalla.querySelectorAll(".carga__capa");
   var faltan = capas.length;
+  var falloCapa = false;
 
   function marcaLista() {
     if (pantalla.classList.contains("is-lista")) return;
@@ -102,19 +103,42 @@
     inicio = Date.now();             /* el mínimo se cuenta desde que se ve la marca */
   }
 
+  /* Plan B: si alguna capa no baja (servidor a medias, caché vieja),
+     se muestra el logo completo en su lugar. Nunca un recuadro roto.
+     La flecha-cohete sigue funcionando: el ancla vale igual. */
+  function planB() {
+    if (pantalla.classList.contains("carga--plano")) return;
+    var img = doc.createElement("img");
+    img.className = "carga__plano";
+    img.src = "assets/img/logo.png";
+    img.alt = "";
+    pantalla.querySelector(".carga__marca").appendChild(img);
+    pantalla.classList.add("carga--plano");
+  }
+
   function unaCapaLista() {
     faltan--;
-    if (faltan <= 0) marcaLista();
+    if (faltan > 0) return;
+    if (falloCapa) planB();
+    marcaLista();
+  }
+  function unaCapaFallo() {
+    falloCapa = true;
+    unaCapaLista();
   }
 
   for (var i = 0; i < capas.length; i++) {
     if (capas[i].complete && capas[i].naturalWidth) unaCapaLista();
+    else if (capas[i].complete) unaCapaFallo();
     else {
       capas[i].addEventListener("load", unaCapaLista);
-      capas[i].addEventListener("error", unaCapaLista);
+      capas[i].addEventListener("error", unaCapaFallo);
     }
   }
-  setTimeout(marcaLista, ESPERA_LOGO);
+  setTimeout(function () {
+    if (falloCapa || faltan > 0) planB();
+    marcaLista();
+  }, ESPERA_LOGO);
 
   /* =========================================================
      INTERACCIÓN

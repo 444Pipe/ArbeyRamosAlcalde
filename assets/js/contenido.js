@@ -20,8 +20,8 @@ window.CONTENIDO = {
     titular: "Restrepense de nacimiento, padre de familia y hombre de trabajo",
     resumen: "Arbey Ramos Gómez es oriundo de Restrepo y padre de familia. Contador " +
              "Público y estudiante de Administración Pública, ha sido concejal del " +
-             "municipio por tres periodos y hoy es el Presidente del Concejo de Restrepo " +
-             "y del Directorio Municipal del Partido Conservador.",
+             "municipio por tres periodos —el actual, 2024–2027— y para 2026 preside el " +
+             "Concejo de Restrepo y el Directorio Municipal del Partido Conservador.",
     valores: [
       { titulo: "Cercanía real",   texto: "Tres periodos recorriendo los barrios y las veredas, escuchando a la gente donde vive." },
       { titulo: "Manejo técnico",  texto: "Contador Público: los recursos del municipio se revisan con rigor y se explican con claridad." },
@@ -236,9 +236,9 @@ window.CONTENIDO = {
     {
       id: "l1",
       icono: "i-flag",
-      anio: "2024–2027",
+      anio: "2026",
       titulo: "Presidente del Concejo de Restrepo",
-      texto: "Elegido por la corporación para presidirla: dirigir el debate, darle la palabra a la comunidad y ser la vocería del Concejo ante las instituciones."
+      texto: "Elegido por la corporación para presidirla en 2026: dirigir el debate, darle la palabra a la comunidad y ser la vocería del Concejo ante las instituciones."
     },
     {
       id: "l2",
@@ -252,7 +252,7 @@ window.CONTENIDO = {
       icono: "i-users",
       anio: "3 periodos",
       titulo: "Concejal de Restrepo",
-      texto: "Elegido y reelegido por voto popular durante tres periodos: años de escuchar a la gente y llevar su voz a los debates del Concejo."
+      texto: "Elegido y reelegido por voto popular durante tres periodos —el actual, 2024–2027—: años de escuchar a la gente y llevar su voz a los debates del Concejo."
     },
     {
       id: "l4",

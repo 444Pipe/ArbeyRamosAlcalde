@@ -9,7 +9,8 @@ window.CAMPANA = {
   candidato: "Arbey Ramos Gómez",      // nombre completo (se usa en todo el sitio)
   candidatoCorto: "Arbey Ramos",
   cargo: "Presidente del Concejo de Restrepo",
-  periodo: "2024–2027",
+  cargoAnio: "2026",                   // año para el que fue elegido presidente
+  periodo: "2024–2027",                // periodo como concejal electo
   partido: "Partido Conservador Colombiano",
   eslogan: "Orgullosamente restrepense",   // se muestra en el hero de index.html
   marca: "Avanza Restrepo",                // el nombre del logo

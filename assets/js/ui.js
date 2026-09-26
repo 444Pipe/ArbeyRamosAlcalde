@@ -148,7 +148,7 @@ window.UI = (function () {
     host.innerHTML =
       '<div class="topbar"><div class="wrap topbar__in">' +
         '<p class="topbar__txt"><span class="dot" aria-hidden="true"></span> ' +
-          CFG.cargo + '<span class="topbar__extra"> · ' + CFG.periodo + " · " + CFG.partido + "</span></p>" +
+          CFG.cargo + " " + CFG.cargoAnio + '<span class="topbar__extra"> · Concejal ' + CFG.periodo + " · " + CFG.partido + "</span></p>" +
         '<div class="topbar__social">' +
           '<a href="' + CFG.redes.facebook + '" aria-label="Facebook">' + icono("i-facebook") + "</a>" +
           '<a href="' + CFG.redes.instagram + '" aria-label="Instagram">' + icono("i-instagram") + "</a>" +
@@ -180,7 +180,7 @@ window.UI = (function () {
 
         '<div class="footer__brand">' +
           '<img class="footer__logo" src="assets/img/logo-claro.png" width="480" height="274" alt="' + ALT + '">' +
-          "<div><p>" + CFG.candidato + "<br>" + CFG.cargo + "<br>" + CFG.periodo + " · " + CFG.partido + "</p></div>" +
+          "<div><p>" + CFG.candidato + "<br>" + CFG.cargo + " · " + CFG.cargoAnio + "<br>Concejal " + CFG.periodo + " · " + CFG.partido + "</p></div>" +
           '<div class="footer__social">' +
             '<a href="' + CFG.redes.facebook + '" aria-label="Facebook">' + icono("i-facebook") + "</a>" +
             '<a href="' + CFG.redes.instagram + '" aria-label="Instagram">' + icono("i-instagram") + "</a>" +
