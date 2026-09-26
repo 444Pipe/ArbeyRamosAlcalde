@@ -101,7 +101,7 @@
       ? proximos.map(function (e) { return tarjeta(e, false); }).join("")
       : '<div class="vacio">' + UI.icono("i-calendar") +
         "<h3>No hay eventos programados</h3>" +
-        "<p>Estamos organizando la próxima agenda. Regístrate y te avisamos.</p></div>";
+        "<p>Estoy organizando la próxima agenda. Regístrate y te aviso.</p></div>";
 
     var cpa = document.getElementById("lista-pasados");
     cpa.innerHTML = pasados.length
@@ -148,9 +148,9 @@
     });
 
     document.getElementById("btn-pedir").addEventListener("click", function () {
-      UI.pedirRegistro("Déjanos tus datos y te contactamos para coordinar el encuentro en tu sector.")
+      UI.pedirRegistro("Déjame tus datos y te contacto para coordinar el encuentro en tu sector.")
         .then(function (p) {
-          if (p) UI.toast("Recibido. Te contactaremos para coordinar la visita.");
+          if (p) UI.toast("Recibido. Te contacto para coordinar la visita.");
         });
     });
   }

@@ -386,7 +386,7 @@
       if (titulo.value.trim().length < 8) { err("rp-titulo", "Escribe una frase un poco más clara."); malo = malo || titulo; }
       else err("rp-titulo", "");
 
-      if (desc.value.trim().length < 20) { err("rp-desc", "Cuéntanos un poco más para poder ayudarte."); malo = malo || desc; }
+      if (desc.value.trim().length < 20) { err("rp-desc", "Cuéntame un poco más para poder ayudarte."); malo = malo || desc; }
       else err("rp-desc", "");
 
       if (malo) { malo.scrollIntoView({ behavior: "smooth", block: "center" }); if (malo.focus) malo.focus(); return; }

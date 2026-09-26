@@ -69,8 +69,8 @@ window.UI = (function () {
      las páginas: es el único lugar donde vive la navegación. */
   var MENU = [
     { txt: "Inicio", href: "/" },
-    { txt: "Quién es Arbey", href: "/perfil" },
-    { txt: "Gestión", href: "/gestion" },
+    { txt: "Quién soy", href: "/perfil" },
+    { txt: "Mi gestión", href: "/gestion" },
     { txt: "Tu voz", href: "/voz", destacado: true },
     {
       txt: "Actualidad",
@@ -86,11 +86,11 @@ window.UI = (function () {
   /* Mapa del sitio que se pinta en el pie de página. */
   var PIE = [
     {
-      titulo: "Conoce a Arbey",
+      titulo: "Conóceme",
       enlaces: [
-        { txt: "Quién es Arbey", href: "/perfil" },
-        { txt: "Gestión y proyectos", href: "/gestion" },
-        { txt: "Trayectoria", href: "/logros" },
+        { txt: "Quién soy", href: "/perfil" },
+        { txt: "Mi gestión y proyectos", href: "/gestion" },
+        { txt: "Mi trayectoria", href: "/logros" },
         { txt: "Noticias", href: "/noticias" }
       ]
     },
@@ -487,7 +487,7 @@ window.UI = (function () {
               "<span>Autorizo el tratamiento de mis datos conforme a la Ley 1581 de 2012.</span></label>" +
             '<p class="form__err" data-err-for="r-hab"></p>' +
             '<button class="btn btn--primary btn--block btn--lg" type="submit">Registrarme</button>' +
-            '<p class="registro__nota">' + icono("i-lock") + " Tus datos no se publican. Solo el equipo de Arbey los ve.</p>" +
+            '<p class="registro__nota">' + icono("i-lock") + " Tus datos no se publican. Solo mi equipo y yo los vemos.</p>" +
           "</form>" +
         "</div>",
         { titulo: "Registro" }

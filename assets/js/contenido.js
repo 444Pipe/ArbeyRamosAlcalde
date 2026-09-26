@@ -17,15 +17,15 @@ window.CONTENIDO = {
      Esto es solo el resumen que aparece en la portada.
      --------------------------------------------------------- */
   perfil: {
-    titular: "Restrepense de nacimiento, padre de familia y hombre de trabajo",
-    resumen: "Arbey Ramos Gómez es oriundo de Restrepo y padre de familia. Contador " +
-             "Público y estudiante de Administración Pública, ha sido concejal del " +
-             "municipio por tres periodos —el actual, 2024–2027— y para 2026 preside el " +
+    titular: "Nací en Restrepo, soy padre de familia y hombre de trabajo",
+    resumen: "Soy de Restrepo y aquí está mi vida entera. Soy Contador Público, " +
+             "estudio Administración Pública y la comunidad me ha elegido concejal " +
+             "por tres periodos —el actual, 2024–2027—. Para 2026 presido el " +
              "Concejo de Restrepo y el Directorio Municipal del Partido Conservador.",
     valores: [
-      { titulo: "Cercanía real",   texto: "Tres periodos recorriendo los barrios y las veredas, escuchando a la gente donde vive." },
-      { titulo: "Manejo técnico",  texto: "Contador Público: los recursos del municipio se revisan con rigor y se explican con claridad." },
-      { titulo: "Trabajo que se ve", texto: "Gestiones con seguimiento público: aquí queda registrado qué se pidió y en qué va." }
+      { titulo: "Cercanía real",   texto: "Llevo tres periodos recorriendo los barrios y las veredas, escuchándote donde vives." },
+      { titulo: "Manejo técnico",  texto: "Soy Contador Público: reviso los recursos del municipio con rigor y te los explico con claridad." },
+      { titulo: "Trabajo que se ve", texto: "Cada gestión queda con seguimiento público: aquí registro qué me pediste y en qué va." }
     ]
   },
 
@@ -43,10 +43,10 @@ window.CONTENIDO = {
       id: "hacienda",
       icono: "i-chart",
       titulo: "Hacienda y recursos públicos",
-      resumen: "Las cuentas del municipio revisadas con ojos de Contador Público.",
-      detalle: "El presupuesto de Restrepo no es un papel: es la plata de la gente. " +
-               "Como contador, Arbey ha estudiado peso a peso cada presupuesto que pasa " +
-               "por el Concejo, para que los recursos rindan y se sepa en qué se van.",
+      resumen: "Las cuentas del municipio, revisadas con mis ojos de Contador Público.",
+      detalle: "El presupuesto de Restrepo no es un papel: es tu plata. Como contador, " +
+               "he estudiado peso a peso cada presupuesto que pasa por el Concejo, " +
+               "para que los recursos rindan y sepas en qué se van.",
       acciones: [
         "Estudio y debate técnico del presupuesto municipal en cada vigencia.",
         "Control político a la ejecución de los recursos y a la contratación pública.",
@@ -59,8 +59,8 @@ window.CONTENIDO = {
       icono: "i-sprout",
       titulo: "El campo y las veredas",
       resumen: "La zona rural de Restrepo presente en cada debate del Concejo.",
-      detalle: "Casi siete mil restrepenses viven en las veredas. Arbey ha llevado sus " +
-               "necesidades al recinto del Concejo una y otra vez: las vías terciarias, " +
+      detalle: "Casi siete mil restrepenses viven en las veredas. Sus necesidades las " +
+               "he llevado al recinto del Concejo una y otra vez: las vías terciarias, " +
                "los acueductos veredales y el apoyo al que produce la comida.",
       acciones: [
         "Debates sobre el estado y el mantenimiento de las vías terciarias.",
@@ -74,9 +74,9 @@ window.CONTENIDO = {
       icono: "i-users",
       titulo: "Comunidad y acción comunal",
       resumen: "El trabajo codo a codo con las juntas de acción comunal.",
-      detalle: "Las JAC son la primera puerta que toca un vecino cuando algo falta. " +
-               "Por eso el trabajo de Arbey empieza ahí: escuchando a los líderes " +
-               "comunales y ayudándolos a mover sus necesidades ante quien corresponde.",
+      detalle: "Las JAC son la primera puerta que tocas cuando algo falta. Por eso " +
+               "mi trabajo empieza ahí: escuchando a los líderes comunales y " +
+               "ayudándolos a mover sus necesidades ante quien corresponde.",
       acciones: [
         "Acompañamiento permanente a las juntas de acción comunal de barrios y veredas.",
         "Gestión de necesidades puntuales de la comunidad ante la administración municipal.",
@@ -89,7 +89,7 @@ window.CONTENIDO = {
       icono: "i-graduation",
       titulo: "Educación, deporte y juventud",
       resumen: "Oportunidades para que los jóvenes no tengan que irse del municipio.",
-      detalle: "En tres periodos, Arbey ha defendido en el Concejo lo que las familias " +
+      detalle: "En tres periodos he defendido en el Concejo lo que las familias " +
                "más piden para sus hijos: sedes educativas dignas, transporte escolar " +
                "que llegue a las veredas y espacios para el deporte y la cultura.",
       acciones: [
@@ -104,9 +104,9 @@ window.CONTENIDO = {
       icono: "i-salud",
       titulo: "Salud y bienestar",
       resumen: "Que la atención llegue a tiempo y también a la zona rural.",
-      detalle: "La salud se mide en cuánto tarda una persona en ser atendida. Desde el " +
-               "Concejo, Arbey ha insistido en fortalecer el centro de salud y en que " +
-               "las jornadas de atención lleguen hasta las veredas.",
+      detalle: "La salud se mide en cuánto tardan en atenderte. Desde el Concejo " +
+               "he insistido en fortalecer el centro de salud y en que las jornadas " +
+               "de atención lleguen hasta las veredas.",
       acciones: [
         "Control político a la prestación del servicio de salud en el municipio.",
         "Gestión por la dotación y el personal del centro de salud.",
@@ -118,10 +118,10 @@ window.CONTENIDO = {
       id: "concejo",
       icono: "i-flag",
       titulo: "Un Concejo abierto y cercano",
-      resumen: "Como presidente, una corporación con las puertas abiertas.",
-      detalle: "Presidir el Concejo es un encargo de confianza: dirigir el debate con " +
-               "respeto, darle la palabra a la comunidad y hacer de la corporación una " +
-               "casa donde cualquier restrepense pueda entrar, hablar y ser escuchado.",
+      resumen: "Como presidente, mantengo la corporación con las puertas abiertas.",
+      detalle: "Presidir el Concejo es un encargo de confianza: dirijo el debate con " +
+               "respeto, le doy la palabra a la comunidad y trabajo para que la " +
+               "corporación sea una casa donde puedas entrar, hablar y ser escuchado.",
       acciones: [
         "Sesiones públicas y abiertas: cualquier ciudadano puede asistir y participar.",
         "Vocería del Concejo ante la administración y las demás instituciones.",
@@ -141,8 +141,8 @@ window.CONTENIDO = {
       demo: true,
       fecha: "2026-08-12",
       categoria: "Territorio",
-      titulo: "Arbey Ramos recorrió la zona rural escuchando a los productores",
-      resumen: "Durante toda la jornada, el presidente del Concejo visitó fincas y escuchó las dificultades para sacar los productos al mercado por el estado de las vías terciarias.",
+      titulo: "Recorrí la zona rural escuchando a los productores",
+      resumen: "Pasé toda la jornada visitando fincas y escuchando las dificultades para sacar los productos al mercado por el estado de las vías terciarias.",
       cuerpo: "Texto completo de la noticia. Reemplaza este contenido por la nota real, con los nombres de las veredas visitadas, las personas que acompañaron y las gestiones concretas que salieron del recorrido.",
       destacada: true,
       imagen: ""
@@ -152,8 +152,8 @@ window.CONTENIDO = {
       demo: true,
       fecha: "2026-08-05",
       categoria: "Concejo",
-      titulo: "Balance del periodo de sesiones: los debates que le importan a la gente",
-      resumen: "Resumen de los proyectos de acuerdo tramitados y de los debates de control político adelantados por la corporación en el último periodo.",
+      titulo: "Balance del periodo de sesiones: los debates que te importan",
+      resumen: "Te resumo los proyectos de acuerdo que tramitamos y los debates de control político que adelantamos en la corporación durante el último periodo.",
       cuerpo: "Texto completo de la noticia.",
       destacada: false,
       imagen: ""
@@ -163,8 +163,8 @@ window.CONTENIDO = {
       demo: true,
       fecha: "2026-07-28",
       categoria: "Comunicado",
-      titulo: "Así va la gestión: cuentas claras ante la comunidad",
-      resumen: "Informe periódico del trabajo adelantado desde el Concejo: qué se ha debatido, qué se ha gestionado y en qué va cada compromiso.",
+      titulo: "Así va mi gestión: cuentas claras contigo",
+      resumen: "Mi informe periódico del trabajo en el Concejo: qué he debatido, qué he gestionado y en qué va cada compromiso.",
       cuerpo: "Texto completo del comunicado.",
       destacada: false,
       imagen: ""
@@ -175,7 +175,7 @@ window.CONTENIDO = {
       fecha: "2026-07-19",
       categoria: "Prensa",
       titulo: "Entrevista en la emisora local: el trabajo del Concejo Municipal",
-      resumen: "Arbey Ramos habló sobre las prioridades de la corporación y sobre los reportes que la ciudadanía deja en esta plataforma.",
+      resumen: "Hablé sobre las prioridades de la corporación y sobre los reportes que ustedes dejan en esta plataforma.",
       cuerpo: "Texto completo o enlace a la entrevista.",
       destacada: false,
       imagen: ""
@@ -238,35 +238,35 @@ window.CONTENIDO = {
       icono: "i-flag",
       anio: "2026",
       titulo: "Presidente del Concejo de Restrepo",
-      texto: "Elegido por la corporación para presidirla en 2026: dirigir el debate, darle la palabra a la comunidad y ser la vocería del Concejo ante las instituciones."
+      texto: "Mis compañeros de corporación me eligieron para presidirla en 2026: dirijo el debate, le doy la palabra a la comunidad y llevo la vocería del Concejo ante las instituciones."
     },
     {
       id: "l2",
       icono: "i-star",
       anio: "Hoy",
       titulo: "Presidente del Directorio del Partido Conservador",
-      texto: "Al frente del directorio municipal del Partido Conservador Colombiano en Restrepo."
+      texto: "Estoy al frente del directorio municipal del Partido Conservador Colombiano en Restrepo."
     },
     {
       id: "l3",
       icono: "i-users",
       anio: "3 periodos",
       titulo: "Concejal de Restrepo",
-      texto: "Elegido y reelegido por voto popular durante tres periodos —el actual, 2024–2027—: años de escuchar a la gente y llevar su voz a los debates del Concejo."
+      texto: "La comunidad me ha elegido y reelegido por voto popular durante tres periodos —el actual, 2024–2027—: años de escucharte y llevar tu voz a los debates del Concejo."
     },
     {
       id: "l4",
       icono: "i-graduation",
       anio: "Formación",
       titulo: "Contador Público · Est. de Administración Pública",
-      texto: "Profesional en Contaduría Pública y estudiante de Administración Pública: números claros y lo público manejado con seriedad."
+      texto: "Soy Contador Público y estudio Administración Pública: números claros y lo público manejado con seriedad."
     },
     {
       id: "l5",
       icono: "i-pin",
       anio: "Raíces",
       titulo: "Restrepense de nacimiento y padre de familia",
-      texto: "Nació y creció en Restrepo. Padre de familia, orgulloso de su pueblo y de su gente."
+      texto: "Nací y crecí en Restrepo. Soy padre de familia, orgulloso de mi pueblo y de mi gente."
     }
   ],
 
@@ -275,7 +275,7 @@ window.CONTENIDO = {
      --------------------------------------------------------- */
   encuesta: {
     id: "q-2026-39",
-    pregunta: "¿Qué tema debería priorizar el Concejo en los próximos debates?",
+    pregunta: "¿Qué tema quieres que priorice en los próximos debates del Concejo?",
     opciones: [
       { id: "a", texto: "Arreglo de las vías rurales" },
       { id: "b", texto: "Agua potable en toda la zona rural" },

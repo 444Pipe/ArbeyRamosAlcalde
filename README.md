@@ -51,11 +51,18 @@ El menú y el pie se generan desde `ui.js`, en las constantes `MENU` y `PIE`. **
 sitio donde vive la navegación**: cambiar un enlace ahí lo cambia en las nueve páginas.
 
 ```
-Inicio · Quién es Arbey · Gestión · Tu voz · Actualidad ▾ · Contacto     [Participa]
-                                             ├─ Noticias
-                                             ├─ Eventos y agenda
-                                             └─ Trayectoria
+Inicio · Quién soy · Mi gestión · Tu voz · Actualidad ▾ · Contacto     [Participa]
+                                           ├─ Noticias
+                                           ├─ Eventos y agenda
+                                           └─ Trayectoria
 ```
+
+### Tono de los textos
+
+Todo el sitio habla **en primera persona**: es Arbey hablándole directamente
+al lector, de tú («cuéntame tu problemática», «ver mi gestión», «te espero»).
+Al editar cualquier texto hay que mantener esa voz; nada en tercera persona
+(«Arbey gestionó…»), salvo su nombre en títulos, firmas y textos alternativos.
 
 El pie repite todo como mapa del sitio en tres columnas: Conoce a Arbey, Participa y Contacto.
 

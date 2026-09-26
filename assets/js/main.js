@@ -25,7 +25,7 @@
     if (!cont || !p) return;
 
     cont.innerHTML =
-      '<p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Quién es Arbey</p>' +
+      '<p class="eyebrow eyebrow--dark"><span class="eyebrow__bar" aria-hidden="true"></span> Quién soy</p>' +
       '<h2 class="h2">' + esc(p.titular) + "</h2>" +
       "<p>" + esc(p.resumen) + "</p>" +
       '<ul class="values">' +
@@ -36,7 +36,7 @@
         "</li>";
       }).join("") +
       "</ul>" +
-      '<a class="btn btn--primary" href="/perfil">Conocer su historia ' + UI.icono("i-arrow") + "</a>";
+      '<a class="btn btn--primary" href="/perfil">Conocer mi historia ' + UI.icono("i-arrow") + "</a>";
   }
 
   /* ---------- Resumen de la gestión ---------- */

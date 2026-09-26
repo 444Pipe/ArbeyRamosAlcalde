@@ -66,7 +66,7 @@
         err(form, "c-mail", "Revisa tu correo."); malo = malo || mail;
       } else err(form, "c-mail", "");
 
-      if (msg.value.trim().length < 10) { err(form, "c-msg", "Cuéntanos un poco más."); malo = malo || msg; }
+      if (msg.value.trim().length < 10) { err(form, "c-msg", "Cuéntame un poco más."); malo = malo || msg; }
       else err(form, "c-msg", "");
 
       if (!hab.checked) { err(form, "c-hab", "Debes autorizar el tratamiento de datos."); malo = malo || hab; }
@@ -83,7 +83,7 @@
       }).then(function () {
         form.reset();
         if (ok) { ok.hidden = false; ok.scrollIntoView({ behavior: "smooth", block: "center" }); }
-        UI.toast("Mensaje enviado. Gracias por escribirnos.");
+        UI.toast("Mensaje enviado. Gracias por escribirme.");
       });
     });
 

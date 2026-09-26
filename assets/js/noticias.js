@@ -88,7 +88,7 @@
         "<p>" + esc(n.cuerpo || "").replace(/\n/g, "</p><p>") + "</p>" +
         '<div class="detalle__acciones">' +
           '<button class="btn btn--primary" data-compartir="' + n.id + '">' + UI.icono("i-share") + "Compartir</button>" +
-          '<a class="btn btn--linea" href="/voz#reportar">' + UI.icono("i-megaphone") + "Reportar algo</a>" +
+          '<a class="btn btn--linea" href="/voz#reportar">' + UI.icono("i-megaphone") + "Contarte algo</a>" +
         "</div>" +
       "</div>",
       { titulo: n.titulo }
@@ -114,7 +114,7 @@
     });
 
     document.getElementById("btn-suscribir").addEventListener("click", function () {
-      UI.pedirRegistro("Déjanos tu celular y te avisamos de cada novedad de la gestión.")
+      UI.pedirRegistro("Déjame tu celular y te aviso de cada novedad de la gestión.")
         .then(function (p) { if (p) UI.toast("Listo. Te avisaremos por WhatsApp."); });
     });
   }
