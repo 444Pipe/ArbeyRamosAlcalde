@@ -4,7 +4,7 @@
    y que las páginas ya visitadas se puedan abrir sin señal.
    Sube la versión al publicar cambios para forzar la actualización.
    ========================================================= */
-var VERSION = "arbey-v22";
+var VERSION = "arbey-v23";
 
 var ESENCIALES = [
   "./",
@@ -76,14 +76,21 @@ self.addEventListener("fetch", function (e) {
 
   /* Páginas: primero la red para tener el contenido fresco,
      y si no hay señal se sirve la copia guardada. */
+  /* Solo se guardan respuestas buenas: cachear un 404 (por ejemplo, en
+     mitad de un despliegue) dejaría el error pegado hasta la siguiente
+     versión. */
+  function guardarSiSirve(r) {
+    if (r && r.ok) {
+      var copia = r.clone();
+      caches.open(VERSION).then(function (c) { c.put(req, copia); });
+    }
+    return r;
+  }
+
   if (req.mode === "navigate") {
     e.respondWith(
       fetch(req)
-        .then(function (r) {
-          var copia = r.clone();
-          caches.open(VERSION).then(function (c) { c.put(req, copia); });
-          return r;
-        })
+        .then(guardarSiSirve)
         .catch(function () {
           return caches.match(req).then(function (r) { return r || caches.match("index.html"); });
         })
@@ -94,11 +101,7 @@ self.addEventListener("fetch", function (e) {
   /* Recursos estáticos: primero la copia guardada. */
   e.respondWith(
     caches.match(req).then(function (guardado) {
-      return guardado || fetch(req).then(function (r) {
-        var copia = r.clone();
-        caches.open(VERSION).then(function (c) { c.put(req, copia); });
-        return r;
-      });
+      return guardado || fetch(req).then(guardarSiSirve);
     })
   );
 });

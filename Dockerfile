@@ -13,6 +13,7 @@ COPY assets/css ./assets/css
 COPY assets/js ./assets/js
 COPY assets/img/arbey.png assets/img/arbey.webp assets/img/og-image.jpg ./assets/img/
 COPY assets/img/logo.png assets/img/logo-claro.png ./assets/img/
+COPY assets/img/carga-a.png assets/img/carga-r.png assets/img/carga-texto.png ./assets/img/
 COPY assets/img/favicon.png assets/img/icono-apple.png ./assets/img/
 COPY assets/img/icono-192.png assets/img/icono-512.png ./assets/img/
 
