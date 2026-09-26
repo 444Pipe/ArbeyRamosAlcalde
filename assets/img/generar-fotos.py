@@ -68,13 +68,15 @@ tarjeta = grad
 # La foto, alineada abajo a la derecha
 alto_foto = int(H * 0.92)
 ancho_foto = round(foto.size[0] * alto_foto / foto.size[1])
+x_foto = W - ancho_foto + int(ancho_foto * 0.06)
 f = foto.resize((ancho_foto, alto_foto), Image.LANCZOS)
-tarjeta.paste(f, (W - ancho_foto + int(ancho_foto * 0.06), H - alto_foto), f)
+tarjeta.paste(f, (x_foto, H - alto_foto), f)
 
-# El logo, arriba a la izquierda
+# El logo, grande y centrado en la franja libre de la izquierda
 logo = Image.open(LOGO_CLARO).convert('RGBA')
-ancho_logo = 380
-logo = logo.resize((ancho_logo, round(logo.size[1] * ancho_logo / logo.size[0])), Image.LANCZOS)
-tarjeta.paste(logo, (64, 70), logo)
+ancho_logo = 470
+alto_logo = round(logo.size[1] * ancho_logo / logo.size[0])
+logo = logo.resize((ancho_logo, alto_logo), Image.LANCZOS)
+tarjeta.paste(logo, ((x_foto - ancho_logo) // 2, (H - alto_logo) // 2), logo)
 
 guardar(tarjeta, 'og-image.jpg', None, 84)

@@ -35,7 +35,7 @@ for pagina in sorted(glob.glob('*.html')):
     # "/perfil" (sin ".html") para las demás páginas.
     ruta = '/' if pagina == 'index.html' else '/' + pagina[:-len('.html')]
     url = dominio + ruta
-    imagen = dominio + '/assets/img/og-image.jpg'
+    imagen = dominio + '/assets/img/og-image.jpg?v=2'
 
     # --- og:image absoluto ---
     if 'property="og:image"' in s:
